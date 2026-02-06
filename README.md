@@ -96,6 +96,57 @@ tt-design/
 
 3. **导出组件**：在`src/index.js`文件中导出新组件。
 
+### CSS Class 命名规范
+
+组件库采用 **BEM (Block Element Modifier)** 命名规范，使用 `tt-` 前缀代表 tt-design。
+
+#### 命名规则
+
+- **Block (块)**：组件的根元素，使用 `tt-{component-name}` 格式
+  - 示例：`tt-button`、`tt-input`、`tt-modal`
+
+- **Element (元素)**：组件内部的子元素，使用 `tt-{component-name}-{element-name}` 格式
+  - 示例：`tt-button-icon`、`tt-input-prefix`、`tt-modal-header`
+
+- **Modifier (修饰符)**：组件或元素的状态或变体，使用 `tt-{component-name}-{modifier-name}` 格式
+  - 示例：`tt-button-primary`、`tt-button-large`、`tt-input-disabled`
+
+#### 实现示例
+
+```javascript
+import React from 'react';
+import { Button as AntButton } from 'antd';
+import classNames from 'classnames';
+
+const Button = ({ type, size, children, className, ...props }) => {
+  const buttonClassName = classNames(
+    'tt-button',                    // Block
+    type && `tt-button-${type}`,     // Modifier (type)
+    size && `tt-button-${size}`,     // Modifier (size)
+    className                        // 支持自定义 class
+  );
+
+  return (
+    <AntButton
+      className={buttonClassName}
+      {...props}
+    >
+      {children}
+    </AntButton>
+  );
+};
+
+export default Button;
+```
+
+#### 使用说明
+
+1. **统一前缀**：所有组件的 class 必须以 `tt-` 开头
+2. **使用 classnames 库**：使用 `classnames` 库来动态组合 class
+3. **保留自定义 class**：通过 `className` 属性支持用户自定义 class
+4. **遵循 BEM 规范**：严格按照 BEM 规范命名，确保可读性和可维护性
+5. **封装第三方组件**：封装 antd 等第三方组件时，在最外层添加统一的 class 命名
+
 ## 生成Storybook案例标准
 
 ### 需求

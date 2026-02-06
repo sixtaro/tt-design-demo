@@ -34,9 +34,9 @@
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@storybook/addon-essentials": "^6.4.0",
-    "@storybook/react": "^6.4.0",
     "@storybook/builder-webpack5": "^6.4.0",
     "@storybook/manager-webpack5": "^6.4.0",
+    "@storybook/react": "^6.4.0",
     "@types/minimatch": "^6.0.0",
     "rollup": "^2.77.0",
     "rollup-plugin-terser": "^7.0.2",
@@ -45,8 +45,9 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "antd": "4.24.8",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "antd": "^4.24.8",
+    "classnames": "^2.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
