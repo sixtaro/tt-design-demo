@@ -8,7 +8,7 @@
  * @param {string} version - 版本号
  * @returns {boolean} - 是否符合规范
  */
-export const isValidVersion = (version) => {
+export const isValidVersion = version => {
   const semverRegex = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.]+)?$/;
   return semverRegex.test(version);
 };
@@ -55,7 +55,7 @@ export const compareVersions = (version1, version2) => {
  * @param {React.Component} Component - 组件
  * @returns {string} - 组件版本号
  */
-export const getComponentVersion = (Component) => {
+export const getComponentVersion = Component => {
   return Component.version || 'unknown';
 };
 
@@ -68,7 +68,7 @@ export const getComponentVersion = (Component) => {
 export const checkComponentVersion = (Component, requiredVersion) => {
   const componentVersion = getComponentVersion(Component);
   if (componentVersion === 'unknown') return false;
-  
+
   try {
     return compareVersions(componentVersion, requiredVersion) >= 0;
   } catch (error) {
