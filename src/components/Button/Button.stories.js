@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './index';
 
 export default {
-  title: 'Components/Button',
+  title: '通用/Button',
   component: Button,
   parameters: {
     docs: {

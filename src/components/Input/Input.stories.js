@@ -2,7 +2,7 @@ import React from 'react';
 import Input from './index';
 
 export default {
-  title: 'Components/Input',
+  title: '数据录入/Input',
   component: Input,
   argTypes: {
     type: {

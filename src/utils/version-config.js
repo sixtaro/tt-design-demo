@@ -13,5 +13,18 @@ export const componentVersions = {
   Input: '1.0.0',
   Select: '1.0.0',
   Modal: '1.0.0',
+  Checkbox: '1.0.0',
+  Radio: '1.0.0',
+  Switch: '1.0.0',
+  Table: '1.0.0',
+  Form: '1.0.0',
+  DatePicker: '1.0.0',
+  Pagination: '1.0.0',
+  Message: '1.0.0',
+  Notification: '1.0.0',
+  Drawer: '1.0.0',
+  Tabs: '1.0.0',
+  Card: '1.0.0',
+  Spin: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };
