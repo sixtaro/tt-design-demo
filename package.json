@@ -8,7 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c -w",
+    "build": "rollup -c",
+    "watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
