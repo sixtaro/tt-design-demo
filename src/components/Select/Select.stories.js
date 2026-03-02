@@ -10,7 +10,7 @@ const mockOptions = [
 ];
 
 export default {
-  title: '数据录入/Select',
+  title: '数据录入/Select 选择器',
   component: Select,
   argTypes: {
     placeholder: {

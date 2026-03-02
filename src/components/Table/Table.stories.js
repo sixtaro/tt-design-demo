@@ -2,7 +2,7 @@ import React from 'react';
 import Table from './index';
 
 export default {
-  title: '数据展示/Table',
+  title: '数据展示/Table 表格',
   component: Table,
   parameters: {
     docs: {

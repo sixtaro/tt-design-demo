@@ -2,7 +2,7 @@ import React from 'react';
 import DatePicker from './index';
 
 export default {
-  title: '数据录入/DatePicker',
+  title: '数据录入/DatePicker 日期选择器',
   component: DatePicker,
   parameters: {
     docs: {

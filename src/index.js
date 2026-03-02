@@ -17,6 +17,13 @@ import Drawer from './components/Drawer';
 import Tabs from './components/Tabs';
 import Card from './components/Card';
 import Spin from './components/Spin';
+import FloatButton from './components/FloatButton';
+import Divider from './components/Divider';
+import Row from './components/Row';
+import Menu from './components/Menu';
+import Dropdown from './components/Dropdown';
+import Breadcrumb from './components/Breadcrumb';
+import Steps from './components/Steps';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors } from './theme';
@@ -51,6 +58,13 @@ export {
   Tabs,
   Card,
   Spin,
+  FloatButton,
+  Divider,
+  Row,
+  Menu,
+  Dropdown,
+  Breadcrumb,
+  Steps,
   versionUtils
 };
 
@@ -72,6 +86,13 @@ const components = {
   Tabs,
   Card,
   Spin,
+  FloatButton,
+  Divider,
+  Row,
+  Menu,
+  Dropdown,
+  Breadcrumb,
+  Steps,
   ThemeProvider,
   colors,
   themeConfig

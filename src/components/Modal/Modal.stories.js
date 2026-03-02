@@ -3,7 +3,7 @@ import Modal from './index';
 import { Button } from '../../../src';
 
 export default {
-  title: '布局/Modal',
+  title: '反馈/Modal 模态框',
   component: Modal,
   argTypes: {
     title: {

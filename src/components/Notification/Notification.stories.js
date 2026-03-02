@@ -3,7 +3,7 @@ import Notification from './index';
 import Button from '../Button';
 
 export default {
-  title: '反馈/Notification',
+  title: '反馈/Notification 通知',
   component: Notification,
   parameters: {
     docs: {

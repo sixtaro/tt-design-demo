@@ -4,7 +4,7 @@ import Input from '../Input';
 import Button from '../Button';
 
 export default {
-  title: '数据录入/Form',
+  title: '数据录入/Form 表单',
   component: Form,
   parameters: {
     docs: {

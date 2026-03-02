@@ -2,7 +2,7 @@ import React from 'react';
 import Switch from './index';
 
 export default {
-  title: '数据录入/Switch',
+  title: '数据录入/Switch 开关',
   component: Switch,
   parameters: {
     docs: {

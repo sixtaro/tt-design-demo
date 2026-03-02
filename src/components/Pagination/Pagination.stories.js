@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from './index';
 
 export default {
-  title: '数据展示/Pagination',
+  title: '数据展示/Pagination 分页',
   component: Pagination,
   parameters: {
     docs: {

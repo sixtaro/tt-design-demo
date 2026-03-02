@@ -2,7 +2,7 @@ import React from 'react';
 import Tabs from './index';
 
 export default {
-  title: '导航/Tabs',
+  title: '导航/Tabs 标签页',
   component: Tabs,
   parameters: {
     docs: {

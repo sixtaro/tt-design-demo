@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from './index';
 
 export default {
-  title: '数据录入/Checkbox',
+  title: '数据录入/Checkbox 复选框',
   component: Checkbox,
   parameters: {
     docs: {

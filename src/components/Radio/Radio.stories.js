@@ -2,7 +2,7 @@ import React from 'react';
 import Radio from './index';
 
 export default {
-  title: '数据录入/Radio',
+  title: '数据录入/Radio 单选框',
   component: Radio,
   parameters: {
     docs: {

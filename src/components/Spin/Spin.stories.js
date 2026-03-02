@@ -2,7 +2,7 @@ import React from 'react';
 import Spin from './index';
 
 export default {
-  title: '反馈/Spin',
+  title: '通用/Spin 加载',
   component: Spin,
   parameters: {
     docs: {

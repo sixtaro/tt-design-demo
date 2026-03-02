@@ -3,7 +3,7 @@ import Message from './index';
 import Button from '../Button';
 
 export default {
-  title: '反馈/Message',
+  title: '反馈/Message 消息',
   component: Message,
   parameters: {
     docs: {

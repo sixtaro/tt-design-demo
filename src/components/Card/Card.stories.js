@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './index';
 
 export default {
-  title: '布局/Card',
+  title: '通用/Card 卡片',
   component: Card,
   parameters: {
     docs: {

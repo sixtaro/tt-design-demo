@@ -26,5 +26,12 @@ export const componentVersions = {
   Tabs: '1.0.0',
   Card: '1.0.0',
   Spin: '1.0.0',
+  FloatButton: '1.0.0',
+  Divider: '1.0.0',
+  Row: '1.0.0',
+  Menu: '1.0.0',
+  Dropdown: '1.0.0',
+  Breadcrumb: '1.0.0',
+  Steps: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };
