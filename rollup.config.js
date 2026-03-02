@@ -45,6 +45,9 @@ export default {
       use: {
         less: {},
       },
+      minimize: true, // 压缩 CSS
+      sourceMap: true, // 生成 sourcemap
+      extract: true, // 提取 CSS 到单独文件
     }),
     babel({
       exclude: 'node_modules/**',
