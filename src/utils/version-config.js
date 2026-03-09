@@ -33,5 +33,7 @@ export const componentVersions = {
   Dropdown: '1.0.0',
   Breadcrumb: '1.0.0',
   Steps: '1.0.0',
+  Font: '1.0.0',
+  Color: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };

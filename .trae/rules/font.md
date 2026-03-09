@@ -2,7 +2,7 @@
 alwaysApply: false
 description: 所有组件的文本样式必须严格遵循本规范，禁止随意设置字号、行高和颜色。
 ---
-# tt-design 字体与排版规范 (Typography Rule)
+# tt-design 字体与排版规范 (Font Rule)
 所有组件的文本样式必须严格遵循本规范，禁止随意设置字号、行高和颜色。
 ## 1. 字体族 (Font Family)
 * **默认字体**: 优先使用“思源黑体”，统计数字优先使用 "HarmonyOS Sans"。

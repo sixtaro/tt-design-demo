@@ -24,6 +24,8 @@ import Menu from './components/Menu';
 import Dropdown from './components/Dropdown';
 import Breadcrumb from './components/Breadcrumb';
 import Steps from './components/Steps';
+import Font from './components/Font';
+import Color from './components/Color';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors } from './theme';
@@ -65,6 +67,8 @@ export {
   Dropdown,
   Breadcrumb,
   Steps,
+  Font,
+  Color,
   versionUtils
 };
 
@@ -93,6 +97,8 @@ const components = {
   Dropdown,
   Breadcrumb,
   Steps,
+  Font,
+  Color,
   ThemeProvider,
   colors,
   themeConfig
