@@ -25,6 +25,7 @@ yarn-error.log*
 
 # temp
 /.temp
+/.npm-tmp
 ant-design-pro.less
 public/static/color.less
 

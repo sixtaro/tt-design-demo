@@ -1,6 +1,5 @@
 import React from 'react';
-import 'antd/dist/antd.css';
-import { ThemeProvider } from '../src';
+import 'antd/dist/antd.less';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -11,12 +10,4 @@ export const parameters = {
     },
   },
 };
-
-export const decorators = [
-  (Story) => (
-    <ThemeProvider>
-      <Story />
-    </ThemeProvider>
-  ),
-];
 
