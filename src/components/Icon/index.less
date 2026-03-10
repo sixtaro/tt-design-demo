@@ -1,0 +1,43 @@
+
+@import (reference) '../../style/themes/default.less';
+
+.tt-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tt-icon-small {
+  font-size: 16px;
+}
+
+.tt-icon-default {
+  font-size: 20px;
+}
+
+.tt-icon-large {
+  font-size: 24px;
+}
+
+.tt-icon-spin {
+  animation: tt-icon-spin 1s linear infinite;
+}
+
+@keyframes tt-icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

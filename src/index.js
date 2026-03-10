@@ -26,6 +26,7 @@ import Breadcrumb from './components/Breadcrumb';
 import Steps from './components/Steps';
 import Font from './components/Font';
 import Color from './components/Color';
+import Icon from './components/Icon';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors } from './theme';
@@ -69,6 +70,7 @@ export {
   Steps,
   Font,
   Color,
+  Icon,
   versionUtils
 };
 
@@ -99,6 +101,7 @@ const components = {
   Steps,
   Font,
   Color,
+  Icon,
   ThemeProvider,
   colors,
   themeConfig
