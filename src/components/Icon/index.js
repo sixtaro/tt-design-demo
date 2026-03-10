@@ -20,19 +20,23 @@ const Icon = ({
   const iconClassName = classNames(
     'tt-icon',
     size !== 'default' && `tt-icon-${size}`,
-    { 'tt-icon-spin': spin },
+    { 'tt-icon-spin': spin && !component },
     className
   );
 
   const style = {};
   if (color) style.color = color;
-  if (rotate) style.transform = `rotate(${rotate}deg)`;
+  if (rotate && !component) style.transform = `rotate(${rotate}deg)`;
 
   if (component) {
     const IconComponent = component;
     return (
-      <span className={iconClassName} style={style} data-component-version={version} {...props}>
-        <IconComponent />
+      <span className={iconClassName} style={style} data-component-version={version}>
+        <IconComponent
+          spin={spin}
+          rotate={rotate}
+          {...props}
+        />
       </span>
     );
   }

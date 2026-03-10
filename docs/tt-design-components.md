@@ -60,10 +60,18 @@ import { Button } from 'tt-design';
 
 ```jsx
 import { Icon } from 'tt-design';
-import { SearchOutlined, HeartOutlined } from '@ant-design/icons';
+import { 
+  SearchOutlined, 
+  HeartOutlined, 
+  StarOutlined, 
+  SettingOutlined,
+  LoadingOutlined
+} from '@ant-design/icons';
 
 <Icon component={SearchOutlined} />
 <Icon component={HeartOutlined} />
+<Icon component={StarOutlined} />
+<Icon component={SettingOutlined} />
 ```
 
 ##### 使用 Iconfont
@@ -72,6 +80,8 @@ import { SearchOutlined, HeartOutlined } from '@ant-design/icons';
 import { Icon } from 'tt-design';
 
 <Icon iconfont="iconfont icon-search" />
+<Icon iconfont="iconfont icon-home" />
+<Icon iconfont="iconfont icon-user" />
 ```
 
 #### 不同尺寸
@@ -97,6 +107,18 @@ import { Icon } from 'tt-design';
 <Icon component={SettingOutlined} size="large" rotate={90} />
 <Icon component={LoadingOutlined} size="large" spin />
 <Icon component={SearchOutlined} size="large" rotate={180} />
+<Icon component={SettingOutlined} size="large" rotate={270} />
+```
+
+#### 组合使用
+
+```jsx
+import { Button } from 'tt-design';
+import { SearchOutlined } from '@ant-design/icons';
+
+<Button type="primary">
+  <Icon component={SearchOutlined} /> 搜索
+</Button>
 ```
 
 #### API
