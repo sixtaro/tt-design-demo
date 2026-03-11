@@ -1,0 +1,184 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-button {
+  font-size: @font-size-base;
+  font-weight: normal;
+  border-radius: 4px;
+  line-height: 1.2;
+
+  & > .tt-icon {
+    margin-right: 4px;
+  }
+
+  &.ant-btn-icon-only > .tt-icon {
+    margin-right: 0;
+  }
+
+  &.tt-button-small {
+    font-size: @font-size-sm;
+  }
+
+  &.tt-button-large {
+    font-size: @font-size-base;
+  }
+
+  &.tt-button-link {
+    color: var(--tt-color-primary);
+    text-decoration: underline;
+  }
+
+  &.tt-button-outline,
+  &.tt-button-shape-circle {
+    &.tt-button-primary,
+    &:not(.tt-button-default):not(.tt-button-dashed):not(.tt-button-danger):not(.tt-button-link):not(.tt-button-text) {
+      background-color: transparent;
+      border-color: var(--tt-color-primary);
+      color: var(--tt-color-primary);
+
+      &:hover {
+        background-color: var(--tt-color-primary-1);
+        border-color: var(--tt-color-primary-hover);
+        color: var(--tt-color-primary-hover);
+      }
+
+      &:active {
+        background-color: var(--tt-color-primary-2);
+        border-color: var(--tt-color-primary-active);
+        color: var(--tt-color-primary-active);
+      }
+    }
+
+    &.tt-button-danger {
+      color: var(--tt-color-error);
+
+      &:hover {
+        background-color: transparent;
+        border-color: var(--tt-color-red-6);
+        color: var(--tt-color-error);
+      }
+
+      &:active {
+        background-color: var(--tt-color-red-2);
+        border-color: var(--tt-color-red-6);
+        color: var(--tt-color-error);
+      }
+    }
+  }
+
+  &.tt-button-shape-square {
+    border-radius: 4px;
+
+    &.tt-button-filled {
+      &.tt-button-primary,
+      &:not(.tt-button-default):not(.tt-button-dashed):not(.tt-button-danger):not(.tt-button-link):not(.tt-button-text) {
+        background-color: var(--tt-color-primary);
+        border-color: var(--tt-color-primary);
+        color: #fff;
+
+        &:hover {
+          background-color: var(--tt-color-primary-hover);
+          border-color: var(--tt-color-primary-hover);
+          color: #fff;
+        }
+
+        &:active {
+          background-color: var(--tt-color-primary-active);
+          border-color: var(--tt-color-primary-active);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &.tt-button-shape-circle {
+    border-radius: 16px;
+    background-color: var(--tt-bg-white);
+    border-color: var(--tt-border-color-light);
+
+    &.tt-button-text,
+    &.tt-button-link {
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--tt-color-primary);
+
+      &:hover {
+        background-color: transparent;
+        color: var(--tt-color-primary-5);
+      }
+
+      &:active,
+      &:focus {
+        background-color: transparent;
+        color: var(--tt-color-primary-7);
+      }
+    }
+
+    &.ant-btn-icon-only {
+      color: var(--tt-color-primary);
+
+      &.ant-btn-dangerous,
+      &.tt-button-danger {
+        color: var(--tt-color-error);
+      }
+    }
+  }
+
+  &.tt-button-disabled,
+  &.ant-btn-disabled,
+  &.ant-btn-loading {
+    color: var(--tt-color-primary-3);
+    border-color: var(--tt-color-grey-1);
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: transparent;
+      color: var(--tt-color-primary-3);
+      border-color: var(--tt-color-grey-1);
+    }
+
+    &.tt-button-danger,
+    &.ant-btn-dangerous {
+      &,
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        color: var(--tt-color-red-3);
+        border-color: var(--tt-color-grey-1);
+      }
+    }
+  }
+
+  &.tt-button-shape-square {
+    &.tt-button-filled {
+      &.tt-button-disabled,
+      &.ant-btn-disabled,
+      &.ant-btn-loading {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: var(--tt-color-primary-3);
+          border-color: var(--tt-color-primary-3);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &.tt-button-shape-circle {
+    &.ant-btn-disabled,
+    &.ant-btn-loading {
+      color: var(--tt-color-grey-3);
+      border-color: var(--tt-color-grey-1);
+      background-color: var(--tt-bg-white);
+
+      &.ant-btn-dangerous,
+      &.tt-button-danger {
+        color: var(--tt-color-red-3);
+      }
+    }
+  }
+}

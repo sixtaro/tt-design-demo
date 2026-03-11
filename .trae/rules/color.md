@@ -1,22 +1,23 @@
 ---
 alwaysApply: false
-description: 所有组件的文本样式必须严格遵循本规范，禁止随意设置字号、行高和颜色。
+description: 所有组件的色彩样式必须严格遵循本规范，禁止硬编码颜色和使用 !important。
 ---
-# tt-design 色彩规范 (Color Truth)
+# tt-design 色彩规范
 
-## 强制颜色变量表
-严禁硬编码十六进制颜色，必须引用以下语义变量：
+## 强制使用 CSS 自定义属性
+严禁硬编码十六进制颜色或使用 LESS 变量，必须使用 CSS 变量：
 
-| 变量名 | 十六进制 | 适用场景 |
-| :--- | :--- | :--- |
-| `@tt-title-main` | `#081126` | 主标题、一级列表、加粗 |
-| `@tt-link` | `#3388FF` | 链接、品牌操作色 |
-| `@tt-text-main` | `#223355` | 正文、基础描述 |
-| `@tt-text-secondary` | `#6B7A99` | 辅助、次级、高级文字 |
-| `@tt-status-error` | `#FF4433` | 报错、删除、危险 |
-| `@tt-status-warning` | `#FFAD14` | 警告、待定 |
-| `@tt-status-success` | `#5CE0B6` | 成功、在线、审核通过 |
+| CSS 变量 | 说明 |
+| :--- | :--- |
+| `var(--tt-color-primary-1~7)` | 主题色阶 |
+| `var(--tt-color-primary/success/warning/error/info)` | 语义化颜色 |
+| `var(--tt-text-title/body/secondary)` | 文本颜色 |
+| `var(--tt-bg-white/light/lighter)` | 背景颜色 |
+| `var(--tt-border-color/light/dark)` | 边框颜色 |
 
 ## 样式规则
-- 编写 Less 时，必须在首行 `@import "../../style/themes/default.less";`。
-- 类名必须以 `tt-` 为前缀。
+1. **必须使用 CSS 变量**：所有颜色使用 `var(--tt-*)`
+2. **禁止 !important**：确保组件可被用户自定义覆盖
+3. **引用主题文件**：首行 `@import (reference) '../../style/themes/default.less';`
+4. **类名前缀**：以 `tt-` 为前缀
+5. **单一颜色源**：定义在 `src/theme/color-palette.js`

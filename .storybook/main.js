@@ -2,7 +2,7 @@
 const path = require('path');
 const { getLessVars } = require('../src/theme/color-palette');
 
-const STORYBOOK_THEME = 'cyan';
+const STORYBOOK_THEME = 'geek-blue';
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
