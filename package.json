@@ -12,7 +12,8 @@
     "watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "generate:colors": "node scripts/generate-color-less.js"
+    "generate:colors": "node scripts/generate-color-less.js",
+    "deploy-storybook": "gh-pages -d storybook-static -r https://github.com/sixtaro/tt-design-demo.git"
   },
   "keywords": [
     "react",
@@ -63,6 +64,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "gh-pages": "^6.3.0"
   }
 }
