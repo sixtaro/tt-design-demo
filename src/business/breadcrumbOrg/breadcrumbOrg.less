@@ -1,0 +1,35 @@
+.breadcrumb-header {
+    padding: 14px 24px;
+    border-bottom: 1px solid #eee;
+
+    .breadcrumb-header-view {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .breadcrumb-header-view-org {
+            display: inline-block;
+            padding-right: 12px;
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .breadcrumb-header-view-extra-before {
+            display: inline-block;
+            // margin-top: -11px;
+            vertical-align: middle;
+            // height: 30px;
+        }
+        .breadcrumb-header-view-extra {
+            position: absolute;
+            top: 12px;
+            right: 24px;
+
+            & > button {
+                margin-left: 10px;
+            }
+        }
+    }
+}

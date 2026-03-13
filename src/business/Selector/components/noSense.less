@@ -1,0 +1,58 @@
+.home-group-cashier2-nosense-form {
+    margin: 30px 0;
+    .nosense-form-item {
+        margin-top: 60px;
+        .ant-form-item-label {
+            label {
+                display: block;
+                .label {
+                    margin-bottom: 12px;
+                    line-height: 32px;
+                    &::after {
+                        content: ':';
+                        position: relative;
+                        top: -0.5px;
+                        margin: 0 8px 0 2px;
+                    }
+                }
+                .extra {
+                    color: #999999;
+                }
+                &::after {
+                    content: '';
+                }
+            }
+        }
+        .nosense-drop-item {
+            position: relative;
+            &.outside {
+                margin: 8px;
+            }
+            .name-wrap {
+                height: 40px;
+                background: #ffffff;
+                box-shadow: 0px 4px 20px rgba(155, 155, 157, 0.16);
+                border-radius: 8px;
+                padding: 0 12px;
+                display: flex;
+                align-items: center;
+                flex-flow: nowrap;
+                img {
+                    margin-right: 12px;
+                }
+                .name {
+                    width: calc(100% - 20px);
+                }
+            }
+            .checkbox-wrap {
+                width: 100px;
+                position: absolute;
+                top: 8px;
+                right: -120px;
+                .ant-checkbox-wrapper {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

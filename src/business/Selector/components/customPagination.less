@@ -1,0 +1,52 @@
+.custom-pagination {
+    .pagination-icon {
+        cursor: pointer;
+        margin: 0 12px;
+        &.anticon-left {
+            margin-left: 0;
+        }
+
+        &.disabled {
+            color: rgb(221, 221, 221);
+            pointer-events: none;
+        }
+    }
+}
+
+.pagination-popover {
+    .ant-popover-inner-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .page-num {
+        padding: 0px 14px;
+        line-height: 28px;
+        height: 28px;
+
+        &.current {
+            color: var(--ant-primary-color);
+        }
+
+        &.disabled {
+            pointer-events: none;
+        }
+
+        &:not(.current):hover {
+            background-color: rgb(240, 240, 240);
+        }
+
+        &:not(.current) {
+            cursor: pointer;
+        }
+    }
+
+    .pop-row {
+        margin-top: 12px;
+        padding: 0 14px;
+    }
+
+    .m10 {
+        margin: 0 10px;
+    }
+}

@@ -11,6 +11,14 @@ module.exports = {
     builder: 'webpack5',
   },
   webpackFinal: async (config) => {
+    builder: 'webpack5'
+    // 添加路径别名
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src'),
+    };
+    
+    // 配置 Less 解析器
     config.module.rules.push({
       test: /\.less$/,
       use: [
