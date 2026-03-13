@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 import { componentVersions } from '../../utils/version-config';
 import './index.less';
 
+const isGradientColor = (color) => {
+  return color && typeof color === 'string' && /gradient/i.test(color);
+};
+
 const Icon = ({
   type,
   component,
@@ -17,26 +21,41 @@ const Icon = ({
   version,
   ...props
 }) => {
+  const isGradient = isGradientColor(color);
+  
   const iconClassName = classNames(
     'tt-icon',
     size !== 'default' && `tt-icon-${size}`,
     { 'tt-icon-spin': spin && !component },
+    { 'tt-icon-gradient': isGradient },
     className
   );
 
   const style = {};
-  if (color) style.color = color;
+  if (color) {
+    if (isGradient) {
+      style.background = color;
+    } else {
+      style.color = color;
+    }
+  }
   if (rotate && !component) style.transform = `rotate(${rotate}deg)`;
 
   if (component) {
     const IconComponent = component;
+    const componentProps = {
+      spin,
+      rotate,
+      ...props,
+    };
+    
+    if (color && !isGradient) {
+      componentProps.style = { color };
+    }
+    
     return (
       <span className={iconClassName} style={style} data-component-version={version}>
-        <IconComponent
-          spin={spin}
-          rotate={rotate}
-          {...props}
-        />
+        <IconComponent {...componentProps} />
       </span>
     );
   }

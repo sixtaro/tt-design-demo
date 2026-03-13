@@ -114,6 +114,43 @@ export const 自定义颜色 = {
   ),
 };
 
+export const 渐变颜色 = {
+  render: () => (
+    <div style={{ padding: '24px' }}>
+      <div style={{ marginBottom: '16px', fontSize: '14px', color: '#223355' }}>线性渐变</div>
+      <div style={{ display: 'flex', gap: '24px', marginBottom: '32px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={HeartOutlined} size="large" color="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>紫蓝渐变</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={StarOutlined} size="large" color="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>粉紫渐变</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={SearchOutlined} size="large" color="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>青蓝渐变</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={SettingOutlined} size="large" color="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>青绿渐变</span>
+        </div>
+      </div>
+      <div style={{ marginBottom: '16px', fontSize: '14px', color: '#223355' }}>径向渐变</div>
+      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={HeartOutlined} size="large" color="radial-gradient(circle, #fa709a 0%, #fee140 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>粉黄径向</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon component={StarOutlined} size="large" color="radial-gradient(circle, #a18cd1 0%, #fbc2eb 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>紫粉径向</span>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 export const 旋转和加载 = {
   render: () => (
     <div style={{ padding: '24px' }}>
