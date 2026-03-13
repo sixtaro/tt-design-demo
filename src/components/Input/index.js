@@ -2,6 +2,7 @@ import React from 'react';
 import { Input as AntInput } from 'antd';
 import { componentVersions } from '../../utils/version-config';
 import classNames from 'classnames';
+import './index.less';
 
 const { Password, TextArea, Search, Group } = AntInput;
 
