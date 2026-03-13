@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const themes = {
   'geek-blue': {
@@ -101,14 +101,24 @@ export const ThemeDecorator = (Story, context) => {
   const theme = context.globals.theme || 'geek-blue';
   const themeVars = themes[theme] || themes['geek-blue'];
 
+  useEffect(() => {
+    const root = document.documentElement;
+    Object.entries(themeVars).forEach(([key, value]) => {
+      root.style.setProperty(key, value);
+    });
+    return () => {
+      Object.keys(themeVars).forEach((key) => {
+        root.style.removeProperty(key);
+      });
+    };
+  }, [theme]);
+
   return (
     <div style={{
       padding: '24px',
       backgroundColor: 'var(--tt-bg-white, #fff)',
     }}>
-      <div style={themeVars}>
-        <Story />
-      </div>
+      <Story />
     </div>
   );
 };

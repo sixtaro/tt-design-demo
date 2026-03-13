@@ -35,6 +35,33 @@ function App() {
 export default App;
 ```
 
+### 使用主题
+
+推荐使用 `ThemeProvider` 组件来包裹你的应用，这样所有组件都会自动应用主题色：
+
+```jsx
+import { ThemeProvider, Button } from 'tt-design';
+import { presetThemes } from 'tt-design/theme';
+
+function App() {
+  return (
+    <ThemeProvider theme={presetThemes.mintGreen}>
+      <Button type="primary">主要按钮</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+或者直接使用 `applyTheme` 函数：
+
+```jsx
+import { applyTheme } from 'tt-design';
+
+applyTheme('mintGreen');
+```
+
+可用的预设主题：`geekBlue`（极客蓝）、`dustRed`（薄暮红）、`mintGreen`（薄荷绿）、`neonBlue`（霓虹蓝）、`sunsetOrange`（日暮橙）、`goldenPurple`（酱紫）、`cyan`（明青）。
+
 ## 开发
 
 ### 安装依赖

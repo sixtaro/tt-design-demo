@@ -1,0 +1,38 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-back-top {
+  .ant-back-top-content {
+    background: #FFFFFF;
+    backdrop-filter: blur(0px);
+    box-shadow: 0px 5px 20px 0px #E9ECF2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover,
+  &:active {
+    .ant-back-top-content {
+      .tt-back-top-icon {
+        color: var(--tt-color-primary-7);
+      }
+    }
+  }
+
+  .tt-back-top-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tt-back-top-icon {
+    font-size: 16px;
+    color: var(--tt-color-grey-7);
+    transition: color 0.3s;
+  }
+}

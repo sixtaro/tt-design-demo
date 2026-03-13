@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Dropdown as AntDropdown, Menu, Input, Popover } from 'antd';
+import { Dropdown as AntDropdown, Input, Popover } from 'antd';
+import Menu from '../Menu';
 import Button from '../Button';
 import { SearchOutlined, PlusOutlined, EllipsisOutlined, UpOutlined } from '@ant-design/icons';
 import { componentVersions } from '../../utils/version-config';

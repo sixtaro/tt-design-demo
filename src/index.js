@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -27,21 +27,28 @@ import Steps from './components/Steps';
 import Font from './components/Font';
 import Color from './components/Color';
 import Icon from './components/Icon';
+import BackTop from './components/BackTop';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
-import { themeConfig, colors } from './theme';
+import { themeConfig, colors, getTheme, applyTheme } from './theme';
 
 // 带有默认主题的 ConfigProvider 组件
 export const ThemeProvider = ({ children, theme = themeConfig }) => {
+  const themeConfigObj = getTheme(theme);
+
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
+
   return (
-    <ConfigProvider {...theme}>
+    <ConfigProvider {...themeConfigObj}>
       {children}
     </ConfigProvider>
   );
 };
 
 // 导出颜色变量和主题配置
-export { colors, themeConfig };
+export { colors, themeConfig, getTheme, applyTheme };
 
 export {
   Button,
@@ -71,6 +78,7 @@ export {
   Font,
   Color,
   Icon,
+  BackTop,
   versionUtils
 };
 
@@ -102,9 +110,12 @@ const components = {
   Font,
   Color,
   Icon,
+  BackTop,
   ThemeProvider,
   colors,
-  themeConfig
+  themeConfig,
+  getTheme,
+  applyTheme,
 };
 
 components.version = libraryVersion;

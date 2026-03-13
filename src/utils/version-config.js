@@ -36,5 +36,6 @@ export const componentVersions = {
   Font: '1.0.0',
   Color: '1.0.0',
   Icon: '1.0.0',
+  BackTop: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };

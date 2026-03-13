@@ -137,6 +137,91 @@ import { SearchOutlined } from '@ant-design/icons';
 
 ---
 
+## 主题使用
+
+tt-design 支持多种主题切换，包括极客蓝、薄暮红、薄荷绿、霓虹蓝、日暮橙、酱紫、明青等。
+
+### 使用 ThemeProvider 组件
+
+推荐使用 `ThemeProvider` 组件来包裹你的应用，这样所有组件都会自动应用主题色：
+
+```jsx
+import { ThemeProvider, Button, Dropdown } from 'tt-design';
+import { presetThemes } from 'tt-design/theme';
+
+function App() {
+  return (
+    <ThemeProvider theme={presetThemes.mintGreen}>
+      <Button type="primary">主要按钮</Button>
+      <Dropdown>
+        {/* Dropdown 的下拉菜单也会正确应用主题色 */}
+      </Dropdown>
+    </ThemeProvider>
+  );
+}
+```
+
+### 直接使用 applyTheme 函数
+
+如果你需要更灵活的主题切换方式，可以直接使用 `applyTheme` 函数：
+
+```jsx
+import { applyTheme } from 'tt-design';
+
+// 使用预设主题名称
+applyTheme('mintGreen');
+
+// 或者使用主题对象
+import { presetThemes } from 'tt-design/theme';
+applyTheme(presetThemes.dustRed);
+```
+
+### 可用的预设主题
+
+| 主题名称 | 中文名称 |
+| --- | --- |
+| `geekBlue` | 极客蓝 |
+| `dustRed` | 薄暮红 |
+| `mintGreen` | 薄荷绿 |
+| `neonBlue` | 霓虹蓝 |
+| `sunsetOrange` | 日暮橙 |
+| `goldenPurple` | 酱紫 |
+| `cyan` | 明青 |
+
+### 动态切换主题
+
+```jsx
+import { useState } from 'react';
+import { ThemeProvider, Button } from 'tt-design';
+import { presetThemes } from 'tt-design/theme';
+
+function ThemeSwitcher() {
+  const [theme, setTheme] = useState(presetThemes.geekBlue);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Button onClick={() => setTheme(presetThemes.mintGreen)}>
+        切换到薄荷绿
+      </Button>
+      <Button onClick={() => setTheme(presetThemes.dustRed)}>
+        切换到薄暮红
+      </Button>
+    </ThemeProvider>
+  );
+}
+```
+
+### 主题 API
+
+| 函数/组件 | 说明 | 参数 |
+| --- | --- | --- |
+| `ThemeProvider` | 主题提供者组件 | `theme`: 主题名称或主题对象 |
+| `applyTheme` | 应用主题函数 | `themeNameOrConfig`: 主题名称或主题对象 |
+| `getTheme` | 获取主题配置 | `themeName`: 主题名称 |
+| `presetThemes` | 预设主题对象 | - |
+
+---
+
 ## 关于本组件库
 
 ### 技术栈
