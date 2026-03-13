@@ -6,9 +6,6 @@
   border-radius: 4px;
   padding: 8px;
 
-  .tt-dropdown-menu-wrapper {
-    min-width: 180px;
-  }
 
   .tt-dropdown-search {
     margin-bottom: 8px;
@@ -42,6 +39,10 @@
     background-color: var(--tt-bg-white);
     border: none;
     box-shadow: none;
+  }
+
+  .ant-dropdown-menu-title-content:not(:last-child) {
+    margin-right: 16px;
   }
 
   .ant-dropdown-menu-item,
@@ -125,41 +126,12 @@
     margin-top: 8px;
 
     .ant-input {
-      width: 140px;
       border-radius: 4px;
     }
 
     .tt-button {
       color: var(--tt-color-primary-6);
       padding: 0 8px;
-    }
-  }
-
-  .tt-dropdown-add-inline {
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    .ant-input {
-      flex: 1;
-      color: var(--tt-color-grey-3);
-      border-color: var(--tt-color-grey-3);
-      border-radius: 4px;
-
-      &::placeholder {
-        color: var(--tt-color-grey-3);
-      }
-
-      &:hover,
-      &:focus {
-        border-color: var(--tt-color-grey-3);
-      }
-    }
-
-    .ant-btn {
-      padding: 0 8px;
-      height: 32px;
     }
   }
 }

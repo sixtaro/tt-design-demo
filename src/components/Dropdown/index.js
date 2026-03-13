@@ -20,7 +20,6 @@ const Dropdown = ({
   className,
   children,
   items = [],
-  multiple = false,
   searchable = false,
   searchIcon = <SearchOutlined />,
   searchPlaceholder = '请输入关键字',
@@ -33,7 +32,6 @@ const Dropdown = ({
   ...props
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [addInputVisible, setAddInputVisible] = useState(false);
   const [addInputValue, setAddInputValue] = useState('');
   const [popoverVisible, setPopoverVisible] = useState(false);
   const [popoverInputValue, setPopoverInputValue] = useState('');
@@ -90,14 +88,12 @@ const Dropdown = ({
     }
     setAddInputValue('');
     setPopoverInputValue('');
-    setAddInputVisible(false);
     setPopoverVisible(false);
   };
 
   const handleAddCancel = () => {
     setAddInputValue('');
     setPopoverInputValue('');
-    setAddInputVisible(false);
     setPopoverVisible(false);
   };
 
@@ -113,9 +109,7 @@ const Dropdown = ({
             placeholder="请输入选项名"
             onPressEnter={handleAddConfirm}
           />
-          <Button type="text" onClick={() => {
-            onAdd(addInputValue);
-          }}>新增</Button>
+          <Button type="text" onClick={handleAddConfirm}>新增</Button>
         </div>
       );
     }
@@ -221,7 +215,6 @@ Dropdown.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   items: PropTypes.array,
-  multiple: PropTypes.bool,
   searchable: PropTypes.bool,
   searchIcon: PropTypes.node,
   searchPlaceholder: PropTypes.string,
@@ -240,7 +233,6 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
-  multiple: false,
   searchable: false,
   addable: false,
   addMode: 'inline',
