@@ -1,0 +1,28 @@
+.breadcrumb-org-tag.ant-tag {
+    font-size: 14px;
+    color: #78797b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 0;
+    background: #f5f7fa;
+
+    .tag-name {
+        &::after {
+            content: '：';
+        }
+    }
+
+    .tag-value {
+        color: var(--primary);
+
+        .ant-typography-ellipsis {
+            vertical-align: bottom;
+            max-width: 230px;
+            color: var(--primary);
+        }
+    }
+
+    .ant-tag-close-icon {
+        vertical-align: baseline;
+    }
+}

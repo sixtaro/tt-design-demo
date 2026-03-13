@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
+import { Selector, PageLayout } from './business';
+import A from './components/A';
 import Button from './components/Button';
 import Input from './components/Input';
 import Select from './components/Select';
@@ -51,6 +53,9 @@ export const ThemeProvider = ({ children, theme = themeConfig }) => {
 export { colors, themeConfig, getTheme, applyTheme };
 
 export {
+  Selector,
+  PageLayout,
+  A,
   Button,
   Input,
   Select,
@@ -83,6 +88,9 @@ export {
 };
 
 const components = {
+  Selector,
+  PageLayout,
+  A,
   Button,
   Input,
   Select,

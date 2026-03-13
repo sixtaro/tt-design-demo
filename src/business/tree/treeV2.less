@@ -1,0 +1,408 @@
+@theme_sub: #fff;
+
+.new-side-tree {
+    height: 100%;
+    // background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    .ant-tree-switcher {
+        text-align: start;
+        .anticon {
+            svg {
+                color: rgb(173, 182, 200);
+            }
+        }
+    }
+    .ant-tree.ant-tree-directory .ant-tree-treenode-selected:before,
+    .ant-tree.ant-tree-directory .ant-tree-treenode-selected:hover:before {
+        background: var(--ant-primary-1);
+        // height: 32px;
+    }
+    .ant-tree.ant-tree-directory .ant-tree-treenode .ant-tree-node-content-wrapper.ant-tree-node-selected {
+        color: var(--ant-primary-color);
+        .anticon {
+            svg {
+                color: var(--ant-primary-color);
+            }
+        }
+        .title-content {
+            color: var(--ant-primary-color);
+        }
+    }
+    .fold {
+        // width: 75px;
+        color: var(--ant-primary-color);
+        background-color: #fff;
+        padding-left: 17px;
+        padding-top: 8px;
+    }
+    .anticon {
+        svg {
+            // color: #223355;
+            color: #6B7A99;
+        }
+        &.push-pin {
+            svg {
+                color: var(--ant-primary-color);
+            }
+        }
+        &.anticon-search {
+            svg {
+                color: #dde1eb;
+            }
+        }
+        &.setting-icon {
+            svg {
+                color: #cdd0d9;
+            }
+        }
+    }
+    .complete-row {
+        display: flex;
+        align-items: center;
+        // padding-top: 12px;
+        padding-bottom: 12px;
+        background: #fff;
+        .anticon-pushpin {
+            padding: 10px;
+            padding-left: 0;
+            cursor: pointer;
+            color: var(--ant-primary-color);
+            font-size: 16px;
+        }
+    }
+    // .auto-complete {
+    //     // z-index: 3;
+    //     // position: absolute;
+    //     // top: 42px;
+    //     // width: 100%;
+
+    //     & > .ant-select-selector {
+    //         // background-color: #F7F7F7;
+    //         .ant-input-search {
+    //             border: none;
+    //         }
+    //         .search {
+    //             height: 32px;
+    //             border: 1px solid #dde1eb;
+    //             border-radius: 30px;
+    //             button,
+    //             .ant-input-group-addon,
+    //             .ant-input-affix-wrapper {
+    //                 svg {
+    //                     font-size: 16px;
+    //                     color: #cdd0d9;
+    //                 }
+    //                 border: none;
+    //                 background: transparent;
+    //                 box-shadow: none;
+    //             }
+    //             input {
+    //                 border: none;
+    //                 // border-bottom: 1px solid #eee;
+    //                 border-radius: 0;
+    //                 color: #235;
+    //                 // &::input-placeholder {
+    //                 //     font-size: 12px;
+    //                 // }
+    //                 // &::-webkit-input-placeholder {
+    //                 //     font-size: 12px;
+    //                 // }
+    //             }
+    //         }
+    //     }
+
+    //     .ant-input-affix-wrapper-focused {
+    //         box-shadow: none;
+    //     }
+    // }
+    // .tree {
+    //     // height: 100%;
+    //     flex: 1;
+    //     // padding-top: 60px;
+    //     // padding-bottom: 30px;
+    //     // overflow: auto;
+
+    //     .ant-tree-list {
+    //         // border-top: 1px solid #eee;
+    //         overflow-x: hidden;
+    //         .ant-tree-list-holder {
+    //             & > div {
+    //                 overflow: hidden;
+    //             }
+    //             .ant-tree-node-content-wrapper {
+    //                 // overflow: hidden;
+    //                 // text-overflow: ellipsis;
+    //                 // white-space: nowrap;
+    //                 // height: 40px;
+    //                 // line-height: 40px;
+    //                 .online-status {
+    //                     position: absolute;
+    //                     right: 10px;
+    //                 }
+    //                 .online-status-icon {
+    //                     display: inline-block;
+    //                     position: absolute;
+    //                     left: -14px;
+    //                     top: 50%;
+    //                     transform: translateY(-50%);
+    //                     width: 6px;
+    //                     height: 6px;
+    //                     border-radius: 50%;
+    //                     background: #11c79b;
+    //                     &.offline {
+    //                         background: #a8b4c8;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     .ant-tree-indent-unit,
+    //     &.ant-tree-directory .ant-tree-switcher {
+    //         display: inline-block;
+    //         width: 16px;
+    //         align-self: center;
+    //     }
+    //     &.ant-tree .ant-tree-node-content-wrapper {
+    //         padding: 0;
+    //         white-space: nowrap;
+    //         .ant-tree-iconEle {
+    //             width: 16px;
+    //             height: 32px;
+    //             line-height: 32px;
+    //             vertical-align: middle;
+    //         }
+    //         .ant-tree-title {
+    //             // display: inline-block;
+    //             padding: 0 4px;
+    //         }
+    //     }
+    //     .ant-tree-title {
+    //         height: 32px;
+    //         line-height: 32px;
+    //         display: inline-block !important;
+    //         vertical-align: middle;
+    //         .park-node {
+    //             display: inline-block !important;
+    //             padding-right: 10px;
+    //         }
+    //     }
+    //     .title-content {
+    //         display: inline-block !important;
+    //         width: 200px !important;
+    //         overflow: hidden;
+    //         text-overflow: ellipsis;
+    //         white-space: nowrap;
+    //         color: #223355;
+    //     }
+    //     .go-park {
+    //         position: absolute;
+    //         right: 0;
+    //         width: 30px;
+    //         text-align: center;
+    //         color: #fff;
+    //         display: none;
+    //         .normal {
+    //             display: none;
+    //         }
+    //         .active {
+    //             display: none;
+    //         }
+    //     }
+    //     // &.ant-tree>li>ul>li .park {
+    //     //     width: 174px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li .park {
+    //     //     width: 156px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li>ul>li .park {
+    //     //     width: 138px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li>ul>li>ul>li .park {
+    //     //     width: 120px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li>ul>li>ul>li>ul>li .park {
+    //     //     width: 102px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li .park {
+    //     //     width: 84px;
+    //     // }
+    //     // &.ant-tree>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li .park {
+    //     //     width: 66px;
+    //     // }
+    //     &.ant-tree li .ant-tree-node-content-wrapper {
+    //         transition: none !important;
+    //         &::before {
+    //             transition: none !important;
+    //         }
+    //     }
+    //     &.ant-tree li .ant-tree-node-content-wrapper:hover {
+    //         color: #000;
+    //         background-color: var(--ant-primary-2);
+    //         &::before {
+    //             background-color: var(--ant-primary-2);
+    //             transition: none;
+    //         }
+    //         .go-park {
+    //             display: inline;
+    //             background-color: var(--ant-primary-2);
+    //             color: @theme_sub;
+    //             .normal {
+    //                 display: none;
+    //             }
+    //             .active {
+    //                 display: inline;
+    //             }
+    //         }
+    //     }
+    //     &.ant-tree li .ant-tree-node-content-wrapper.ant-tree-node-selected {
+    //         color: @theme_sub;
+    //         background-color: var(--ant-primary-1);
+    //         &::before {
+    //             background-color: var(--ant-primary-1);
+    //         }
+    //         .go-park {
+    //             display: inline;
+    //             background-color: var(--ant-primary-1);
+    //             color: @theme_sub;
+    //             .normal {
+    //                 display: none;
+    //             }
+    //             .active {
+    //                 display: inline;
+    //             }
+    //         }
+    //     }
+
+    //     .ant-tree-list-holder-inner {
+    //         .ant-tree-treenode {
+    //             height: 32px;
+    //             align-items: center;
+    //             border-radius: 4px;
+    //             overflow: hidden;
+    //             padding-bottom: 0;
+    //             margin-bottom: 2px;
+    //             padding-left: 12px;
+    //             padding-right: 12px;
+
+    //             &-selected {
+    //                 background: var(--ant-primary-1);
+    //             }
+    //             // &::before {
+    //             //     height: 40px;
+    //             // }
+    //         }
+    //         // .ant-tree-treenode:first-child {
+    //         //     padding-left: 6px;
+    //         //     .ant-tree-switcher {
+    //         //         display: none;
+    //         //     }
+    //         // }
+    //     }
+    //     // .ant-tree-list-holder-inner {
+    //     //     .ant-tree-treenode:first-child {
+    //     //         padding-left: 6px;
+    //     //         .ant-tree-switcher {
+    //     //             display: none;
+    //     //         }
+    //     //     }
+    //     // }
+    // }
+    .ant-spin-nested-loading,
+    .ant-spin-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.custom-tree-select {
+    .ant-select-selection--multiple {
+        max-height: 100px;
+        overflow: auto;
+    }
+}
+
+.desktop {
+    .ant-layout-has-sider {
+        // .switchbar {
+        //     display: none;
+        // }
+        &.close {
+            .switchbar {
+                display: block;
+            }
+        }
+    }
+}
+
+.ant-layout-sider.sider {
+    // flex: 0 0 288px !important;
+    // max-width: 288px !important;
+    // min-width: 288px !important;
+    .new-side-tree {
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px 16px;
+        .fold {
+            padding-top: 0;
+            padding-left: 0;
+            margin-bottom: 12px;
+        }
+        .complete-row {
+            .search {
+                // width: 256px;
+                width: 240px;
+                height: 32px;
+                background: #ffffff;
+                border-radius: 30px;
+                border: 1px solid #dde1eb;
+                backdrop-filter: blur(10px);
+            }
+            .anticon-search {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.desktop-tree {
+    .tree-v2 {
+        &.tree.ant-tree.tree-scroll {
+            .ant-tree-list {
+                overflow-x: scroll;
+            }
+            .title-content {
+                overflow: auto;
+                text-overflow: unset;
+                white-space: nowrap;
+            }
+            .ant-tree-title {
+                overflow: auto;
+                text-overflow: unset;
+                white-space: nowrap;
+            }
+            .ant-tree-node-content-wrapper {
+                overflow: auto;
+                text-overflow: unset;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .ant-tree-list-holder-inner .ant-tree-treenode {
+                overflow: auto;
+                width: auto;
+                // 注意，该节点宽度方向是交叉轴方向，设置flex-shrink无效
+                align-self: flex-start;
+            }
+            .ant-tree-list-holder > div {
+                overflow: unset !important;
+            }
+            .ant-tree-list-holder-inner {
+                overflow: visible;
+            }
+        }
+    }
+}
+
+.tree-node-offline {
+    opacity: 0.4;
+}

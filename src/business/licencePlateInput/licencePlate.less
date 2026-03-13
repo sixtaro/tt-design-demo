@@ -1,0 +1,38 @@
+.licence-plate {
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    min-width: 240px;
+
+    &__dropdown {
+        display: flex;
+        width: 400px;
+        flex-wrap: wrap;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        margin-left: -60px;
+    }
+
+    .licence-plate-input {
+        flex: 1;
+        .ant-input {
+            text-transform: uppercase;
+        }
+    }
+}
+
+.licence-popup {
+    &.ant-select-dropdown {
+        padding: 0;
+    }
+}
+
+.distanceToTop1 {
+    // top: 358px !important;
+    top: 77px !important;
+}
+
+.distanceToTop2 {
+    top: 68px !important;
+}
