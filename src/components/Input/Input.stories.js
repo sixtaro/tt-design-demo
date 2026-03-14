@@ -118,3 +118,15 @@ export const 搜索输入框 = () => (
     version={Input.version}
   />
 );
+
+export const 富文本编辑器 = () => {
+  const [value, setValue] = React.useState('<p>请输入内容...</p>');
+  return (
+    <Input.RichText
+      value={value}
+      onChange={setValue}
+      placeholder="请输入内容..."
+      version={Input.version}
+    />
+  );
+};

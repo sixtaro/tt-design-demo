@@ -3,6 +3,7 @@ import { Input as AntInput } from 'antd';
 import { componentVersions } from '../../utils/version-config';
 import classNames from 'classnames';
 import './index.less';
+import RichText from './RichText';
 
 const { Password: AntPassword, TextArea: AntTextArea, Search: AntSearch, Group: AntGroup } = AntInput;
 
@@ -82,6 +83,7 @@ Input.Password = Password;
 Input.TextArea = TextArea;
 Input.Search = Search;
 Input.Group = Group;
+Input.RichText = RichText;
 Input.version = componentVersions.Input;
 
 export default Input;

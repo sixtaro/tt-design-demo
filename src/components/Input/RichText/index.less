@@ -1,0 +1,21 @@
+@import (reference) '../../../style/themes/default.less';
+
+.tt-rich-text {
+  .tt-rich-text-toolbar {
+    border: 1px solid var(--tt-color-grey-3);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    background-color: #fff;
+  }
+
+  .tt-rich-text-editor {
+    border: 1px solid var(--tt-color-grey-3);
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    min-height: 200px;
+
+    &:hover {
+      border-color: var(--tt-color-primary-6);
+    }
+  }
+}
