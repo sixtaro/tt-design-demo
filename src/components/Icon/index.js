@@ -1,13 +1,10 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { componentVersions } from '../../utils/version-config';
+import { isGradientColor, generateGradientId, parseGradientColor, renderGradientSvg } from './gradient';
 import './index.less';
-
-const isGradientColor = (color) => {
-  return color && typeof color === 'string' && /gradient/i.test(color);
-};
 
 const Icon = ({
   type,
@@ -22,6 +19,8 @@ const Icon = ({
   ...props
 }) => {
   const isGradient = isGradientColor(color);
+  const gradientId = useMemo(() => isGradient ? generateGradientId() : null, [isGradient, color]);
+  const gradientData = useMemo(() => isGradient ? parseGradientColor(color) : null, [isGradient, color]);
   
   const iconClassName = classNames(
     'tt-icon',
@@ -31,13 +30,9 @@ const Icon = ({
     className
   );
 
-  const style = {};
-  if (color) {
-    if (isGradient) {
-      style.background = color;
-    } else {
-      style.color = color;
-    }
+  const style = { ...props.style };
+  if (color && !isGradient) {
+    style.color = color;
   }
   if (rotate && !component) style.transform = `rotate(${rotate}deg)`;
 
@@ -49,12 +44,20 @@ const Icon = ({
       ...props,
     };
     
-    if (color && !isGradient) {
-      componentProps.style = { color };
+    if (color) {
+      if (isGradient) {
+        componentProps.style = {
+          ...componentProps.style,
+          '--icon-fill': `url(#${gradientId})`
+        };
+      } else {
+        componentProps.style = { color };
+      }
     }
     
     return (
       <span className={iconClassName} style={style} data-component-version={version}>
+        {isGradient && renderGradientSvg(gradientId, gradientData)}
         <IconComponent {...componentProps} />
       </span>
     );
