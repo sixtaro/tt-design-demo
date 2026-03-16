@@ -14,7 +14,7 @@ export const componentVersions = {
   Select: '1.0.0',
   Modal: '1.0.0',
   Checkbox: '1.0.0',
-  Radio: '1.0.0',
+  Radio: '1.1.0',
   Switch: '1.0.0',
   Table: '1.0.0',
   Form: '1.0.0',
