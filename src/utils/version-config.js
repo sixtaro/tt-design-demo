@@ -11,7 +11,7 @@ export const libraryVersion = '1.0.0';
 export const componentVersions = {
   Button: '1.0.0',
   Input: '1.0.0',
-  Select: '1.0.0',
+  Select: '1.1.0',
   Modal: '1.0.0',
   Checkbox: '1.0.0',
   Radio: '1.1.0',

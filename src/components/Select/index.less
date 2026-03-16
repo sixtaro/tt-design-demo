@@ -1,0 +1,122 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-select {
+  .ant-select-selector {
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-3);
+    border-radius: 4px;
+    background-color: #FFFFFF;
+
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-7);
+    }
+
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  // 悬停状态
+  &:hover .ant-select-selector {
+    border-color: var(--tt-color-primary-6);
+  }
+
+  // 聚焦状态
+  &.ant-select-focused .ant-select-selector {
+    border-color: var(--tt-color-primary-6);
+    box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+  }
+
+  // 禁用状态
+  &.ant-select-disabled .ant-select-selector {
+    background-color: var(--tt-color-grey-1);
+    border-color: var(--tt-color-grey-2);
+    color: var(--tt-color-grey-5);
+
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  // 错误状态
+  &.ant-select-status-error .ant-select-selector {
+    border-color: var(--tt-color-red-6);
+
+    &:hover {
+      border-color: var(--tt-color-red-6);
+    }
+  }
+
+  &.ant-select-status-error.ant-select-focused .ant-select-selector {
+    box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+  }
+
+  // 下拉菜单样式
+  .ant-select-dropdown {
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    .ant-select-item {
+      color: var(--tt-color-grey-7);
+      padding: 8px 12px;
+
+      &:hover {
+        background-color: var(--tt-color-grey-1);
+      }
+
+      &.ant-select-item-selected {
+        background-color: var(--tt-color-primary-1);
+        color: var(--tt-color-primary-6);
+
+        &:hover {
+          background-color: var(--tt-color-primary-1);
+        }
+      }
+
+      &.ant-select-item-disabled {
+        color: var(--tt-color-grey-5);
+        background-color: transparent;
+      }
+    }
+
+    // 滚动条样式
+    .ant-select-dropdown-menu::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .ant-select-dropdown-menu::-webkit-scrollbar-track {
+      background: var(--tt-color-grey-1);
+    }
+
+    .ant-select-dropdown-menu::-webkit-scrollbar-thumb {
+      background: var(--tt-color-grey-3);
+      border-radius: 3px;
+    }
+
+    .ant-select-dropdown-menu::-webkit-scrollbar-thumb:hover {
+      background: var(--tt-color-grey-4);
+    }
+  }
+
+  // 多选标签样式
+  .ant-select-selection-overflow {
+    .ant-select-selection-overflow-item {
+      .ant-tag {
+        background-color: var(--tt-color-primary-1);
+        border-color: var(--tt-color-primary-3);
+        color: var(--tt-color-primary-6);
+
+        .anticon-close {
+          color: var(--tt-color-primary-6);
+          opacity: 0.6;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
