@@ -1,0 +1,51 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-switch {
+  // 关闭状态背景色
+  &.ant-switch {
+    background-color: var(--tt-color-grey-5);
+
+    // 圆点按钮
+    .ant-switch-handle {
+      width: 16px;
+      height: 16px;
+      inset-inline-start: 4px;
+      box-shadow: none;
+      top: 3px;
+    }
+
+    // 开启状态
+    &.ant-switch-checked {
+      background-color: var(--tt-color-primary-6);
+
+      .ant-switch-handle {
+        inset-inline-start: calc(100% - 20px);
+      }
+    }
+
+    // 禁用状态
+    &.ant-switch-disabled {
+      background-color: var(--tt-color-grey-3);
+
+      &.ant-switch-checked {
+        background-color: var(--tt-color-primary-3);
+      }
+    }
+
+    // 小尺寸
+    &.ant-switch-small {
+      .ant-switch-handle {
+        width: 12px;
+        height: 12px;
+        inset-inline-start: 2px;
+        top: 2px;
+      }
+
+      &.ant-switch-checked {
+        .ant-switch-handle {
+          inset-inline-start: calc(100% - 14px);
+        }
+      }
+    }
+  }
+}
