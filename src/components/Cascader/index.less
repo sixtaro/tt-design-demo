@@ -1,0 +1,200 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-cascader {
+  color: var(--tt-color-grey-7);
+
+  // 选择器输入框样式
+  &.ant-cascader-picker {
+    border-radius: 4px;
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-2);
+    background-color: #FFFFFF;
+
+    .ant-cascader-picker-label,
+    .ant-cascader-picker-placeholder {
+      color: var(--tt-color-grey-7);
+    }
+
+    .ant-cascader-picker-placeholder {
+      color: var(--tt-color-grey-5);
+    }
+
+    // 悬停状态
+    &:not(.ant-cascader-picker-disabled):not(.ant-cascader-picker-status-error):hover {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    // 激活状态
+    &.ant-cascader-picker-focused {
+      border-color: var(--tt-color-primary-6);
+      box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+    }
+
+    // 禁用状态
+    &.ant-cascader-picker-disabled {
+      background-color: var(--tt-color-grey-1);
+      border-color: var(--tt-color-grey-2);
+      color: var(--tt-color-grey-5);
+
+      .ant-cascader-picker-label,
+      .ant-cascader-picker-placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    // 错误状态
+    &.ant-cascader-picker-status-error {
+      border-color: var(--tt-color-red-6);
+
+      &:hover {
+        border-color: var(--tt-color-red-6);
+      }
+    }
+
+    &.ant-cascader-picker-status-error.ant-cascader-picker-focused {
+      box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+    }
+  }
+
+  // 多选模式下的标签样式
+  &.ant-cascader-picker-multiple,
+  &.ant-cascader-picker-checkable {
+    .ant-cascader-picker-label {
+      .tt-cascader-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--tt-color-grey-1);
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-right: 4px;
+        color: var(--tt-color-grey-7);
+        font-size: 14px;
+        line-height: 20px;
+
+        .tt-cascader-tag-close {
+          margin-left: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          color: var(--tt-color-grey-6);
+
+          &:hover {
+            color: var(--tt-color-grey-7);
+          }
+        }
+      }
+
+      // 自定义超出数量显示的样式 - 纯数字显示
+      .ant-cascader-picker-selection-overflow-item-rest {
+        .ant-cascader-picker-selection-overflow-item-suffix {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--tt-color-primary-1);
+          color: var(--tt-color-primary-6);
+          border-radius: 4px;
+          padding: 2px 8px;
+          margin-right: 4px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: normal;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 下拉菜单样式
+.tt-cascader-dropdown {
+  border-radius: 4px;
+  box-shadow: 0px 2px 20px 0px var(--tt-color-grey-2);
+  padding: 8px;
+
+  .ant-cascader-menus {
+    border-radius: 4px;
+    padding: 0;
+    background: transparent;
+
+    .ant-cascader-menu {
+      min-width: 120px;
+      height: 200px;
+      padding: 8px;
+      border-right-color: var(--tt-color-grey-2);
+      background: transparent;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      .ant-cascader-menu-item {
+        color: var(--tt-color-grey-7);
+        font-weight: normal;
+        padding: 8px 12px;
+        margin: 0 0 8px 0;
+        border-radius: 4px;
+        line-height: 22px;
+        height: auto;
+        min-height: 38px;
+
+        &:hover {
+          background-color: var(--tt-color-grey-1);
+          color: var(--tt-color-grey-7);
+        }
+
+        // 选中状态
+        &.ant-cascader-menu-item-active,
+        &.ant-cascader-menu-item-selected {
+          background-color: var(--tt-color-primary-1) !important;
+          color: var(--tt-color-primary-6) !important;
+
+          &:hover {
+            background-color: var(--tt-color-primary-1) !important;
+            color: var(--tt-color-primary-6) !important;
+          }
+        }
+
+        // 禁用状态
+        &.ant-cascader-menu-item-disabled {
+          color: var(--tt-color-grey-5);
+          background-color: transparent;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // 滚动条样式
+  .ant-cascader-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .ant-cascader-menu::-webkit-scrollbar-track {
+    background: var(--tt-color-grey-1);
+  }
+
+  .ant-cascader-menu::-webkit-scrollbar-thumb {
+    background: var(--tt-color-grey-3);
+    border-radius: 3px;
+  }
+
+  .ant-cascader-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--tt-color-grey-4);
+  }
+}
+
+// 搜索框样式
+.tt-cascader {
+  .ant-cascader-picker-search {
+    input {
+      &::placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+  }
+}

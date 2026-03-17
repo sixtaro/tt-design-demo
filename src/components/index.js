@@ -24,8 +24,10 @@ import Spin from './Spin';
 import Steps from './Steps';
 import Switch from './Switch';
 import InputNumber from './InputNumber';
+import Cascader from './Cascader';
 import Table from './Table';
 import Tabs from './Tabs';
+import Rate from './Rate';
 
 export {
   A,
@@ -53,6 +55,8 @@ export {
   Steps,
   Switch,
   InputNumber,
+  Cascader,
   Table,
   Tabs,
+  Rate,
 };
