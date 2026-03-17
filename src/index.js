@@ -30,6 +30,9 @@ import Font from './components/Font';
 import Color from './components/Color';
 import Icon from './components/Icon';
 import BackTop from './components/BackTop';
+import Cascader from './components/Cascader';
+import Rate from './components/Rate';
+import TreeSelect from './components/TreeSelect';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors, getTheme, applyTheme } from './theme';
@@ -84,6 +87,9 @@ export {
   Color,
   Icon,
   BackTop,
+  Cascader,
+  Rate,
+  TreeSelect,
   versionUtils
 };
 
@@ -119,6 +125,9 @@ const components = {
   Color,
   Icon,
   BackTop,
+  Cascader,
+  Rate,
+  TreeSelect,
   ThemeProvider,
   colors,
   themeConfig,

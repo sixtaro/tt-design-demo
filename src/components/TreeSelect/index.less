@@ -1,0 +1,310 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-tree-select {
+  color: var(--tt-color-grey-7);
+
+  &.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 4px;
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-2);
+    background-color: #FFFFFF;
+
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-7);
+    }
+
+    .ant-select-selection-overflow-item-rest {
+      .ant-select-selection-item {
+        background-color: var(--tt-color-primary-1);
+        border-radius: 4px;
+        border: unset;
+        color: var(--tt-color-primary-6);
+      }
+    }
+
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  &.ant-select:not(.ant-select-customize-input) {
+    &:not(.ant-select-disabled):not(.ant-select-status-error):not(.ant-tree-select-disabled):not(.ant-tree-select-status-error):hover {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    &.ant-select-focused,
+    &.ant-tree-select-focused {
+      border-color: var(--tt-color-primary-6);
+      box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+    }
+
+    &.ant-select-disabled,
+    &.ant-tree-select-disabled {
+      background-color: var(--tt-color-grey-1);
+      border-color: var(--tt-color-grey-2);
+      color: var(--tt-color-grey-5);
+
+      .ant-select-selection-item,
+      .ant-select-selection-placeholder,
+      .ant-tree-select-selection-item,
+      .ant-tree-select-selection-placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    &.ant-select-status-error,
+    &.ant-tree-select-status-error {
+      border-color: var(--tt-color-red-6);
+
+      &:hover {
+        border-color: var(--tt-color-red-6);
+      }
+
+      &.ant-select-focused,
+      &.ant-tree-select-focused {
+        box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      }
+    }
+  }
+
+  .ant-select-selection-overflow {
+    .ant-select-selection-overflow-item {
+      .tt-tree-select-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--tt-color-grey-1);
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-right: 4px;
+        color: var(--tt-color-grey-7);
+        font-size: 14px;
+        line-height: 20px;
+
+        .tt-tree-select-tag-close {
+          margin-left: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          color: var(--tt-color-grey-6);
+
+          &:hover {
+            color: var(--tt-color-grey-7);
+          }
+        }
+      }
+
+      &.ant-select-selection-overflow-item-rest {
+        .ant-select-selection-overflow-item-suffix {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--tt-color-primary-1);
+          color: var(--tt-color-primary-6);
+          border-radius: 4px;
+          padding: 2px 8px;
+          margin-right: 4px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: normal;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tt-tree-select-dropdown {
+  border-radius: 4px;
+  box-shadow: 0px 2px 20px 0px var(--tt-color-grey-2);
+  padding: 8px;
+
+  .ant-tree-select-tree-checkbox {
+    .ant-tree-select-tree-checkbox-inner {
+      border-radius: 2px;
+      border-color: var(--tt-color-grey-5);
+    }
+
+    &.ant-tree-select-tree-checkbox-checked {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+      }
+    }
+
+    &:hover .ant-tree-select-tree-checkbox-inner {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    &.ant-tree-select-tree-checkbox-checked:hover {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+      }
+    }
+
+    &.ant-tree-select-tree-checkbox-disabled {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-grey-1);
+        border-color: var(--tt-color-grey-3);
+      }
+    }
+
+    &.ant-tree-select-tree-checkbox-disabled.ant-tree-select-tree-checkbox-checked {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-3);
+        border-color: var(--tt-color-primary-3);
+      }
+    }
+
+    &.ant-tree-select-tree-checkbox-indeterminate {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+
+        &::after {
+          background-color: #FFFFFF;
+          width: 8px;
+          height: 2px;
+        }
+      }
+    }
+
+    &:hover.ant-tree-select-tree-checkbox-indeterminate {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+      }
+    }
+
+    &.ant-tree-select-tree-checkbox-disabled.ant-tree-select-tree-checkbox-indeterminate {
+      .ant-tree-select-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-3);
+        border-color: var(--tt-color-primary-3);
+
+        &::after {
+          background-color: #FFFFFF;
+          width: 8px;
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  .ant-tree-select-tree {
+    background: transparent;
+
+    .ant-select-tree-treenode,
+    .ant-tree-select-tree-treenode {
+      color: var(--tt-color-grey-7);
+      font-weight: normal;
+      padding: 5px;
+      margin: 0 0 8px 0;
+      border-radius: 4px;
+      line-height: 22px;
+      height: auto;
+
+      .anticon {
+        margin-right: 4px;
+      }
+
+      &:hover {
+        background-color: var(--tt-color-grey-1);
+        color: var(--tt-color-grey-7);
+      }
+
+      &.ant-select-tree-node-selected,
+      &.ant-tree-select-tree-node-selected {
+        background-color: var(--tt-color-primary-1) !important;
+        color: var(--tt-color-primary-6) !important;
+
+        .ant-select-tree-node-content-wrapper,
+        .ant-tree-select-tree-node-content-wrapper {
+          background-color: var(--tt-color-primary-1) !important;
+          color: var(--tt-color-primary-6) !important;
+        }
+
+        .anticon {
+          color: var(--tt-color-primary-6) !important;
+        }
+
+        &:hover {
+          background-color: var(--tt-color-primary-1) !important;
+          color: var(--tt-color-primary-6) !important;
+
+          .ant-select-tree-node-content-wrapper,
+          .ant-tree-select-tree-node-content-wrapper {
+            background-color: var(--tt-color-primary-1) !important;
+            color: var(--tt-color-primary-6) !important;
+          }
+        }
+      }
+
+      &.ant-select-tree-treenode-disabled,
+      &.ant-tree-select-tree-treenode-disabled {
+        color: var(--tt-color-grey-5);
+        background-color: transparent;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .ant-tree-select-tree-list-holder::-webkit-scrollbar,
+  .ant-select-tree-list-holder::-webkit-scrollbar,
+  .rc-virtual-list-holder::-webkit-scrollbar,
+  .rc-virtual-list-scrollbar {
+    width: 6px;
+  }
+
+  .ant-tree-select-tree-list-holder::-webkit-scrollbar-track,
+  .ant-select-tree-list-holder::-webkit-scrollbar-track,
+  .rc-virtual-list-holder::-webkit-scrollbar-track,
+  .rc-virtual-list-scrollbar-track {
+    background: var(--tt-color-grey-1);
+  }
+
+  .ant-tree-select-tree-list-holder::-webkit-scrollbar-thumb,
+  .ant-select-tree-list-holder::-webkit-scrollbar-thumb,
+  .rc-virtual-list-holder::-webkit-scrollbar-thumb,
+  .rc-virtual-list-scrollbar-thumb {
+    background: var(--tt-color-grey-3);
+    border-radius: 3px;
+  }
+
+  .ant-tree-select-tree-list-holder::-webkit-scrollbar-thumb:hover,
+  .ant-select-tree-list-holder::-webkit-scrollbar-thumb:hover,
+  .rc-virtual-list-holder::-webkit-scrollbar-thumb:hover,
+  .rc-virtual-list-scrollbar-thumb:hover {
+    background: var(--tt-color-grey-4);
+  }
+}
+
+.tt-tree-select-dropdown-custom {
+  border-radius: 4px;
+
+  .tt-tree-select-select-all {
+    padding: 8px;
+    margin: 0;
+    border-top: 1px solid var(--tt-color-grey-2);
+    margin-top: 8px;
+    color: var(--tt-color-grey-7);
+    border-radius: 4px;
+
+    .ant-checkbox-wrapper {
+      .anticon {
+        color: var(--tt-color-grey-7);
+        margin-right: 4px;
+      }
+
+      &:hover {
+        background-color: var(--tt-color-grey-1);
+        color: var(--tt-color-grey-7);
+      }
+    }
+  }
+}

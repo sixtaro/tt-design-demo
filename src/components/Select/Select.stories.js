@@ -84,6 +84,28 @@ export const 基础用法 = () => {
   );
 };
 
+// 始终展开
+export const 始终展开 = () => {
+  const [value, setValue] = useState();
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div>
+        <h4>下拉菜单始终展开</h4>
+        <Select
+          open={true}
+          placeholder="请选择"
+          style={{ width: 260 }}
+          options={mockOptions.slice(0, 5)}
+          value={value}
+          onChange={setValue}
+          version={Select.version}
+        />
+      </div>
+    </div>
+  );
+};
+
 // 状态演示
 export const 不同状态 = () => {
   const [value, setValue] = useState('option1');

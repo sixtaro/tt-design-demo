@@ -3,7 +3,118 @@
 .tt-cascader {
   color: var(--tt-color-grey-7);
 
-  // 选择器输入框样式
+  &.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 4px;
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-2);
+    background-color: #FFFFFF;
+
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-7);
+    }
+
+    .ant-select-selection-overflow-item-rest {
+      .ant-select-selection-item {
+        background-color: var(--tt-color-primary-1);
+        border-radius: 4px;
+        border: unset;
+        color: var(--tt-color-primary-6);
+      }
+    }
+
+    .ant-select-selection-placeholder {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  &.ant-select:not(.ant-select-customize-input) {
+    &:not(.ant-select-disabled):not(.ant-select-status-error):not(.ant-cascader-picker-disabled):not(.ant-cascader-picker-status-error):hover {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    &.ant-select-focused,
+    &.ant-cascader-picker-focused {
+      border-color: var(--tt-color-primary-6);
+      box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+    }
+
+    &.ant-select-disabled,
+    &.ant-cascader-picker-disabled {
+      background-color: var(--tt-color-grey-1);
+      border-color: var(--tt-color-grey-2);
+      color: var(--tt-color-grey-5);
+
+      .ant-select-selection-item,
+      .ant-select-selection-placeholder,
+      .ant-cascader-picker-label,
+      .ant-cascader-picker-placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    &.ant-select-status-error,
+    &.ant-cascader-picker-status-error {
+      border-color: var(--tt-color-red-6);
+
+      &:hover {
+        border-color: var(--tt-color-red-6);
+      }
+
+      &.ant-select-focused,
+      &.ant-cascader-picker-focused {
+        box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      }
+    }
+  }
+
+  .ant-select-selection-overflow {
+    .ant-select-selection-overflow-item {
+      .tt-cascader-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--tt-color-grey-1);
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-right: 4px;
+        color: var(--tt-color-grey-7);
+        font-size: 14px;
+        line-height: 20px;
+
+        .tt-cascader-tag-close {
+          margin-left: 4px;
+          cursor: pointer;
+          font-size: 12px;
+          color: var(--tt-color-grey-6);
+
+          &:hover {
+            color: var(--tt-color-grey-7);
+          }
+        }
+      }
+
+      &.ant-select-selection-overflow-item-rest {
+        .ant-select-selection-overflow-item-suffix {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--tt-color-primary-1);
+          color: var(--tt-color-primary-6);
+          border-radius: 4px;
+          padding: 2px 8px;
+          margin-right: 4px;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: normal;
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
   &.ant-cascader-picker {
     border-radius: 4px;
     color: var(--tt-color-grey-7);
@@ -19,44 +130,45 @@
       color: var(--tt-color-grey-5);
     }
 
-    // 悬停状态
-    &:not(.ant-cascader-picker-disabled):not(.ant-cascader-picker-status-error):hover {
+    &:not(.ant-select-disabled):not(.ant-select-status-error):not(.ant-cascader-picker-disabled):not(.ant-cascader-picker-status-error):hover {
       border-color: var(--tt-color-primary-6);
     }
 
-    // 激活状态
+    &.ant-select-focused,
     &.ant-cascader-picker-focused {
       border-color: var(--tt-color-primary-6);
       box-shadow: 0 0 0 2px var(--tt-color-primary-2);
     }
 
-    // 禁用状态
+    &.ant-select-disabled,
     &.ant-cascader-picker-disabled {
       background-color: var(--tt-color-grey-1);
       border-color: var(--tt-color-grey-2);
       color: var(--tt-color-grey-5);
 
+      .ant-select-selection-item,
+      .ant-select-selection-placeholder,
       .ant-cascader-picker-label,
       .ant-cascader-picker-placeholder {
         color: var(--tt-color-grey-5);
       }
     }
 
-    // 错误状态
+    &.ant-select-status-error,
     &.ant-cascader-picker-status-error {
       border-color: var(--tt-color-red-6);
 
       &:hover {
         border-color: var(--tt-color-red-6);
       }
-    }
 
-    &.ant-cascader-picker-status-error.ant-cascader-picker-focused {
-      box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      &.ant-select-focused,
+      &.ant-cascader-picker-focused {
+        box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      }
     }
   }
 
-  // 多选模式下的标签样式
   &.ant-cascader-picker-multiple,
   &.ant-cascader-picker-checkable {
     .ant-cascader-picker-label {
@@ -83,7 +195,6 @@
         }
       }
 
-      // 自定义超出数量显示的样式 - 纯数字显示
       .ant-cascader-picker-selection-overflow-item-rest {
         .ant-cascader-picker-selection-overflow-item-suffix {
           display: inline-flex;
@@ -105,13 +216,91 @@
       }
     }
   }
+
+  .ant-cascader-picker-search {
+    input {
+      &::placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+  }
 }
 
-// 下拉菜单样式
 .tt-cascader-dropdown {
   border-radius: 4px;
   box-shadow: 0px 2px 20px 0px var(--tt-color-grey-2);
-  padding: 8px;
+
+  .ant-cascader-checkbox {
+    .ant-cascader-checkbox-inner {
+      border-radius: 2px;
+      border-color: var(--tt-color-grey-5);
+    }
+
+    &.ant-cascader-checkbox-checked {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+      }
+    }
+
+    &:hover .ant-cascader-checkbox-inner {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    &.ant-cascader-checkbox-checked:hover {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+      }
+    }
+
+    &.ant-cascader-checkbox-disabled {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-grey-1);
+        border-color: var(--tt-color-grey-3);
+      }
+    }
+
+    &.ant-cascader-checkbox-disabled.ant-cascader-checkbox-checked {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-3);
+        border-color: var(--tt-color-primary-3);
+      }
+    }
+
+    &.ant-cascader-checkbox-indeterminate {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+
+        &::after {
+          background-color: #FFFFFF;
+          width: 8px;
+          height: 2px;
+        }
+      }
+    }
+
+    &:hover.ant-cascader-checkbox-indeterminate {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+      }
+    }
+
+    &.ant-cascader-checkbox-disabled.ant-cascader-checkbox-indeterminate {
+      .ant-cascader-checkbox-inner {
+        background-color: var(--tt-color-primary-3);
+        border-color: var(--tt-color-primary-3);
+
+        &::after {
+          background-color: #FFFFFF;
+          width: 8px;
+          height: 2px;
+        }
+      }
+    }
+  }
 
   .ant-cascader-menus {
     border-radius: 4px;
@@ -132,23 +321,42 @@
       .ant-cascader-menu-item {
         color: var(--tt-color-grey-7);
         font-weight: normal;
-        padding: 8px 12px;
+        padding: 5px 12px;
         margin: 0 0 8px 0;
         border-radius: 4px;
         line-height: 22px;
         height: auto;
-        min-height: 38px;
+
+        .ant-cascader-menu-item-expand-icon {
+          color: var(--tt-color-grey-5);
+        }
 
         &:hover {
           background-color: var(--tt-color-grey-1);
           color: var(--tt-color-grey-7);
         }
 
-        // 选中状态
         &.ant-cascader-menu-item-active,
         &.ant-cascader-menu-item-selected {
           background-color: var(--tt-color-primary-1) !important;
           color: var(--tt-color-primary-6) !important;
+
+          .ant-cascader-menu-item-expand-icon {
+            color: var(--tt-color-primary-6);
+          }
+
+          .ant-checkbox-wrapper {
+            .ant-checkbox-checked {
+              .ant-checkbox-inner {
+                background-color: var(--tt-color-primary-6);
+                border-color: var(--tt-color-primary-6);
+              }
+
+              &::after {
+                border-color: var(--tt-color-primary-6);
+              }
+            }
+          }
 
           &:hover {
             background-color: var(--tt-color-primary-1) !important;
@@ -156,7 +364,6 @@
           }
         }
 
-        // 禁用状态
         &.ant-cascader-menu-item-disabled {
           color: var(--tt-color-grey-5);
           background-color: transparent;
@@ -166,34 +373,47 @@
           margin-bottom: 0;
         }
       }
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: var(--tt-color-grey-1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--tt-color-grey-3);
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: var(--tt-color-grey-4);
+      }
     }
-  }
-
-  // 滚动条样式
-  .ant-cascader-menu::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .ant-cascader-menu::-webkit-scrollbar-track {
-    background: var(--tt-color-grey-1);
-  }
-
-  .ant-cascader-menu::-webkit-scrollbar-thumb {
-    background: var(--tt-color-grey-3);
-    border-radius: 3px;
-  }
-
-  .ant-cascader-menu::-webkit-scrollbar-thumb:hover {
-    background: var(--tt-color-grey-4);
   }
 }
 
-// 搜索框样式
-.tt-cascader {
-  .ant-cascader-picker-search {
-    input {
-      &::placeholder {
-        color: var(--tt-color-grey-5);
+.tt-cascader-dropdown-custom {
+  border-radius: 4px;
+
+  .tt-cascader-select-all {
+    padding: 8px;
+    margin: 0;
+    border-top: 1px solid var(--tt-color-grey-2);
+    margin-top: 8px;
+    color: var(--tt-color-grey-7);
+    border-radius: 4px;
+
+    .ant-checkbox-wrapper {
+      .anticon {
+        color: var(--tt-color-grey-7);
+        margin-right: 4px;
+      }
+
+      &:hover {
+        background-color: var(--tt-color-grey-1);
+        color: var(--tt-color-grey-7);
       }
     }
   }

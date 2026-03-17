@@ -27,6 +27,7 @@ const Select = ({
 }) => {
   const [searchValue, setSearchValue] = useState('');
   const [allSelected, setAllSelected] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(false);
 
   const selectClassName = classNames('tt-select', className);
   const selectPopupClassName = classNames('tt-select-dropdown', popupClassName);
@@ -137,7 +138,10 @@ const Select = ({
   useEffect(() => {
     if (mode === 'multiple' && propsValue) {
       const selected = Array.isArray(propsValue) ? propsValue : [propsValue];
-      setAllSelected(selected.length === allOptionValues.length && allOptionValues.length > 0);
+      const isAllSelected = selected.length === allOptionValues.length && allOptionValues.length > 0;
+      const isIndeterminate = !isAllSelected && selected.length > 0;
+      setAllSelected(isAllSelected);
+      setIndeterminate(isIndeterminate);
     }
   }, [propsValue, allOptionValues, mode]);
 
@@ -192,6 +196,7 @@ const Select = ({
       <div className="tt-select-select-all">
         <Checkbox
           checked={allSelected}
+          indeterminate={indeterminate}
           onChange={handleSelectAll}
           disabled={allOptionValues.length === 0}
         >
