@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { FolderOpenOutlined, FileOutlined, HomeOutlined, SearchOutlined } from '@ant-design/icons';
 import TreeSelect from './index';
 
-// 模拟树形数据
 const mockTreeData = [
   {
     title: '浙江省',
@@ -84,7 +84,6 @@ const mockTreeData = [
   }
 ];
 
-// 带禁用项的数据
 const mockTreeDataWithDisabled = [
   {
     title: '浙江省',
@@ -131,6 +130,37 @@ const mockTreeDataWithDisabled = [
   }
 ];
 
+const mockTreeDataWithIcons = [
+  {
+    title: '公司',
+    value: 'company',
+    key: 'company',
+    icon: <HomeOutlined />,
+    children: [
+      {
+        title: '产品部',
+        value: 'product',
+        key: 'product',
+        icon: <FolderOpenOutlined />,
+        children: [
+          { title: '产品经理', value: 'pm', key: 'pm', icon: <FileOutlined /> },
+          { title: 'UI设计师', value: 'ui', key: 'ui', icon: <FileOutlined /> }
+        ]
+      },
+      {
+        title: '研发部',
+        value: 'dev',
+        key: 'dev',
+        icon: <FolderOpenOutlined />,
+        children: [
+          { title: '前端开发', value: 'fe', key: 'fe', icon: <FileOutlined /> },
+          { title: '后端开发', value: 'be', key: 'be', icon: <FileOutlined /> }
+        ]
+      }
+    ]
+  }
+];
+
 export default {
   title: '数据录入/TreeSelect 树选择',
   component: TreeSelect,
@@ -153,84 +183,73 @@ export default {
   }
 };
 
-// 基础用法演示
 export const 基础用法 = () => {
   const [value1, setValue1] = useState();
   const [value2, setValue2] = useState('xihu');
+  const [value3, setValue3] = useState([]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <div>
-        <h4>默认状态</h4>
-        <TreeSelect
-          placeholder="请选择地区"
-          style={{ width: 260 }}
-          treeData={mockTreeData}
-          value={value1}
-          onChange={setValue1}
-          version={TreeSelect.version}
-        />
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 260 }}>
+          <h4>默认状态</h4>
+          <TreeSelect
+            placeholder="请选择地区"
+            style={{ width: 260 }}
+            treeData={mockTreeData}
+            value={value1}
+            onChange={setValue1}
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 260 }}>
+          <h4>有默认值</h4>
+          <TreeSelect
+            placeholder="请选择地区"
+            style={{ width: 260 }}
+            treeData={mockTreeData}
+            value={value2}
+            onChange={setValue2}
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 260 }}>
+          <h4>默认展开</h4>
+          <TreeSelect
+            placeholder="请选择地区"
+            style={{ width: 260 }}
+            treeData={mockTreeData}
+            treeDefaultExpandAll
+            version={TreeSelect.version}
+          />
+        </div>
       </div>
-      <div>
-        <h4>有默认值（西湖区）</h4>
-        <TreeSelect
-          placeholder="请选择地区"
-          style={{ width: 260 }}
-          treeData={mockTreeData}
-          value={value2}
-          onChange={setValue2}
-          version={TreeSelect.version}
-        />
-      </div>
-      <div>
-        <h4>默认展开所有节点</h4>
-        <TreeSelect
-          placeholder="请选择地区"
-          style={{ width: 260 }}
-          treeData={mockTreeData}
-          treeDefaultExpandAll
-          version={TreeSelect.version}
-        />
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 400 }}>
+          <h4>多选基础</h4>
+          <TreeSelect
+            treeCheckable
+            placeholder="请选择多个地区"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value3}
+            onChange={setValue3}
+            version={TreeSelect.version}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-// 不同尺寸 + 不同状态
 export const 尺寸与状态 = () => {
   const [value, setValue] = useState('xihu');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       <div>
-        <h4>不同尺寸</h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <TreeSelect
-            size="small"
-            placeholder="小尺寸"
-            style={{ width: 200 }}
-            treeData={mockTreeData}
-            version={TreeSelect.version}
-          />
-          <TreeSelect
-            size="default"
-            placeholder="默认尺寸"
-            style={{ width: 260 }}
-            treeData={mockTreeData}
-            version={TreeSelect.version}
-          />
-          <TreeSelect
-            size="large"
-            placeholder="大尺寸"
-            style={{ width: 320 }}
-            treeData={mockTreeData}
-            version={TreeSelect.version}
-          />
-        </div>
-      </div>
-      <div>
         <h4>禁用状态</h4>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
           <TreeSelect
             disabled
             placeholder="禁用状态"
@@ -249,150 +268,178 @@ export const 尺寸与状态 = () => {
           />
         </div>
       </div>
-      <div>
-        <h4>带禁用选项</h4>
-        <TreeSelect
-          placeholder="请选择（部分选项禁用）"
-          style={{ width: 260 }}
-          treeData={mockTreeDataWithDisabled}
-          version={TreeSelect.version}
-        />
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 260 }}>
+          <h4>单选禁用项</h4>
+          <TreeSelect
+            placeholder="请选择（部分选项禁用）"
+            style={{ width: 260 }}
+            treeData={mockTreeDataWithDisabled}
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 400 }}>
+          <h4>多选禁用项</h4>
+          <TreeSelect
+            treeCheckable
+            placeholder="请选择（部分选项禁用）"
+            style={{ width: 400 }}
+            treeData={mockTreeDataWithDisabled}
+            version={TreeSelect.version}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-// 可搜索
 export const 可搜索 = () => {
-  const [value, setValue] = useState();
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <div>
-        <h4>可搜索</h4>
-        <TreeSelect
-          showSearch
-          placeholder="搜索地区（如：西湖、南山、鼓楼）"
-          style={{ width: 320 }}
-          treeData={mockTreeData}
-          value={value}
-          onChange={setValue}
-          version={TreeSelect.version}
-        />
-      </div>
-    </div>
-  );
-};
-
-// 多选模式
-export const 多选模式 = () => {
-  const [value1, setValue1] = useState([]);
-  const [value2, setValue2] = useState(['xihu', 'xuanwu']);
-  const [value3, setValue3] = useState(['xihu', 'binjiang', 'nanshan', 'tianhe', 'xuanwu', 'gusu']);
-  const [value4, setValue4] = useState([]);
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      <div>
-        <h4>基础多选</h4>
-        <TreeSelect
-          treeCheckable
-          placeholder="请选择多个地区"
-          style={{ width: 400 }}
-          treeData={mockTreeData}
-          value={value1}
-          onChange={setValue1}
-          version={TreeSelect.version}
-        />
-      </div>
-      <div>
-        <h4>有默认值</h4>
-        <TreeSelect
-          treeCheckable
-          placeholder="请选择多个地区"
-          style={{ width: 400 }}
-          treeData={mockTreeData}
-          value={value2}
-          onChange={setValue2}
-          version={TreeSelect.version}
-        />
-      </div>
-      <div>
-        <h4>超出数量折叠显示（maxTagCount=2）</h4>
-        <TreeSelect
-          treeCheckable
-          maxTagCount={2}
-          placeholder="请选择多个地区"
-          style={{ width: 400 }}
-          treeData={mockTreeData}
-          value={value3}
-          onChange={setValue3}
-          version={TreeSelect.version}
-        />
-      </div>
-      <div>
-        <h4>多选 + 全选</h4>
-        <TreeSelect
-          treeCheckable
-          showSelectAll
-          placeholder="请选择，支持全选"
-          style={{ width: 400 }}
-          treeData={mockTreeData}
-          value={value4}
-          onChange={setValue4}
-          treeDefaultExpandAll
-          version={TreeSelect.version}
-        />
-      </div>
-    </div>
-  );
-};
-
-// 常态展开（树节点默认展开）
-export const 常态展开 = () => {
   const [value1, setValue1] = useState();
   const [value2, setValue2] = useState([]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-      <div>
-        <h4>单选 - 默认展开所有节点</h4>
-        <TreeSelect
-          placeholder="请选择地区"
-          style={{ width: 260 }}
-          treeData={mockTreeData}
-          value={value1}
-          onChange={setValue1}
-          treeDefaultExpandAll
-          version={TreeSelect.version}
-        />
-      </div>
-      <div>
-        <h4>多选 - 默认展开所有节点</h4>
-        <TreeSelect
-          treeCheckable
-          placeholder="请选择多个地区"
-          style={{ width: 400 }}
-          treeData={mockTreeData}
-          value={value2}
-          onChange={setValue2}
-          treeDefaultExpandAll
-          version={TreeSelect.version}
-        />
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 320 }}>
+          <h4>单选搜索</h4>
+          <TreeSelect
+            showSearch
+            placeholder="搜索地区（如：西湖、南山、鼓楼）"
+            style={{ width: 320 }}
+            treeData={mockTreeData}
+            value={value1}
+            onChange={setValue1}
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 400 }}>
+          <h4>多选搜索</h4>
+          <TreeSelect
+            treeCheckable
+            showSearch
+            placeholder="搜索并选择多个地区"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value2}
+            onChange={setValue2}
+            version={TreeSelect.version}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-// 始终展开（用于预览下拉菜单样式）
+export const 多选模式 = () => {
+  const [value1, setValue1] = useState(['xihu', 'xuanwu']);
+  const [value2, setValue2] = useState(['xihu', 'binjiang', 'nanshan', 'tianhe', 'xuanwu', 'gusu']);
+  const [value3, setValue3] = useState([]);
+  const [value4, setValue4] = useState([]);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 400 }}>
+          <h4>有默认值</h4>
+          <TreeSelect
+            treeCheckable
+            placeholder="请选择多个地区"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value1}
+            onChange={setValue1}
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 400 }}>
+          <h4>超出折叠（maxTagCount=2）</h4>
+          <TreeSelect
+            treeCheckable
+            maxTagCount={2}
+            placeholder="请选择多个地区"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value2}
+            onChange={setValue2}
+            version={TreeSelect.version}
+          />
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 400 }}>
+          <h4>多选 + 全选</h4>
+          <TreeSelect
+            treeCheckable
+            showSelectAll
+            placeholder="请选择，支持全选"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value3}
+            onChange={setValue3}
+            treeDefaultExpandAll
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 400 }}>
+          <h4>多选 + 展开父节点（treeExpandTrigger）</h4>
+          <TreeSelect
+            treeCheckable
+            treeExpandTrigger="click"
+            placeholder="点击节点文字展开"
+            style={{ width: 400 }}
+            treeData={mockTreeData}
+            value={value4}
+            onChange={setValue4}
+            version={TreeSelect.version}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const 图标与自定义 = () => {
+  const [value, setValue] = useState();
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 260 }}>
+          <h4>带节点图标</h4>
+          <TreeSelect
+            placeholder="请选择部门"
+            style={{ width: 260 }}
+            treeData={mockTreeDataWithIcons}
+            value={value}
+            onChange={setValue}
+            treeDefaultExpandAll
+            version={TreeSelect.version}
+          />
+        </div>
+        <div style={{ minWidth: 320 }}>
+          <h4>带前缀图标</h4>
+          <TreeSelect
+            placeholder="搜索地区"
+            style={{ width: 320 }}
+            treeData={mockTreeData}
+            showSearch
+            prefixIcon={<SearchOutlined />}
+            version={TreeSelect.version}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const 始终展开 = () => {
   const [value, setValue] = useState();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div>
-        <h4>下拉菜单始终展开</h4>
-        <div style={{ paddingBottom: '300px' }}>
+        <h4>下拉菜单始终展开（用于样式预览）</h4>
+        <div style={{ paddingBottom: '320px' }}>
           <TreeSelect
             open={true}
             placeholder="请选择"
