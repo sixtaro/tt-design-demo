@@ -1,0 +1,305 @@
+@import (reference) '../../style/themes/default.less';
+
+// ==================== 前缀后缀包裹容器 ====================
+.tt-input-number-affix-wrapper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--tt-color-grey-3);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:hover:not(.tt-input-number-affix-wrapper-disabled) {
+    border-color: var(--tt-color-primary-6);
+  }
+
+  &:focus-within:not(.tt-input-number-affix-wrapper-disabled) {
+    border-color: var(--tt-color-primary-6);
+    box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+  }
+
+  &.tt-input-number-affix-wrapper-disabled {
+    background-color: var(--tt-color-grey-1);
+    border-color: var(--tt-color-grey-2);
+
+    .tt-input-number-prefix,
+    .tt-input-number-suffix {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  &.tt-input-number-affix-wrapper-small {
+    padding: 0 7px;
+  }
+
+  &.tt-input-number-affix-wrapper-large {
+    padding: 0 11px;
+  }
+
+  .tt-input-number-prefix {
+    color: var(--tt-color-grey-6);
+    margin-left: 8px;
+    user-select: none;
+  }
+
+  .tt-input-number-suffix {
+    color: var(--tt-color-grey-6);
+    margin-right: 8px;
+    user-select: none;
+  }
+
+  .tt-input-number {
+    &.ant-input-number {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      width: auto;
+      min-width: 60px;
+
+      &:hover,
+      &:focus,
+      &.ant-input-number-focused {
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+// ==================== 侧边按钮模式 ====================
+.tt-input-number-side-wrapper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--tt-color-grey-3);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+
+  &:hover:not(.tt-input-number-side-wrapper-disabled) {
+    border-color: var(--tt-color-primary-6);
+
+    .tt-input-number-side-btn:not(.tt-input-number-side-btn-disabled) {
+      color: var(--tt-color-primary-6);
+    }
+
+    .tt-input-number-side-btn-left:not(.tt-input-number-side-btn-disabled) {
+      border-right-color: var(--tt-color-primary-6);
+    }
+
+    .tt-input-number-side-btn-right:not(.tt-input-number-side-btn-disabled) {
+      border-left-color: var(--tt-color-primary-6);
+    }
+  }
+
+  &:focus-within:not(.tt-input-number-side-wrapper-disabled) {
+    border-color: var(--tt-color-primary-6);
+    box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+
+    .tt-input-number-side-btn:not(.tt-input-number-side-btn-disabled) {
+      color: var(--tt-color-primary-6);
+    }
+
+    .tt-input-number-side-btn-left:not(.tt-input-number-side-btn-disabled) {
+      border-right-color: var(--tt-color-primary-6);
+    }
+
+    .tt-input-number-side-btn-right:not(.tt-input-number-side-btn-disabled) {
+      border-left-color: var(--tt-color-primary-6);
+    }
+  }
+
+  &.tt-input-number-side-wrapper-disabled {
+    background-color: var(--tt-color-grey-1);
+    border-color: var(--tt-color-grey-2);
+
+    .tt-input-number-side-btn {
+      color: var(--tt-color-grey-4);
+      cursor: not-allowed;
+    }
+
+    .tt-input-number-side-input {
+      background-color: var(--tt-color-grey-1);
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  &.tt-input-number-side-wrapper-small {
+    .tt-input-number-side-btn {
+      width: 24px;
+      font-size: 12px;
+    }
+  }
+
+  &.tt-input-number-side-wrapper-large {
+    .tt-input-number-side-btn {
+      width: 40px;
+      font-size: 18px;
+    }
+  }
+
+  .tt-input-number-side-prefix,
+  .tt-input-number-side-suffix {
+    display: inline-flex;
+    align-items: center;
+    color: var(--tt-color-grey-6);
+    padding: 0 8px;
+    user-select: none;
+  }
+
+  .tt-input-number-side-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: var(--tt-color-grey-5);
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    user-select: none;
+
+    &:not(.tt-input-number-side-btn-disabled):active {
+      background-color: var(--tt-color-primary-1);
+    }
+
+    &.tt-input-number-side-btn-disabled {
+      color: var(--tt-color-grey-4);
+      cursor: not-allowed;
+    }
+  }
+
+  .tt-input-number-side-btn-left {
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid var(--tt-color-grey-3);
+  }
+
+  .tt-input-number-side-btn-right {
+    border-radius: 0 4px 4px 0;
+    border-left: 1px solid var(--tt-color-grey-3);
+  }
+
+  .tt-input-number-side-input {
+    flex: 1;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 80px;
+
+    &:hover,
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    &.ant-input-disabled {
+      background-color: transparent;
+    }
+  }
+}
+
+// ==================== 默认模式 ====================
+.tt-input-number {
+  &.ant-input-number {
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-3);
+    border-radius: 4px;
+
+    .ant-input-number-input {
+      color: var(--tt-color-grey-7);
+
+      &::placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    &:hover:not(.ant-input-number-disabled):not(.ant-input-number-status-error) {
+      border-color: var(--tt-color-primary-6);
+
+      .ant-input-number-handler-wrap {
+        border-color: var(--tt-color-primary-6);
+      }
+    }
+
+    &.ant-input-number-focused,
+    &:focus-within {
+      border-color: var(--tt-color-primary-6);
+      box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+
+      .ant-input-number-handler-wrap {
+        border-color: var(--tt-color-primary-6);
+      }
+    }
+
+    &.ant-input-number-disabled {
+      background-color: var(--tt-color-grey-1);
+      border-color: var(--tt-color-grey-2);
+
+      .ant-input-number-input {
+        color: var(--tt-color-grey-5);
+        background-color: var(--tt-color-grey-1);
+
+        &::placeholder {
+          color: var(--tt-color-grey-5);
+        }
+      }
+    }
+
+    &.ant-input-number-status-error {
+      border-color: var(--tt-color-red-6);
+
+      &:hover {
+        border-color: var(--tt-color-red-6);
+      }
+
+      &.ant-input-number-focused,
+      &:focus-within {
+        box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      }
+    }
+
+    .ant-input-number-handler-wrap {
+      border: none;
+      border-radius: 0 4px 4px 0;
+
+      .ant-input-number-handler {
+        color: var(--tt-color-grey-5);
+        border: none;
+
+        .ant-input-number-handler-up-inner,
+        .ant-input-number-handler-down-inner {
+          color: var(--tt-color-grey-5);
+        }
+
+        &:hover {
+          background-color: transparent;
+
+          .ant-input-number-handler-up-inner,
+          .ant-input-number-handler-down-inner {
+            color: var(--tt-color-primary-6);
+          }
+        }
+
+        &:active {
+          background-color: transparent;
+        }
+      }
+
+      .ant-input-number-handler-up,
+      .ant-input-number-handler-down {
+        border: none;
+      }
+    }
+
+    &.ant-input-number-sm {
+      .ant-input-number-input {
+        font-size: 14px;
+      }
+    }
+
+    &.ant-input-number-lg {
+      .ant-input-number-input {
+        font-size: 16px;
+      }
+    }
+  }
+}

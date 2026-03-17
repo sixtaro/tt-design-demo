@@ -16,6 +16,7 @@ export const componentVersions = {
   Checkbox: '1.0.0',
   Radio: '1.1.0',
   Switch: '1.0.0',
+  InputNumber: '1.1.0',
   Table: '1.0.0',
   Form: '1.0.0',
   DatePicker: '1.0.0',

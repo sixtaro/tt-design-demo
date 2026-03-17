@@ -23,6 +23,7 @@ import Select from './Select';
 import Spin from './Spin';
 import Steps from './Steps';
 import Switch from './Switch';
+import InputNumber from './InputNumber';
 import Table from './Table';
 import Tabs from './Tabs';
 
@@ -51,6 +52,7 @@ export {
   Spin,
   Steps,
   Switch,
+  InputNumber,
   Table,
   Tabs,
 };
