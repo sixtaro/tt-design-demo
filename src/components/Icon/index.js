@@ -1,4 +1,3 @@
-
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -6,22 +5,11 @@ import { componentVersions } from '../../utils/version-config';
 import { isGradientColor, generateGradientId, parseGradientColor, renderGradientSvg } from './gradient';
 import './index.less';
 
-const Icon = ({
-  type,
-  component,
-  iconfont,
-  size = 'default',
-  color,
-  spin,
-  rotate,
-  className,
-  version,
-  ...props
-}) => {
+const Icon = ({ type, component, iconfont, size = 'default', color, spin, rotate, className, version, ...props }) => {
   const isGradient = isGradientColor(color);
-  const gradientId = useMemo(() => isGradient ? generateGradientId() : null, [isGradient, color]);
-  const gradientData = useMemo(() => isGradient ? parseGradientColor(color) : null, [isGradient, color]);
-  
+  const gradientId = useMemo(() => (isGradient ? generateGradientId() : null), [isGradient, color]);
+  const gradientData = useMemo(() => (isGradient ? parseGradientColor(color) : null), [isGradient, color]);
+
   const iconClassName = classNames(
     'tt-icon',
     size !== 'default' && `tt-icon-${size}`,
@@ -43,18 +31,18 @@ const Icon = ({
       rotate,
       ...props,
     };
-    
+
     if (color) {
       if (isGradient) {
         componentProps.style = {
           ...componentProps.style,
-          '--icon-fill': `url(#${gradientId})`
+          '--icon-fill': `url(#${gradientId})`,
         };
       } else {
         componentProps.style = { color };
       }
     }
-    
+
     return (
       <span className={iconClassName} style={style} data-component-version={version}>
         {isGradient && renderGradientSvg(gradientId, gradientData)}
@@ -64,19 +52,19 @@ const Icon = ({
   }
 
   if (iconfont) {
-    return (
-      <i
-        className={classNames(iconClassName, iconfont)}
-        style={style}
-        data-component-version={version}
-        {...props}
-      />
-    );
+    style.width = '1em';
+    style.height = '1em';
+    if (isGradient) {
+      style.color = 'transparent';
+      style.backgroundImage = color;
+      style.WebkitBackgroundClip = 'text';
+    }
+    return <i className={classNames(iconClassName, iconfont)} data-component-version={version} {...props} style={style} />;
   }
 
   if (type) {
     return (
-      <span className={iconClassName} style={style} data-component-version={version} {...props}>
+      <span className={iconClassName} data-component-version={version} {...props} style={style}>
         {type}
       </span>
     );
@@ -105,4 +93,3 @@ Icon.defaultProps = {
 };
 
 export default Icon;
-

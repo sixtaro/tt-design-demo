@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { SearchOutlined, SettingOutlined, HeartOutlined, StarOutlined, LoadingOutlined } from '@ant-design/icons';
 import Icon from './index';
+import './iconfont.css';
 
 export default {
   title: '通用/Icon 图标',
@@ -22,7 +22,7 @@ export default {
 };
 
 export const 基础用法 = {
-  render: (args) => (
+  render: args => (
     <div style={{ padding: '24px', display: 'flex', gap: '24px' }}>
       <Icon {...args} component={SearchOutlined} />
       <Icon {...args} component={SettingOutlined} />
@@ -135,6 +135,10 @@ export const 渐变颜色 = {
           <Icon component={SettingOutlined} size="large" color="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" />
           <span style={{ fontSize: '12px', color: '#6B7A99' }}>青绿渐变</span>
         </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon iconfont="iconfont icon-search" size="large" color="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>iconfont-搜索</span>
+        </div>
       </div>
       <div style={{ marginBottom: '16px', fontSize: '14px', color: '#223355' }}>径向渐变</div>
       <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
@@ -145,6 +149,10 @@ export const 渐变颜色 = {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
           <Icon component={StarOutlined} size="large" color="radial-gradient(circle, #a18cd1 0%, #fbc2eb 100%)" />
           <span style={{ fontSize: '12px', color: '#6B7A99' }}>紫粉径向</span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+          <Icon iconfont="iconfont icon-search" size="large" color="radial-gradient(circle, #fa709a 0%, #fee140 100%)" />
+          <span style={{ fontSize: '12px', color: '#6B7A99' }}>iconfont-搜索</span>
         </div>
       </div>
     </div>
@@ -171,4 +179,3 @@ export const 旋转和加载 = {
     </div>
   ),
 };
-
