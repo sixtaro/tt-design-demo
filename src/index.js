@@ -32,6 +32,7 @@ import Icon from './components/Icon';
 import BackTop from './components/BackTop';
 import Cascader from './components/Cascader';
 import Rate from './components/Rate';
+import CardSelect from './components/CardSelect';
 import TreeSelect from './components/TreeSelect';
 import TimePicker from './components/TimePicker';
 import * as versionUtils from './utils/version';
@@ -46,11 +47,7 @@ export const ThemeProvider = ({ children, theme = themeConfig }) => {
     applyTheme(theme);
   }, [theme]);
 
-  return (
-    <ConfigProvider {...themeConfigObj}>
-      {children}
-    </ConfigProvider>
-  );
+  return <ConfigProvider {...themeConfigObj}>{children}</ConfigProvider>;
 };
 
 // 导出颜色变量和主题配置
@@ -90,9 +87,10 @@ export {
   BackTop,
   Cascader,
   Rate,
+  CardSelect,
   TreeSelect,
   TimePicker,
-  versionUtils
+  versionUtils,
 };
 
 const components = {
@@ -129,6 +127,7 @@ const components = {
   BackTop,
   Cascader,
   Rate,
+  CardSelect,
   TreeSelect,
   TimePicker,
   ThemeProvider,

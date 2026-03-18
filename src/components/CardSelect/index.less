@@ -1,0 +1,130 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-card-select-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &.tt-card-select-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  &.tt-card-select-list-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.tt-card-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: @primary-color;
+  }
+
+  &.tt-card-select-selected {
+    border-color: @primary-color;
+    background-color: fade(@primary-color, 1%);
+  }
+
+  &.tt-card-select-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      border-color: #d9d9d9;
+    }
+  }
+
+  // 类型 a: 边框 + 角标
+  &.tt-card-select-corner {
+    .tt-card-select-corner-mark {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: @primary-color;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      border-top-right-radius: 4px;
+      .anticon {
+        color: #ffffff;
+        font-size: 18px;
+        transform: translate(-3px, 3px);
+      }
+    }
+
+    &.tt-card-select-left {
+      .tt-card-select-corner-mark {
+        right: auto;
+        left: 0;
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+        align-items: flex-start;
+        justify-content: flex-start;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 0px;
+        .anticon {
+          transform: translate(3px, 3px);
+        }
+      }
+    }
+  }
+
+  // 类型 b: 边框
+
+  // 类型 c: 侧边 radio 按钮
+  &.tt-card-select-radio {
+    .tt-card-select-radio-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #a8b4c8;
+      border-radius: 50%;
+      margin-right: 12px;
+      transition: all 0.3s;
+    }
+
+    &.tt-card-select-selected {
+      .tt-card-select-radio-indicator {
+        border: 5px solid @primary-color;
+        background-color: white;
+      }
+    }
+
+    &.tt-card-select-right {
+      .tt-card-select-radio-indicator {
+        margin-right: 0;
+        margin-left: 12px;
+      }
+
+      .tt-card-select-content {
+        flex: 1;
+      }
+    }
+  }
+
+  .tt-card-select-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tt-card-select-children {
+    font-size: 14px;
+    color: @tt-text-main;
+  }
+}
