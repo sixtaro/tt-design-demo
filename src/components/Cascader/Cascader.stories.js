@@ -441,3 +441,31 @@ export const 始终展开 = () => {
     </div>
   );
 };
+
+// 始终展开多选（用于预览下拉菜单样式）
+export const 始终展开多选 = () => {
+  const [value, setValue] = useState([
+    ['zhejiang', 'hangzhou', 'xihu'],
+    ['jiangsu', 'nanjing', 'xuanwu']
+  ]);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div>
+        <h4>多选下拉菜单始终展开</h4>
+        <div style={{ paddingBottom: '220px' }}>
+          <Cascader
+            multiple
+            open={true}
+            placeholder="请选择"
+            style={{ width: 400 }}
+            options={mockOptions}
+            value={value}
+            onChange={setValue}
+            version={Cascader.version}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
