@@ -17,6 +17,7 @@ import Modal from './Modal';
 import Money from './Money';
 import Notification from './Notification';
 import Pagination from './Pagination';
+import Popover from './Popover';
 import Radio from './Radio';
 import Row from './Row';
 import Select from './Select';
@@ -49,6 +50,7 @@ export {
   Money,
   Notification,
   Pagination,
+  Popover,
   Radio,
   Row,
   Select,

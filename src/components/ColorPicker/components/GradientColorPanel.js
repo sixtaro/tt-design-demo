@@ -1,5 +1,5 @@
 // GradientColorPanel.js - 渐变色模式颜色选择面板
-import { InputNumber } from 'antd';
+import InputNumber from '../../InputNumber';
 import { hsvToRgb } from '../utils/colorConverters';
 
 const GradientColorPanel = ({

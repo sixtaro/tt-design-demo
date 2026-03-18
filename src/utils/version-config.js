@@ -43,5 +43,6 @@ export const componentVersions = {
   TreeSelect: '1.0.0',
   TimePicker: '1.0.0',
   ColorPicker: '1.0.0',
+  Popover: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };
