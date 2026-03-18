@@ -1,10 +1,12 @@
 
 import { colorPalette, defaultColors, getLessVars } from './color-palette';
+import zhCN from 'antd/lib/locale/zh_CN';
 
 const DEFAULT_THEME = 'geekBlue';
 
 const createThemeConfig = (colorScheme) => ({
   theme: getLessVars(colorScheme),
+  locale: zhCN,
 });
 
 const createCSSVars = (colorScheme) => ({

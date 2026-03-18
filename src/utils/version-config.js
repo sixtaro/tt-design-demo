@@ -41,5 +41,6 @@ export const componentVersions = {
   Cascader: '1.0.0',
   Rate: '1.0.0',
   TreeSelect: '1.0.0',
+  TimePicker: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ThemeProvider } from '../src';
 
 const themes = {
   'geek-blue': {
@@ -97,9 +98,20 @@ export const themeList = [
   { value: 'cyan', title: '明青' },
 ];
 
+const themeNameMap = {
+  'geek-blue': 'geekBlue',
+  'dust-red': 'dustRed',
+  'mint-green': 'mintGreen',
+  'neon-blue': 'neonBlue',
+  'sunset-orange': 'sunsetOrange',
+  'golden-purple': 'goldenPurple',
+  'cyan': 'cyan',
+};
+
 export const ThemeDecorator = (Story, context) => {
   const theme = context.globals.theme || 'geek-blue';
   const themeVars = themes[theme] || themes['geek-blue'];
+  const themeName = themeNameMap[theme] || 'geekBlue';
 
   useEffect(() => {
     const root = document.documentElement;
@@ -118,7 +130,9 @@ export const ThemeDecorator = (Story, context) => {
       padding: '24px',
       backgroundColor: 'var(--tt-bg-white, #fff)',
     }}>
-      <Story />
+      <ThemeProvider theme={themeName}>
+        <Story />
+      </ThemeProvider>
     </div>
   );
 };

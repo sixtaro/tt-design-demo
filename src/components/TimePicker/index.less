@@ -1,0 +1,249 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-timepicker {
+  .ant-picker-active-bar {
+    background: unset;
+  }
+
+
+
+  &.ant-picker {
+    color: var(--tt-color-grey-7);
+    border-color: var(--tt-color-grey-3);
+    border-radius: 4px;
+
+    &:hover:not(.ant-picker-disabled):not(.ant-picker-status-error) {
+      border-color: var(--tt-color-primary-6);
+    }
+
+    &.ant-picker-focused,
+    &:focus-within {
+      border-color: var(--tt-color-primary-6);
+      box-shadow: 0 0 0 2px var(--tt-color-primary-2);
+    }
+
+    .ant-picker-active-bar {
+      background: unset;
+    }
+
+    .ant-picker-input>input {
+      color: var(--tt-color-grey-7);
+
+      &::placeholder {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    .ant-picker-suffix {
+      color: var(--tt-color-grey-5);
+    }
+
+    .ant-picker-clear {
+      color: var(--tt-color-grey-5);
+
+      &:hover {
+        color: var(--tt-color-grey-7);
+      }
+    }
+
+    &.ant-picker-disabled {
+      background-color: var(--tt-color-grey-1);
+      border-color: var(--tt-color-grey-2);
+
+      .ant-picker-input>input {
+        color: var(--tt-color-grey-5);
+
+        &::placeholder {
+          color: var(--tt-color-grey-5);
+        }
+      }
+
+      .ant-picker-suffix {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    &.ant-picker-status-error {
+      border-color: var(--tt-color-red-6);
+
+      &:hover {
+        border-color: var(--tt-color-red-6);
+      }
+
+      &.ant-picker-focused {
+        box-shadow: 0 0 0 2px rgba(255, 68, 51, 0.2);
+      }
+    }
+  }
+}
+
+.tt-picker-dropdown {
+  .ant-picker-panel-container {
+    border-radius: 4px;
+  }
+
+  .ant-picker-panel,
+  .ant-picker-panels .ant-picker-panel {
+    border-radius: 4px;
+
+    .ant-picker-header {
+      color: var(--tt-color-grey-7);
+      border-bottom: 1px solid var(--tt-color-grey-2);
+
+      .ant-picker-header-view {
+        button {
+          color: var(--tt-color-grey-7);
+
+          &:hover {
+            color: var(--tt-color-primary-6);
+          }
+        }
+      }
+    }
+
+    .ant-picker-content {
+      th {
+        color: var(--tt-color-grey-6);
+        font-weight: 500;
+      }
+
+      td {
+        .ant-picker-cell-inner {
+          color: var(--tt-color-grey-7);
+          border-radius: 4px;
+
+          &:hover {
+            background-color: var(--tt-color-grey-1);
+            color: var(--tt-color-grey-7);
+          }
+        }
+
+        &.ant-picker-cell-in-view {
+          .ant-picker-cell-inner {
+            color: var(--tt-color-grey-7);
+          }
+        }
+
+        &.ant-picker-cell-today {
+          .ant-picker-cell-inner::before {
+            border-color: var(--tt-color-primary-6);
+          }
+        }
+
+        &.ant-picker-cell-selected {
+          .ant-picker-cell-inner {
+            background-color: var(--tt-color-primary-1);
+            color: var(--tt-color-primary-6);
+
+            &:hover {
+              background-color: var(--tt-color-primary-1);
+              color: var(--tt-color-primary-6);
+            }
+          }
+        }
+
+        &.ant-picker-cell-disabled {
+          .ant-picker-cell-inner {
+            color: var(--tt-color-grey-4);
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    .ant-picker-footer {
+      border-top: 1px solid var(--tt-color-grey-2);
+    }
+
+    .ant-picker-ok button,
+    .ant-picker-now-btn {
+      color: var(--tt-color-primary-6);
+
+      &:hover {
+        color: var(--tt-color-primary-5);
+      }
+    }
+
+    .ant-picker-ok button.ant-btn {
+      background-color: var(--tt-color-primary-6);
+      border-color: var(--tt-color-primary-6);
+      color: #fff;
+
+      &:hover {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+        color: #fff;
+      }
+    }
+  }
+
+  .ant-picker-footer {
+    border-top: 1px solid var(--tt-color-grey-2);
+
+    .ant-picker-ok button.ant-btn {
+      background-color: var(--tt-color-primary-6);
+      border-color: var(--tt-color-primary-6);
+      color: #fff;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+        color: #fff;
+      }
+    }
+  }
+
+  .ant-picker-time-panel {
+    padding: 8px;
+
+    .ant-picker-time-panel-column {
+      border-right: none;
+
+      li {
+        border-radius: 4px;
+
+        .ant-picker-time-panel-cell-inner {
+          color: var(--tt-color-grey-7);
+          border-radius: 4px;
+        }
+
+        &:hover {
+          .ant-picker-time-panel-cell-inner {
+            background-color: var(--tt-color-grey-1);
+            color: var(--tt-color-grey-7);
+          }
+        }
+
+        &.ant-picker-time-panel-cell-selected {
+          .ant-picker-time-panel-cell-inner {
+            background-color: var(--tt-color-primary-1);
+            color: var(--tt-color-primary-6);
+          }
+
+          &:hover {
+            .ant-picker-time-panel-cell-inner {
+              background-color: var(--tt-color-primary-1);
+              color: var(--tt-color-primary-6);
+            }
+          }
+        }
+
+        &.ant-picker-time-panel-cell-disabled {
+          .ant-picker-time-panel-cell-inner {
+            color: var(--tt-color-grey-4);
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    .ant-picker-time-panel-column:last-child {
+      border-right: none;
+    }
+
+    .ant-picker-time-panel-column+.ant-picker-time-panel-column {
+      border-left: none;
+    }
+  }
+}

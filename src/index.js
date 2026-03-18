@@ -33,6 +33,7 @@ import BackTop from './components/BackTop';
 import Cascader from './components/Cascader';
 import Rate from './components/Rate';
 import TreeSelect from './components/TreeSelect';
+import TimePicker from './components/TimePicker';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors, getTheme, applyTheme } from './theme';
@@ -90,6 +91,7 @@ export {
   Cascader,
   Rate,
   TreeSelect,
+  TimePicker,
   versionUtils
 };
 
@@ -128,6 +130,7 @@ const components = {
   Cascader,
   Rate,
   TreeSelect,
+  TimePicker,
   ThemeProvider,
   colors,
   themeConfig,
