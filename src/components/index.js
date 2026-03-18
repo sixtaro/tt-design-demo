@@ -28,6 +28,7 @@ import Cascader from './Cascader';
 import Table from './Table';
 import Tabs from './Tabs';
 import Rate from './Rate';
+import ColorPicker from './ColorPicker';
 
 export {
   A,
@@ -59,4 +60,5 @@ export {
   Table,
   Tabs,
   Rate,
+  ColorPicker,
 };

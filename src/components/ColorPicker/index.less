@@ -1,0 +1,230 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-color-picker-preview-container {
+    height: 32px;
+    display: inline-flex;
+    border: 1px solid var(--tt-color-grey-2);
+    border-radius: 3px;
+    align-items: center;
+    padding: 4px;
+}
+
+.tt-color-picker-prefix {
+    margin: 0 8px;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.tt-color-picker-preview {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--tt-color-grey-2);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-right: 8px;
+}
+
+.tt-color-picker-value {
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 468px;
+}
+
+.tt-color-picker-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.tt-color-picker-btn-radio {
+    flex: 1;
+    background-color: var(--tt-bg-light);
+}
+
+.ant-radio-button-wrapper:first-child,
+.ant-radio-button-wrapper:last-child {
+    width: 45%;
+    text-align: center;
+    cursor: pointer;
+    margin: 4px;
+    background-color: var(--tt-bg-light);
+    border: none;
+}
+
+.tt-color-picker-panel {
+    margin-top: 12px;
+    border-radius: 4px;
+}
+
+.tt-color-picker-btn-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--tt-color-grey-2);
+    border-radius: 4px;
+    background: var(--tt-bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tt-color-picker-btn-button:hover,
+.tt-color-picker-btn-button:focus,
+.tt-color-picker-btn-button:active {
+    border: 1px solid var(--tt-color-grey-2);
+}
+
+.tt-color-picker-settings {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tt-color-picker-slider {
+    flex: 1;
+}
+
+.tt-color-picker-view {
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tt-color-picker-input,
+.tt-color-picker-rgba {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.tt-color-picker-input {
+    gap: 5px;
+}
+
+.tt-color-picker-item-input {
+    flex: 1;
+    border-radius: 4px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.tt-color-picker-item-rgba {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.tt-color-picker-value-rgba {
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.tt-color-picker-label-rgba {
+    font-size: 12px;
+    color: var(--tt-text-secondary);
+    margin-top: 4px;
+    white-space: nowrap;
+}
+
+.tt-color-picker-select-rgba {
+    margin-bottom: 23px;
+}
+
+.tt-color-picker-recent-colors-title {
+    color: var(--tt-text-body);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.tt-color-picker-recent-colors-list {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.tt-color-picker-recent-color-item {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tt-color-picker-common-color-row {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+}
+
+.tt-color-picker-common-color-item {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tt-color-picker-item-input.ant-input {
+    border: none;
+    background-color: var(--tt-bg-light);
+}
+
+.tt-color-picker-item-input.ant-input-number,
+.tt-color-picker-value-rgba.ant-input-number {
+    border: none;
+    background-color: var(--tt-bg-light);
+}
+
+.tt-color-picker-item-input.ant-input-number .ant-input-number-input,
+.tt-color-picker-value-rgba.ant-input-number .ant-input-number-input {
+    background-color: var(--tt-bg-light);
+}
+
+.tt-color-picker-item-input.ant-select .ant-select-selector,
+.tt-color-picker-select-rgba.ant-select .ant-select-selector {
+    border: none;
+    background-color: var(--tt-bg-light);
+}
+
+.tt-color-picker-btn-radio .ant-radio-button-wrapper {
+    border: none;
+    background-color: var(--tt-bg-light);
+    color: var(--tt-text-body);
+    font-size: 14px;
+}
+
+.tt-color-picker-btn-radio .ant-radio-button-wrapper::before {
+    background-color: transparent;
+}
+
+.tt-color-picker-btn-radio .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
+    background-color: var(--tt-bg-white);
+}
+
+.tt-color-picker-btn-radio .ant-radio-button-wrapper:hover,
+.tt-color-picker-btn-radio .ant-radio-button-wrapper:focus {
+    color: var(--tt-text-body);
+    background-color: var(--tt-bg-light);
+}
+
+.ant-popover-inner {
+    border-radius: 5px;
+}
+
+.ant-radio-button-wrapper.single-radio-button {
+    width: calc(100% - 8px);
+    text-align: center;
+    cursor: pointer;
+    margin: 4px;
+    background-color: var(--tt-bg-light);
+    border: none;
+}

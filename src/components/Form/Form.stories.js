@@ -11,6 +11,7 @@ import Switch from '../Switch';
 import Rate from '../Rate';
 import Cascader from '../Cascader';
 import TreeSelect from '../TreeSelect';
+import ColorPicker from '../ColorPicker';
 import Button from '../Button';
 
 export default {
@@ -163,6 +164,8 @@ const AllComponentsTemplate = (args) => {
         rate: 3,
         cascader: null,
         treeSelect: null,
+        color: '#1890ff',
+        gradient: 'linear-gradient(0deg, #1890ff 0%, #52c41a 100%)',
       }}
       onFinish={handleFinish}
       style={{ maxWidth: 800, padding: 24 }}
@@ -237,6 +240,14 @@ const AllComponentsTemplate = (args) => {
 
       <Form.Item label="树形选择" name="treeSelect">
         <TreeSelect placeholder="请选择节点" treeData={treeData} style={{ width: '100%' }} />
+      </Form.Item>
+
+      <Form.Item label="颜色选择" name="color">
+        <ColorPicker initialColor="#1890ff" showIcon />
+      </Form.Item>
+
+      <Form.Item label="渐变颜色" name="gradient">
+        <ColorPicker initialColor="#1890ff" initialStatus="gradient" />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: args.layout === 'horizontal' ? 6 : 0 }}>

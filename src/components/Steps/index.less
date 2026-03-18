@@ -1,0 +1,159 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-steps {
+  // 步骤图标样式
+  .ant-steps-item-icon {
+    border-color: var(--tt-border-color);
+    background-color: var(--tt-bg-white);
+
+    .ant-steps-icon {
+      color: var(--tt-color-grey-5);
+    }
+  }
+
+  // 等待状态
+  &.ant-steps-wait {
+    .ant-steps-item-icon {
+      border-color: var(--tt-border-color);
+
+      .ant-steps-icon {
+        color: var(--tt-color-grey-5);
+      }
+    }
+
+    .ant-steps-item-content {
+      .ant-steps-item-title {
+        color: var(--tt-text-secondary);
+      }
+
+      .ant-steps-item-description {
+        color: var(--tt-text-secondary);
+      }
+    }
+  }
+
+  // 进行中状态
+  .ant-steps-item-process {
+    .ant-steps-item-icon {
+      background-color: var(--tt-color-primary);
+      border-color: var(--tt-color-primary);
+
+      .ant-steps-icon {
+        color: #fff;
+      }
+    }
+
+    .ant-steps-item-content {
+      .ant-steps-item-title {
+        color: var(--tt-text-title);
+
+        &::after {
+          background-color: var(--tt-border-color);
+        }
+      }
+    }
+  }
+
+  // 完成状态
+  .ant-steps-item-finish {
+    .ant-steps-item-icon {
+      background-color: var(--tt-bg-white);
+      border-color: var(--tt-color-primary);
+
+      .ant-steps-icon {
+        color: var(--tt-color-primary);
+      }
+    }
+
+    .ant-steps-item-content {
+      .ant-steps-item-title {
+        color: var(--tt-text-title);
+
+        &::after {
+          background-color: var(--tt-color-primary);
+        }
+      }
+    }
+
+    > .ant-steps-item-container > .ant-steps-item-tail::after {
+      background-color: var(--tt-color-primary);
+    }
+  }
+
+  // 错误状态
+  .ant-steps-item-error {
+    .ant-steps-item-icon {
+      background-color: var(--tt-bg-white);
+      border-color: var(--tt-color-error);
+
+      .ant-steps-icon {
+        color: var(--tt-color-error);
+      }
+    }
+
+    .ant-steps-item-content {
+      .ant-steps-item-title {
+        color: var(--tt-color-error);
+      }
+
+      .ant-steps-item-description {
+        color: var(--tt-color-error);
+      }
+    }
+  }
+
+  // 悬停状态（可点击时）
+  .ant-steps-item:not(.ant-steps-item-active):hover {
+    .ant-steps-item-icon {
+      border-color: var(--tt-color-primary-hover);
+
+      .ant-steps-icon {
+        color: var(--tt-color-primary-hover);
+      }
+    }
+  }
+
+  // 小尺寸样式
+  &.ant-steps-small {
+    .ant-steps-item-icon {
+      border-color: var(--tt-border-color);
+    }
+
+    .ant-steps-item-process {
+      .ant-steps-item-icon {
+        background-color: var(--tt-color-primary);
+        border-color: var(--tt-color-primary);
+      }
+    }
+
+    .ant-steps-item-finish {
+      .ant-steps-item-icon {
+        background-color: var(--tt-color-primary);
+        border-color: var(--tt-color-primary);
+      }
+    }
+
+    .ant-steps-item-error {
+      .ant-steps-item-icon {
+        border-color: var(--tt-color-error);
+      }
+    }
+  }
+
+  // 导航模式样式
+  &.ant-steps-navigation {
+    .ant-steps-item {
+      &::before {
+        background-color: var(--tt-border-color);
+      }
+
+      &.ant-steps-item-active {
+        color: var(--tt-color-primary);
+
+        &::after {
+          background-color: var(--tt-color-primary);
+        }
+      }
+    }
+  }
+}
