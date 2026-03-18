@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Cascader from './index';
 
-// 更丰富的模拟数据
 const mockOptions = [
   {
     value: 'zhejiang',
@@ -115,7 +114,6 @@ const mockOptions = [
   }
 ];
 
-// 带禁用项的数据
 const mockOptionsWithDisabled = [
   {
     value: 'zhejiang',
@@ -179,7 +177,6 @@ export default {
   }
 };
 
-// 基础用法演示
 export const 基础用法 = () => {
   const [value1, setValue1] = useState();
   const [value2, setValue2] = useState(['zhejiang', 'hangzhou', 'xihu']);
@@ -224,7 +221,6 @@ export const 基础用法 = () => {
   );
 };
 
-// 不同尺寸 + 不同状态
 export const 尺寸与状态 = () => {
   const [value, setValue] = useState(['zhejiang', 'hangzhou', 'xihu']);
 
@@ -278,6 +274,27 @@ export const 尺寸与状态 = () => {
         </div>
       </div>
       <div>
+        <h4>错误状态</h4>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Cascader
+            status="error"
+            placeholder="错误状态"
+            style={{ width: 260 }}
+            options={mockOptions}
+            version={Cascader.version}
+          />
+          <Cascader
+            status="error"
+            placeholder="错误状态且有值"
+            style={{ width: 260 }}
+            options={mockOptions}
+            value={value}
+            onChange={setValue}
+            version={Cascader.version}
+          />
+        </div>
+      </div>
+      <div>
         <h4>带禁用选项</h4>
         <Cascader
           placeholder="请选择（部分选项禁用）"
@@ -290,7 +307,6 @@ export const 尺寸与状态 = () => {
   );
 };
 
-// 展开方式 + 可搜索
 export const 交互方式 = () => {
   const [value1, setValue1] = useState();
   const [value2, setValue2] = useState();
@@ -345,7 +361,6 @@ export const 交互方式 = () => {
   );
 };
 
-// 多选模式
 export const 多选模式 = () => {
   const [value1, setValue1] = useState([]);
   const [value2, setValue2] = useState([
@@ -418,39 +433,29 @@ export const 多选模式 = () => {
   );
 };
 
-// 始终展开（用于预览下拉菜单样式）
-export const 始终展开 = () => {
-  const [value, setValue] = useState();
+export const 始终展开预览 = () => {
+  const [value1, setValue1] = useState(['zhejiang', 'hangzhou', 'xihu']);
+  const [value2, setValue2] = useState([
+    ['zhejiang', 'hangzhou', 'xihu'],
+    ['jiangsu', 'nanjing', 'xuanwu']
+  ]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
       <div>
-        <h4>下拉菜单始终展开</h4>
+        <h4>单选下拉菜单始终展开</h4>
         <div style={{ paddingBottom: '220px' }}>
           <Cascader
             open={true}
             placeholder="请选择"
             style={{ width: 260 }}
             options={mockOptions}
-            value={value}
-            onChange={setValue}
+            value={value1}
+            onChange={setValue1}
             version={Cascader.version}
           />
         </div>
       </div>
-    </div>
-  );
-};
-
-// 始终展开多选（用于预览下拉菜单样式）
-export const 始终展开多选 = () => {
-  const [value, setValue] = useState([
-    ['zhejiang', 'hangzhou', 'xihu'],
-    ['jiangsu', 'nanjing', 'xuanwu']
-  ]);
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div>
         <h4>多选下拉菜单始终展开</h4>
         <div style={{ paddingBottom: '220px' }}>
@@ -460,8 +465,8 @@ export const 始终展开多选 = () => {
             placeholder="请选择"
             style={{ width: 400 }}
             options={mockOptions}
-            value={value}
-            onChange={setValue}
+            value={value2}
+            onChange={setValue2}
             version={Cascader.version}
           />
         </div>
