@@ -1,5 +1,5 @@
 ---
-alwaysApply: true
+alwaysApply: false
 description: 严禁对代码进行任何 HTML 实体转义，特别是 & 符号。代码必须保持原样。
 ---
 # 代码转义禁止规则

@@ -43,16 +43,16 @@
 .tt-color-picker-btn-radio {
     flex: 1;
     background-color: var(--tt-bg-light);
-}
 
-.ant-radio-button-wrapper:first-child,
-.ant-radio-button-wrapper:last-child {
-    width: 45%;
-    text-align: center;
-    cursor: pointer;
-    margin: 4px;
-    background-color: var(--tt-bg-light);
-    border: none;
+    .ant-radio-button-wrapper:first-child,
+    .ant-radio-button-wrapper:last-child {
+        width: 45%;
+        text-align: center;
+        cursor: pointer;
+        margin: 4px;
+        background-color: var(--tt-bg-light);
+        border: none;
+    }
 }
 
 .tt-color-picker-panel {
@@ -195,36 +195,40 @@
     background-color: var(--tt-bg-light);
 }
 
-.tt-color-picker-btn-radio .ant-radio-button-wrapper {
-    border: none;
-    background-color: var(--tt-bg-light);
-    color: var(--tt-text-body);
-    font-size: 14px;
+.tt-color-picker-btn-radio {
+    .ant-radio-button-wrapper {
+        border: none;
+        background-color: var(--tt-bg-light);
+        color: var(--tt-text-body);
+        font-size: 14px;
+    }
+
+    .ant-radio-button-wrapper::before {
+        background-color: transparent;
+    }
+
+    .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
+        background-color: var(--tt-bg-white);
+    }
+
+    .ant-radio-button-wrapper:hover,
+    .ant-radio-button-wrapper:focus {
+        color: var(--tt-text-body);
+        background-color: var(--tt-bg-light);
+    }
+
+    .ant-radio-button-wrapper.single-radio-button {
+        width: calc(100% - 8px);
+        text-align: center;
+        cursor: pointer;
+        margin: 4px;
+        background-color: var(--tt-bg-light);
+        border: none;
+    }
 }
 
-.tt-color-picker-btn-radio .ant-radio-button-wrapper::before {
-    background-color: transparent;
-}
-
-.tt-color-picker-btn-radio .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
-    background-color: var(--tt-bg-white);
-}
-
-.tt-color-picker-btn-radio .ant-radio-button-wrapper:hover,
-.tt-color-picker-btn-radio .ant-radio-button-wrapper:focus {
-    color: var(--tt-text-body);
-    background-color: var(--tt-bg-light);
-}
-
-.ant-popover-inner {
-    border-radius: 5px;
-}
-
-.ant-radio-button-wrapper.single-radio-button {
-    width: calc(100% - 8px);
-    text-align: center;
-    cursor: pointer;
-    margin: 4px;
-    background-color: var(--tt-bg-light);
-    border: none;
+.tt-color-picker-popover {
+    .ant-popover-inner {
+        border-radius: 5px;
+    }
 }

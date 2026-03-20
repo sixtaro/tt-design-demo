@@ -751,6 +751,7 @@ const ColorPicker = (props) => {
 
   return (
     <Popover
+      overlayClassName="tt-color-picker-popover"
       content={content}
       trigger="click"
       placement="bottomLeft"
