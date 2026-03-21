@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git add:*)",
       "Bash(npm run:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(yarn deploy-storybook:*)"
     ]
   }
 }

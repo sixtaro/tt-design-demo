@@ -13,7 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "generate:colors": "node scripts/generate-color-less.js",
-    "deploy-storybook": "gh-pages -d storybook-static -r https://github.com/sixtaro/tt-design-demo.git"
+    "deploy-storybook": "gh-pages -d storybook-static -r git@github.com:sixtaro/tt-design-demo.git"
   },
   "keywords": [
     "react",
