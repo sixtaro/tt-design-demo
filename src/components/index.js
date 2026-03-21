@@ -29,6 +29,8 @@ import Cascader from './Cascader';
 import Table from './Table';
 import Tabs from './Tabs';
 import Rate from './Rate';
+import CardSelect from './CardSelect';
+import Upload from './Upload';
 import ColorPicker from './ColorPicker';
 
 export {
@@ -62,5 +64,7 @@ export {
   Table,
   Tabs,
   Rate,
+  CardSelect,
+  Upload,
   ColorPicker,
 };

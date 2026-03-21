@@ -1,0 +1,316 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-upload {
+  .ant-upload {
+    margin-bottom: 8px;
+  }
+  .ant-upload-list-picture-card-container,
+  .ant-upload-select-picture-card {
+    width: var(--picture-card-width, 60px);
+    height: var(--picture-card-width, 60px);
+  }
+  // 照片墙样式
+  &-picture-card {
+    position: relative;
+    width: var(--picture-card-width, 60px);
+    height: var(--picture-card-width, 60px);
+    margin: 0 8px 8px 0;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--tt-bg-light);
+    border: 1px solid var(--tt-border-color-light);
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 24px;
+      color: var(--tt-color-primary);
+      img {
+        width: 20px;
+      }
+    }
+
+    &-progress {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      .ant-progress {
+        line-height: 2px;
+        .ant-progress-outer {
+          line-height: 2px;
+          .ant-progress-bg {
+            height: 2px !important;
+          }
+        }
+      }
+    }
+
+    &-percent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      z-index: 1;
+    }
+
+    &-actions {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 10;
+      pointer-events: auto;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin: 0 4px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &-error {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      color: var(--tt-color-error);
+      background: rgba(255, 244, 240, 0.9);
+
+      .anticon {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+    }
+
+    &.error {
+      border-color: var(--tt-color-error);
+    }
+  }
+
+  &-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background: var(--tt-bg-light);
+
+    &.uploading {
+      background: var(--tt-bg-light);
+    }
+
+    &.done {
+      background: var(--tt-bg-light);
+    }
+
+    &.error {
+      background: var(--tt-color-red-1);
+    }
+
+    &-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    &-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    &-icon {
+      font-size: 16px;
+      color: var(--tt-color-primary);
+      margin-right: 8px;
+      width: 16px;
+
+      img {
+        width: 100%;
+      }
+
+      &.error-icon {
+        color: var(--tt-color-error);
+      }
+
+      &-image {
+        width: 40px;
+      }
+    }
+
+    &-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
+      overflow: hidden;
+      border-radius: 4px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-name {
+      flex: 1;
+      min-width: 0;
+      font-size: 14px;
+      color: var(--tt-text-body);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-status {
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+
+      &-text {
+        font-size: 14px;
+        color: var(--tt-color-primary);
+        margin-right: 8px;
+      }
+
+      &-error {
+        color: var(--tt-color-error);
+      }
+
+      &-success-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 13px;
+        height: 13px;
+        margin-right: 8px;
+        font-size: 8px;
+        color: var(--tt-color-success);
+        background: var(--tt-color-success);
+        border-radius: 50%;
+
+        .anticon {
+          color: #fff;
+        }
+      }
+
+      &-error-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 13px;
+        height: 13px;
+        margin-right: 8px;
+        font-size: 8px;
+        color: var(--tt-color-error);
+        background: var(--tt-color-error);
+        border-radius: 50%;
+
+        .anticon {
+          color: #fff;
+        }
+      }
+    }
+
+    &-progress {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      .ant-progress {
+        line-height: 2px;
+        .ant-progress-outer {
+          line-height: 2px;
+          .ant-progress-bg {
+            height: 2px !important;
+          }
+        }
+      }
+    }
+
+    &-actions {
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      font-size: 14px;
+      color: var(--tt-text-secondary);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &:hover {
+        color: var(--tt-color-primary);
+        background-color: var(--tt-color-primary-1);
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &-retry {
+      color: var(--tt-color-primary);
+      cursor: pointer;
+      margin-right: 8px;
+
+      &:hover {
+        color: var(--tt-color-primary-5);
+      }
+    }
+  }
+}

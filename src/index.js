@@ -33,6 +33,7 @@ import BackTop from './components/BackTop';
 import Cascader from './components/Cascader';
 import Rate from './components/Rate';
 import CardSelect from './components/CardSelect';
+import Upload from './components/Upload';
 import TreeSelect from './components/TreeSelect';
 import TimePicker from './components/TimePicker';
 import * as versionUtils from './utils/version';
@@ -88,6 +89,7 @@ export {
   Cascader,
   Rate,
   CardSelect,
+  Upload,
   TreeSelect,
   TimePicker,
   versionUtils,
@@ -128,6 +130,7 @@ const components = {
   Cascader,
   Rate,
   CardSelect,
+  Upload,
   TreeSelect,
   TimePicker,
   ThemeProvider,

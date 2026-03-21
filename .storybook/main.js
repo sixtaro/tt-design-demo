@@ -1,4 +1,3 @@
-
 const path = require('path');
 const { getLessVars } = require('../src/theme/color-palette');
 
@@ -10,14 +9,14 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  webpackFinal: async (config) => {
-    builder: 'webpack5'
+
+  webpackFinal: async config => {
     // 添加路径别名
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),
     };
-    
+
     // 配置 Less 解析器
     config.module.rules.push({
       test: /\.less$/,
@@ -40,4 +39,3 @@ module.exports = {
     return config;
   },
 };
-
