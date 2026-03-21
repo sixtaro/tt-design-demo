@@ -1,3 +1,5 @@
+@import (reference) '../../style/themes/default.less';
+
 .keyboard-container {
     max-width: 420px;
 
@@ -14,29 +16,30 @@
             .key {
                 height: 32px;
                 min-width: 32px;
-                border: 1px solid #dee2e6;
+                border: 1px solid var(--tt-border-color);
                 border-radius: 6px;
-                background: white;
+                background: var(--tt-bg-white);
                 font-size: 16px;
                 transition: all 0.2s;
                 cursor: pointer;
                 text-align: center;
                 line-height: 32px;
+                color: var(--tt-text-body);
             }
 
             .key:not(.key-disabled):active {
-                background-color: #e9ecef;
+                background-color: var(--tt-bg-lighter);
             }
 
             .key:not(.key-disabled):hover {
-                background: var(--ant-primary-color);
+                background: var(--tt-color-primary);
                 transform: scale(0.95);
-                color: #ffffff;
+                color: var(--tt-bg-white);
             }
 
             .key-disabled {
-                background: #eff1f3 !important;
-                color: #9399a0;
+                background: var(--tt-bg-light) !important;
+                color: var(--tt-text-secondary);
                 cursor: not-allowed;
             }
         }

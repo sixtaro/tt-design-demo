@@ -36,6 +36,8 @@ import CardSelect from './components/CardSelect';
 import Upload from './components/Upload';
 import TreeSelect from './components/TreeSelect';
 import TimePicker from './components/TimePicker';
+import ColorPicker from './components/ColorPicker';
+import Plate from './components/Plate';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors, getTheme, applyTheme } from './theme';
@@ -92,6 +94,8 @@ export {
   Upload,
   TreeSelect,
   TimePicker,
+  ColorPicker,
+  Plate,
   versionUtils,
 };
 
@@ -133,6 +137,8 @@ const components = {
   Upload,
   TreeSelect,
   TimePicker,
+  ColorPicker,
+  Plate,
   ThemeProvider,
   colors,
   themeConfig,

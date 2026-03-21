@@ -6,7 +6,7 @@ import { Storage } from '@/utils';
 import UserTreeSelect from '../../tree/userTreeSelect';
 import ParkTreeSelect from '../../tree/parkTreeSelect';
 import LicencePlateInput from '../../licencePlateInput/licencePlateInput';
-import LicencePlateInputV2 from '../../licencePlateInputV2/licencePlateInputV2';
+import Plate from '@/components/Plate';
 import District from './district';
 import CustomCascade from './cascade';
 
@@ -1266,7 +1266,7 @@ class Filters extends PureComponent {
                                 ></Input.TextArea>
                             </>
                         ) : SystemConfig?.useNewLicencePlateInput ? (
-                            <LicencePlateInputV2
+                            <Plate
                                 type={'search'}
                                 value={column.filter.selectedKeys}
                                 onChange={value => {
@@ -1280,7 +1280,7 @@ class Filters extends PureComponent {
                                 }}
                                 popoverToTop={true}
                                 style={{ zIndex: 99 }}
-                            ></LicencePlateInputV2>
+                            ></Plate>
                         ) : (
                             <LicencePlateInput
                                 value={column.filter.selectedKeys}

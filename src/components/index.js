@@ -32,6 +32,7 @@ import Rate from './Rate';
 import CardSelect from './CardSelect';
 import Upload from './Upload';
 import ColorPicker from './ColorPicker';
+import Plate from './Plate';
 
 export {
   A,
@@ -67,4 +68,5 @@ export {
   CardSelect,
   Upload,
   ColorPicker,
+  Plate,
 };

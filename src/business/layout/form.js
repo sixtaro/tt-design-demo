@@ -22,7 +22,7 @@ import {
 import { DownOutlined } from '@ant-design/icons';
 import { Request, Utils, Storage } from '@/utils';
 import LicencePlateInput from '../licencePlateInput/licencePlateInput';
-import LicencePlateInputV2 from '../licencePlateInputV2/licencePlateInputV2';
+import Plate from '@/components/Plate';
 import { TelWithCode } from '@/business';
 import { FormatDatePicker, FormatRangePicker, FormatOrgSelect, FormatNewOrgSelect, FormatParkSelect, PercentInputNumber, FormatRegionSelect, FormatParkTreeWithSwitch } from './utils';
 // import ParkTreeWithSwitch from '../parkTreeWithSwitch/parkTreeWithSwitch';
@@ -663,13 +663,13 @@ export default React.forwardRef((props, ref) => {
                 }
                 const SystemConfig = Storage.get('SystemConfig');
                 formItemContent = SystemConfig?.useNewLicencePlateInput ? (
-                    <LicencePlateInputV2
+                    <Plate
                         {...formItemProps}
                         plateColorValueFromOutside={Number(color || 1)}
                         type={formItem.licencePlateType || 'input'}
                         disabled={loading || disabledOnEdit}
                         onColorOptionsChange={onColorOptionsChange}
-                    ></LicencePlateInputV2>
+                    ></Plate>
                 ) : (
                     <LicencePlateInput {...formItemProps} disabled={loading || disabledOnEdit}></LicencePlateInput>
                 );
