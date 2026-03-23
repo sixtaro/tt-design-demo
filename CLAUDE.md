@@ -1,10 +1,79 @@
-# tt-design 开发规约
+# CLAUDE.md
 
-## 组件架构规约 (Component Architecture)
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-你是一位精通 React 17 和 Ant Design 4.24 的资深前端专家。在开发 `tt-design` 组件库时，必须严格执行本架构规约。
+## 项目概述 (Project Overview)
+
+tt-design 是一个基于 React 17.0.1 和 Ant Design 4.24.8 的企业级前端组件库，使用 Rollup 打包，支持 Storybook 6.x 进行组件预览和文档。
+
+## 常用命令 (Common Commands)
+
+| 命令 | 说明 |
+| :--- | :--- |
+| `yarn install` | 安装项目依赖 |
+| `yarn build` | 使用 Rollup 构建组件库 (输出 CommonJS 和 ES Module 格式) |
+| `yarn watch` | 监听文件变化并自动重新构建 |
+| `yarn storybook` | 启动 Storybook 开发服务器 (端口 6006) |
+| `yarn build-storybook` | 构建 Storybook 静态文件 |
+| `yarn generate:colors` | 生成颜色主题文件 |
+| `yarn deploy-storybook` | 部署 Storybook 到 GitHub Pages |
+
+## 代码架构 (Code Architecture)
+
+### 目录结构 (Directory Structure)
+
+```
+tt-design/
+├── src/
+│   ├── components/          # 基础 UI 组件 (35+ 组件)
+│   │   ├── Button/       # 每个组件独立目录
+│   │   │   ├── index.js         # 组件实现
+│   │   │   ├── index.less       # 组件样式
+│   │   │   └── *.stories.js   # Storybook 案例
+│   │   └── index.js           # 基础组件统一导出
+│   ├── business/          # 业务组件 (15+ 组件)
+│   ├── utils/             # 工具函数库
+│   │   ├── version.js         # 版本管理工具
+│   │   └── version-config.js  # 版本号配置
+│   ├── theme/             # 主题系统
+│   │   ├── color-palette.js # 颜色调色板
+│   │   └── index.js         # 主题工具函数
+│   ├── style/             # 全局样式
+│   │   └── themes/        # 主题变量定义
+│   └── index.js          # 库主入口
+├── .storybook/           # Storybook 配置
+├── dist/                # 构建输出目录
+├── rollup.config.js     # Rollup 打包配置
+└── package.json         # 项目配置
+```
+
+### 构建系统 (Build System)
+
+- **打包工具**: Rollup 2.77.0
+- **输出格式**: CommonJS (`dist/cjs/`) 和 ES Module (`dist/esm/`)
+- **外部依赖**: React, ReactDOM, Ant Design, Axios, xlsx-js-style
+- **别名配置**: `@` 指向 `src/` 目录
+- **样式处理**: Less + PostCSS (自动压缩和提取 CSS)
+
+### 主题系统 (Theme System)
+
+支持 7 种预设主题: `geekBlue`, `dustRed`, `mintGreen`, `neonBlue`, `sunsetOrange`, `goldenPurple`, `cyan`
+
+- 使用 CSS 变量 + Less 变量双重支持
+- 通过 `ThemeProvider` 组件或 `applyTheme()` 函数应用主题
+- 颜色定义在 `src/theme/color-palette.js`
+
+### 版本管理 (Version Management)
+
+- 整体库版本和组件版本分离管理
+- 版本号集中配置在 `src/utils/version-config.js`
+- 每个组件通过 `data-component-version` 属性暴露版本号
+- 提供版本验证、比较、兼容性检查工具函数
+
+## 组件开发规约 (Component Development Guidelines)
 
 ### 1. 环境与版本锁定 (Environment Lockdown)
+
 * **React 版本**: 严格锁定 **17.0.1**。
 * **UI 基座**: 严格锁定 **Ant Design 4.24.8**。
     * **强制联网参考**: 在封装任何组件前，必须先搜索 `Ant Design 4.24 [组件名] props`。
@@ -36,7 +105,13 @@ import PropTypes from 'prop-types';
 };
 ```
 
----
+#### 2.4 组件开发流程
+1. 在 `src/components/` 下创建组件目录
+2. 实现组件逻辑 (`index.js`) 和样式 (`index.less`)
+3. 在 `src/components/index.js` 中导出组件
+4. 创建 Storybook 故事文件 (`*.stories.js`)
+5. 在 `src/utils/version-config.js` 中添加组件版本
+6. 更新主入口文件 `src/index.js`
 
 ## 色彩规范
 
@@ -71,8 +146,6 @@ import PropTypes from 'prop-types';
 4. **类名前缀**：以 `tt-` 为前缀
 5. **单一颜色源**：定义在 `src/theme/color-palette.js`
 
----
-
 ## 字体与排版规范
 
 所有组件的文本样式必须严格遵循本规范，禁止随意设置字号、行高和颜色，禁止使用 `!important`。
@@ -100,3 +173,19 @@ import PropTypes from 'prop-types';
 2. **颜色**：使用 CSS 变量 `var(--tt-*)`
 3. **禁止 !important**：确保组件可被用户自定义覆盖
 4. **继承字体族**：优先通过容器继承
+
+## CSS Class 命名规范 (BEM)
+
+组件库采用 **BEM (Block Element Modifier)** 命名规范，使用 `tt-` 前缀代表 tt-design。
+
+- **Block (块)**：`tt-{component-name}` (例: `tt-button`)
+- **Element (元素)**：`tt-{component-name}-{element-name}` (例: `tt-button-icon`)
+- **Modifier (修饰符)**：`tt-{component-name}-{modifier-name}` (例: `tt-button-primary`)
+
+## 组件列表 (Components)
+
+### 基础组件 (Basic Components)
+A, Button, Input, Select, Modal, Checkbox, Radio, Switch, Table, Form, DatePicker, TimePicker, Pagination, Message, Notification, Drawer, Tabs, Card, Spin, FloatButton, Divider, Row, Menu, Dropdown, Breadcrumb, Steps, Font, Color, Icon, BackTop, Cascader, Rate, CardSelect, TreeSelect, InputNumber, Money, Popover, ColorPicker
+
+### 业务组件 (Business Components)
+Selector, PageLayout, breadcrumbOrg, condition, excelExport, excelImport, importExportList, keyboard, layout, licencePlateInput, parkTreeWithSwitch, pictureSwiper, telWithCode, track, tree, upload

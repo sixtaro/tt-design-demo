@@ -1,0 +1,240 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-demo3 {
+  .tt-modal {
+    .ant-modal-header {
+      padding: 16px 24px;
+      border-bottom: none;
+    }
+
+    .ant-modal-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--tt-text-title);
+    }
+
+    .ant-modal-close {
+      top: 16px;
+      right: 24px;
+      color: var(--tt-text-secondary);
+
+      &:hover {
+        color: var(--tt-text-title);
+      }
+    }
+
+    .ant-modal-body {
+      padding: 0 24px 24px;
+      max-height: 700px;
+      overflow-y: auto;
+    }
+  }
+
+  &-form {
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+
+    .ant-form-item-label {
+      padding-bottom: 6px;
+
+      > label {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--tt-text-body);
+        height: auto;
+      }
+    }
+  }
+
+  &-required {
+    &::before {
+      content: '*';
+      color: #ff4d4f;
+      margin-right: 4px;
+    }
+  }
+
+  &-section {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--tt-text-title);
+      margin-bottom: 16px;
+      line-height: 24px;
+    }
+  }
+
+  // 全局变量样式
+  &-variables {
+    margin-bottom: 12px;
+  }
+
+  &-variables-header {
+    display: flex;
+    padding: 0 0 8px;
+    font-size: 12px;
+    color: var(--tt-text-secondary);
+  }
+
+  &-variables-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &-variables-col {
+    flex: 1;
+  }
+
+  &-delete-btn {
+    color: #ffffff;
+    padding: 4px 6px;
+    background: linear-gradient(135deg, #ff9c6c 0%, #ff7875 100%);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff8a5c 0%, #ff6060 100%);
+    }
+  }
+
+  &-add-variable-btn {
+    border-style: dashed;
+    border-color: var(--tt-border-color);
+    color: var(--tt-color-primary-6);
+    height: 36px;
+
+    &:hover {
+      color: var(--tt-color-primary-5);
+      border-color: var(--tt-color-primary-5);
+      background: transparent;
+    }
+  }
+
+  // 自依赖样式
+  &-self-dependency {
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+
+    .tt-checkbox {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  &-self-dependency-label {
+    font-weight: 500;
+    color: var(--tt-text-title);
+  }
+
+  &-self-dependency-desc {
+    font-size: 12px;
+    color: var(--tt-text-secondary);
+    margin-left: 4px;
+  }
+
+  // 上游依赖样式
+  &-dependencies {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &-dependency-card {
+    .tt-card {
+      background: #f5f7fa;
+      border: none;
+      border-radius: 6px;
+
+      .ant-card-body {
+        padding: 16px;
+      }
+    }
+  }
+
+  &-dependency-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  &-dependency-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--tt-text-title);
+  }
+
+  &-dependency-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .ant-form-item-label {
+      padding-bottom: 4px;
+    }
+  }
+
+  &-add-dependency-btn {
+    border-style: solid;
+    border-color: var(--tt-border-color);
+    color: var(--tt-color-primary-6);
+    height: 36px;
+    background: #ffffff;
+
+    &:hover {
+      color: var(--tt-color-primary-5);
+      border-color: var(--tt-color-primary-5);
+      background: #ffffff;
+    }
+  }
+
+  // 底部按钮
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--tt-border-color-light);
+  }
+
+  &-cancel-btn {
+    border-color: var(--tt-border-color);
+    color: var(--tt-text-body);
+
+    &:hover {
+      color: var(--tt-text-title);
+      border-color: var(--tt-border-color-dark);
+    }
+  }
+
+  &-confirm-btn {
+    background: var(--tt-color-primary-6);
+    border-color: var(--tt-color-primary-6);
+
+    &:hover {
+      background: var(--tt-color-primary-5);
+      border-color: var(--tt-color-primary-5);
+    }
+  }
+}

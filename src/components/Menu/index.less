@@ -1,6 +1,6 @@
 @import (reference) '../../style/themes/default.less';
 
-.tt-menu {
+.tt-menu.tt-menu.tt-menu {
   .ant-menu-item,
   .ant-menu-submenu-title {
     color: var(--tt-color-grey-7);
@@ -10,8 +10,12 @@
     }
 
     &:hover {
-      background-color: var(--tt-color-grey-1);
-      color: var(--tt-color-grey-7);
+      background-color: var(--tt-color-primary-1);
+      color: var(--tt-color-primary-6);
+
+      .anticon {
+        color: var(--tt-color-primary-6);
+      }
     }
   }
 
@@ -47,6 +51,14 @@
 
     .ant-menu-item,
     .ant-menu-submenu {
+      &:hover {
+        color: var(--tt-color-primary-6);
+
+        .anticon {
+          color: var(--tt-color-primary-6);
+        }
+      }
+
       &::after {
         border-bottom: 2px solid var(--tt-color-primary-6);
       }

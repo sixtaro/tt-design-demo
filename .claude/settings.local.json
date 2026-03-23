@@ -4,7 +4,12 @@
       "Bash(git add:*)",
       "Bash(npm run:*)",
       "WebSearch",
-      "Bash(yarn deploy-storybook:*)"
+      "Bash(yarn deploy-storybook:*)",
+      "Bash(yarn storybook:*)",
+      "Bash(yarn add:*)",
+      "Bash(git commit:*)",
+      "Bash(grep -A 3 \"''Chart''\" src/utils/version-config.js)",
+      "Bash(yarn build:*)"
     ]
   }
 }
