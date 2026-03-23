@@ -38,6 +38,7 @@ import TreeSelect from './components/TreeSelect';
 import TimePicker from './components/TimePicker';
 import ColorPicker from './components/ColorPicker';
 import Plate from './components/Plate';
+import Chart from './components/Chart';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors, getTheme, applyTheme } from './theme';
@@ -96,6 +97,7 @@ export {
   TimePicker,
   ColorPicker,
   Plate,
+  Chart,
   versionUtils,
 };
 
@@ -139,6 +141,7 @@ const components = {
   TimePicker,
   ColorPicker,
   Plate,
+  Chart,
   ThemeProvider,
   colors,
   themeConfig,
