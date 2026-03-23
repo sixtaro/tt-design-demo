@@ -33,6 +33,7 @@ import CardSelect from './CardSelect';
 import Upload from './Upload';
 import ColorPicker from './ColorPicker';
 import Plate from './Plate';
+import Chart from './Chart';
 
 export {
   A,
@@ -69,4 +70,5 @@ export {
   Upload,
   ColorPicker,
   Plate,
+  Chart,
 };
