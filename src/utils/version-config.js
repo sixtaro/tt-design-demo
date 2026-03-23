@@ -47,5 +47,6 @@ export const componentVersions = {
   CardSelect: '1.0.0',
   Upload: '1.0.0',
   Plate: '1.0.0',
+  Chart: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };
