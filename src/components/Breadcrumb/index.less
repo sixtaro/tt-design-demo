@@ -1,0 +1,109 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-breadcrumb-org {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--tt-border-color-light);
+  background: var(--tt-bg-white);
+
+  .tt-breadcrumb-org-view {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .tt-breadcrumb-org-content {
+    display: inline-block;
+    padding-right: 12px;
+    color: var(--tt-text-title);
+    font-weight: @font-weight-medium;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+
+    .ant-breadcrumb-link {
+      color: inherit;
+    }
+
+    .ant-breadcrumb-separator {
+      color: var(--tt-text-secondary);
+    }
+  }
+
+  .tt-breadcrumb-org-node,
+  .tt-breadcrumb-org-link,
+  .tt-breadcrumb-org-text {
+    display: inline-flex;
+    align-items: center;
+    line-height: @line-height-base;
+  }
+
+  .tt-breadcrumb-org-link,
+  .tt-breadcrumb-org-text {
+    color: inherit;
+  }
+
+  .tt-breadcrumb-org-link {
+    text-decoration: none;
+
+    &:hover {
+      color: var(--tt-color-primary-6);
+    }
+  }
+
+  .tt-breadcrumb-org-icon {
+    margin-right: 4px;
+    color: inherit;
+    font-size: @font-size-base;
+  }
+
+  .tt-breadcrumb-org-extra-before,
+  .tt-breadcrumb-org-extra {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .tt-breadcrumb-org-extra {
+    margin-left: auto;
+  }
+
+  .tt-breadcrumb-org-extra > * + * {
+    margin-left: 10px;
+  }
+}
+
+.tt-breadcrumb-org-tag.ant-tag {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 2px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: var(--tt-bg-light);
+  color: var(--tt-text-secondary);
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--tt-color-primary-6);
+    border-color: var(--tt-color-primary-1);
+  }
+
+  .tt-breadcrumb-org-tag-name::after {
+    content: '：';
+  }
+
+  .tt-breadcrumb-org-tag-value {
+    display: inline-block;
+    max-width: 230px;
+    overflow: hidden;
+    color: var(--tt-color-primary-6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+
+  .ant-tag-close-icon {
+    vertical-align: baseline;
+  }
+}
