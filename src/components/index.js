@@ -6,6 +6,7 @@ import Card from './Card';
 import Checkbox from './Checkbox';
 import DatePicker from './DatePicker';
 import Divider from './Divider';
+import Empty from './Empty';
 import Drawer from './Drawer';
 import Dropdown from './Dropdown';
 import FloatButton from './FloatButton';
@@ -43,6 +44,7 @@ export {
   Checkbox,
   DatePicker,
   Divider,
+  Empty,
   Drawer,
   Dropdown,
   FloatButton,

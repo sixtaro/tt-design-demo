@@ -21,6 +21,7 @@ import Card from './components/Card';
 import Spin from './components/Spin';
 import FloatButton from './components/FloatButton';
 import Divider from './components/Divider';
+import Empty from './components/Empty';
 import Row from './components/Row';
 import Menu from './components/Menu';
 import Dropdown from './components/Dropdown';
@@ -80,6 +81,7 @@ export {
   Spin,
   FloatButton,
   Divider,
+  Empty,
   Row,
   Menu,
   Dropdown,
@@ -124,6 +126,7 @@ const components = {
   Spin,
   FloatButton,
   Divider,
+  Empty,
   Row,
   Menu,
   Dropdown,

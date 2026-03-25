@@ -29,6 +29,7 @@ export const componentVersions = {
   Spin: '1.0.0',
   FloatButton: '1.0.0',
   Divider: '1.0.0',
+  Empty: '1.0.0',
   Row: '1.0.0',
   Menu: '1.0.0',
   Dropdown: '1.0.0',
