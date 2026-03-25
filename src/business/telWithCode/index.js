@@ -1,6 +1,8 @@
 // 带有区号的手机号选择
 import { useEffect, useState } from 'react';
-import { Input, InputNumber, Select } from 'antd';
+import Input from '@/components/Input';
+import InputNumber from '@/components/InputNumber';
+import Select from '@/components/Select';
 
 export default ({ value, onChange, ...props }) => {
     const [code, setCode] = useState();

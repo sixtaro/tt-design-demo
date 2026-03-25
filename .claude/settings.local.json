@@ -9,7 +9,16 @@
       "Bash(yarn add:*)",
       "Bash(git commit:*)",
       "Bash(grep -A 3 \"''Chart''\" src/utils/version-config.js)",
-      "Bash(yarn build:*)"
+      "Bash(yarn build:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(yarn build-storybook:*)",
+      "Bash(du -sh /Volumes/code/tt-design/src/components/*/images)",
+      "Bash(du -sh /Volumes/code/tt-design/src/business/*)",
+      "Bash(git:*)",
+      "Bash(for f:*)",
+      "Bash(do wc:*)",
+      "Bash(done)",
+      "Bash(do git:*)"
     ]
   }
 }

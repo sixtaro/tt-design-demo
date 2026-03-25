@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { Card, Space, Typography } from 'antd';
+import React from 'react';
+import Card from '@/components/Card';
+import Font from '@/components/Font';
 import TelWithCode from './index';
 
 const TelWithCodeDemo = ({ initialValue, ...args }) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = React.useState(initialValue);
 
   return (
     <Card style={{ maxWidth: 520 }}>
-      <Space direction="vertical" size={16} style={{ width: '100%' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%' }}>
         <TelWithCode {...args} value={value} onChange={setValue} />
-        <Typography.Text type="secondary">当前值：{value || '空'}</Typography.Text>
-      </Space>
+        <Font variant="small" style={{ color: 'var(--tt-text-secondary)' }}>
+          当前值：{value || '空'}
+        </Font>
+      </div>
     </Card>
   );
 };
