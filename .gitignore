@@ -29,5 +29,6 @@ yarn-error.log*
 /.npm-tmp
 ant-design-pro.less
 public/static/color.less
+/docs
 
 .vscode
