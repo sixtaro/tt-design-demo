@@ -128,6 +128,11 @@ import PropTypes from 'prop-types';
 - **严禁 HTML 实体转义**：代码中的 `&`、`<`、`>` 必须保持原样，不能写成 HTML 实体
 - **LESS 特别注意**：嵌套选择器中的 `&` 必须保持原样
 
+## 颜色与字体规范入口
+
+颜色与字体规范以 `CLAUDE.md` 为唯一活跃规则入口。
+实现映射：颜色单一来源见 `src/theme/color-palette.js`，CSS 变量输出层见 `src/style/color.less`，字号 / 行高 / 字重变量见 `src/style/themes/default.less`，运行时主题应用见 `src/theme/index.js`。
+
 ## 色彩规范
 
 所有组件的色彩样式必须严格遵循本规范，禁止硬编码颜色和使用 `!important`。
@@ -159,7 +164,7 @@ import PropTypes from 'prop-types';
 2. **禁止 !important**：确保组件可被用户自定义覆盖
 3. **引用主题文件**：首行 `@import (reference) '../../style/themes/default.less';`
 4. **类名前缀**：以 `tt-` 为前缀
-5. **单一颜色源**：定义在 `src/theme/color-palette.js`
+5. **相关文件**：颜色单一来源定义在 `src/theme/color-palette.js`，CSS 变量输出层见 `src/style/color.less`
 
 ## 字体与排版规范
 
@@ -188,6 +193,7 @@ import PropTypes from 'prop-types';
 2. **颜色**：使用 CSS 变量 `var(--tt-*)`
 3. **禁止 !important**：确保组件可被用户自定义覆盖
 4. **继承字体族**：优先通过容器继承
+5. **相关文件**：字号 / 行高 / 字重变量定义在 `src/style/themes/default.less`，运行时主题应用见 `src/theme/index.js`
 
 ## CSS Class 命名规范 (BEM)
 
