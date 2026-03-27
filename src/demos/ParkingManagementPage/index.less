@@ -1,0 +1,495 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-demo-parking-page {
+  background: #ffffff;
+
+  &__viewport {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: #ffffff;
+  }
+
+  &__stage {
+    position: relative;
+    width: 1920px;
+    height: 970px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #fffafa 0%, #f5f7fa 100%);
+  }
+
+  &__decoration {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 496px;
+    height: 970px;
+    display: block;
+  }
+
+  &__brand-block {
+    position: absolute;
+    left: 40px;
+    top: 26px;
+    width: 204px;
+    height: 30px;
+  }
+
+  &__brand-logo {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 24px;
+    height: 18px;
+    display: block;
+  }
+
+  &__brand-text {
+    position: absolute;
+    left: 35px;
+    top: 0;
+    color: #081126;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &__primary-nav {
+    position: absolute;
+    left: 280px;
+    top: 12px;
+    width: 904px;
+    height: 56px;
+    display: flex;
+  }
+
+  &__primary-nav-item {
+    width: 112px;
+    height: 56px;
+    color: #6b7a99;
+    font-size: 18px;
+    line-height: 56px;
+    text-align: center;
+    white-space: nowrap;
+
+    &--active {
+      color: #ff4433;
+      font-weight: 500;
+    }
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__top-actions {
+    position: absolute;
+    left: 1546px;
+    top: 15px;
+    width: 358px;
+    height: 50px;
+  }
+
+  &__top-action {
+    position: absolute;
+    top: 11px;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__top-action:nth-child(1) { left: 0; }
+  &__top-action:nth-child(2) { left: 44px; }
+  &__top-action:nth-child(3) { left: 88px; }
+  &__top-action:nth-child(4) { left: 132px; }
+  &__top-action:nth-child(5) { left: 176px; }
+  &__top-action:nth-child(6) { left: 220px; }
+  &__top-action:nth-child(7) { left: 264px; }
+
+  &__top-action-icon,
+  &__top-action-overlay {
+    position: absolute;
+    display: block;
+  }
+
+  &__top-action-icon {
+    inset: 0;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__top-action-overlay {
+    left: 5.833px;
+    top: 2.917px;
+    width: 16.333px;
+    height: 22.167px;
+  }
+
+  &__top-action-badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 12px;
+    background: #ff4433;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    font-size: 8px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 500;
+    box-sizing: border-box;
+  }
+
+  &__avatar {
+    position: absolute;
+    left: 308px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  &__avatar-bg,
+  &__avatar-image {
+    position: absolute;
+    display: block;
+  }
+
+  &__avatar-bg {
+    inset: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  &__avatar-image {
+    left: -7.149px;
+    top: -3.241px;
+    width: 62.446px;
+    height: 53.704px;
+  }
+
+  &__menu-strip {
+    position: absolute;
+    left: 280px;
+    top: 12px;
+    width: 904px;
+    height: 56px;
+    display: flex;
+    pointer-events: none;
+  }
+
+  &__menu-strip-item {
+    width: 112px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__menu-strip-text {
+    color: #6b7a99;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    white-space: nowrap;
+
+    &--active {
+      color: #ff4433;
+      font-weight: 500;
+    }
+  }
+
+  &__sidebar {
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    width: 240px;
+    height: 596px;
+  }
+
+  &__sidebar-item {
+    position: absolute;
+    left: 0;
+    width: 240px;
+    height: 52px;
+  }
+
+  &__sidebar-icon {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__sidebar-text {
+    position: absolute;
+    left: 55px;
+    top: 13px;
+    color: #6b7a99;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__sidebar-arrow {
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    transform: rotate(90deg) scaleY(-1);
+
+    &--expanded {
+      transform: scaleY(-1);
+      top: 38px;
+    }
+  }
+
+  &__sidebar-item--leaf {
+    .tt-demo-parking-page__sidebar-text {
+      left: 55px;
+    }
+  }
+
+  &__sidebar-item--active {
+    .tt-demo-parking-page__sidebar-text {
+      color: #ff4433;
+    }
+  }
+
+  &__tabbar {
+    position: absolute;
+    left: 280px;
+    top: 80px;
+    width: 1620px;
+    height: 52px;
+    overflow: hidden;
+  }
+
+  &__tabbar-bg {
+    position: absolute;
+    inset: 0;
+    width: 1620px;
+    height: 52px;
+    display: block;
+  }
+
+  &__tab {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    width: 260px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__tab-label {
+    position: absolute;
+    left: 27px;
+    top: 4px;
+    color: #223355;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__tab-button {
+    position: absolute;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__tab-button--all { left: 0; }
+  &__tab-button--widget { left: 188px; }
+  &__tab-button--close { left: 220px; }
+
+  &__tab-button-bg,
+  &__tab-button-shape {
+    position: absolute;
+    display: block;
+  }
+
+  &__tab-button-bg {
+    inset: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__tab-button-shape {
+    left: 2px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__tab-divider {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 32px;
+    background: #e9ecf2;
+  }
+
+  &__content-panel {
+    position: absolute;
+    left: 280px;
+    top: 148px;
+    width: 1620px;
+    height: 802px;
+    display: block;
+  }
+
+  &__portal {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 240px;
+    height: 273px;
+  }
+
+  &__portal-tools {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 52px;
+  }
+
+  &__portal-add,
+  &__portal-collapse {
+    position: absolute;
+    top: 0;
+    height: 52px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  &__portal-add {
+    left: 0;
+    width: 174px;
+    color: #6b7a99;
+    font-size: 18px;
+    line-height: 52px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  &__portal-add-icon {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__portal-collapse {
+    left: 186px;
+    width: 54px;
+  }
+
+  &__portal-collapse-icon {
+    position: absolute;
+    left: 15px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__portal-divider {
+    position: absolute;
+    left: 0;
+    top: 68px;
+    width: 240px;
+    height: 1px;
+    background: #e9ecf2;
+  }
+
+  &__portal-item {
+    position: absolute;
+    left: 0;
+    width: 240px;
+    height: 52px;
+    color: #6b7a99;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+
+    &:nth-child(3) { top: 85px; }
+    &:nth-child(4) { top: 153px; }
+    &:nth-child(5) { top: 221px; }
+
+    > span:last-child {
+      position: absolute;
+      left: 56px;
+      top: 13px;
+      white-space: nowrap;
+    }
+  }
+
+  &__portal-item-icon {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  &__portal-item-icon--myapp {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__portal-icon-bg,
+  &__portal-icon-shape {
+    position: absolute;
+    display: block;
+  }
+
+  &__portal-icon-bg {
+    inset: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__portal-icon-shape {
+    left: 3px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__portal-item-icon--organization {
+    .tt-demo-parking-page__portal-icon-shape {
+      left: 2px;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
