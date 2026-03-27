@@ -9,6 +9,9 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
+  // 部署到子路径时配置
+  // 本地开发使用默认路径，CI/CD 构建时传入环境变量
+  base: process.env.STORYBOOK_BASE_URL || '/',
 
   webpackFinal: async config => {
     // 添加路径别名

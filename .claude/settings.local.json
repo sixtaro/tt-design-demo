@@ -34,7 +34,25 @@
       "Bash(lsof -ti:6006)",
       "Bash(pkill -f storybook)",
       "Bash(node:*)",
-      "Bash(pkill -f \"storybook\\\\|node.*6006\")"
+      "Bash(pkill -f \"storybook\\\\|node.*6006\")",
+      "Bash(du -sh /Volumes/code/tt-design/dist/*)",
+      "Bash(ls /Volumes/code/tt-design/dist/*.map)",
+      "Bash(wc:*)",
+      "Bash(npm whoami:*)",
+      "Bash(npm view:*)",
+      "Bash(npm pack:*)",
+      "Bash(npm publish:*)",
+      "Bash(npm token:*)",
+      "Bash(npm org:*)",
+      "Bash(npm logout:*)",
+      "Bash(STORYBOOK_BASE_URL=/tt-design-demo/ yarn build:docs)",
+      "Bash(npx gh-pages:*)",
+      "Bash(mkdir -p storybook_temp)",
+      "Bash(mv index.html storybook_temp/)",
+      "Bash(mv static:*)",
+      "Bash(mv *.js storybook_temp/)",
+      "Bash(mv *.html storybook_temp/)",
+      "Bash(cd:*)"
     ]
   }
 }

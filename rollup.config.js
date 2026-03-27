@@ -15,15 +15,17 @@ export default {
       dir: 'dist/cjs',
       format: 'cjs',
       exports: 'named',
-      sourcemap: true,
-      entryFileNames: 'index.js'
+      sourcemap: false,
+      entryFileNames: 'index.js',
+      inlineDynamicImports: true,
     },
     {
       dir: 'dist/esm',
       format: 'esm',
       exports: 'named',
-      sourcemap: true,
-      entryFileNames: 'index.js'
+      sourcemap: false,
+      entryFileNames: 'index.js',
+      inlineDynamicImports: true,
     },
   ],
   watch: {
@@ -52,7 +54,7 @@ export default {
         less: {},
       },
       minimize: true, // 压缩 CSS
-      sourceMap: true, // 生成 sourcemap
+      sourceMap: false, // 不生成 sourcemap
       extract: true, // 提取 CSS 到单独文件
     }),
     babel({
@@ -63,5 +65,5 @@ export default {
     commonjs(),
     terser(),
   ],
-  external: ['react', 'react-dom', 'antd', 'axios', 'xlsx-js-style'],
+  external: ['react', 'react-dom', 'antd', 'axios', 'xlsx-js-style', 'mockjs'],
 };
