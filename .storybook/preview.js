@@ -11,6 +11,11 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  options: {
+    storySort: {
+      order: ['通用', '导航', '数据录入', '图表', '布局', '反馈', '数据展示', '其他', '业务组件', '案例']
+    }
+  },
 };
 
 export const globalTypes = {

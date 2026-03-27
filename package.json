@@ -15,7 +15,8 @@
     "generate:colors": "node scripts/generate-color-less.js",
     "deploy-storybook": "gh-pages -d storybook-static -r git@github.com:sixtaro/tt-design-demo.git",
     "mcp:dev": "node ./mcp/server.mjs",
-    "test:mcp": "node --test ./mcp/test/*.test.mjs"
+    "test:mcp": "node --test ./mcp/test/*.test.mjs",
+    "homepage": "node scripts/start-homepage.js"
   },
   "keywords": [
     "react",

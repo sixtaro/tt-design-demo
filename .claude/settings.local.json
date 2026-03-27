@@ -22,7 +22,19 @@
       "mcp__plugin_figma_figma__get_design_context",
       "mcp__plugin_figma_figma__get_metadata",
       "mcp__plugin_figma_figma__get_screenshot",
-      "Bash(yarn:*)"
+      "Bash(yarn:*)",
+      "Bash(ls -la /Volumes/code/tt-design/*.png)",
+      "Read(//Volumes/code/**)",
+      "Bash(pkill -f \"storybook\")",
+      "Bash(pkill -f \"serve public\")",
+      "Bash(pkill -f \"http.server\")",
+      "mcp__tt-design__get_component_api",
+      "Bash(lsof -ti:3000)",
+      "Bash(xargs kill:*)",
+      "Bash(lsof -ti:6006)",
+      "Bash(pkill -f storybook)",
+      "Bash(node:*)",
+      "Bash(pkill -f \"storybook\\\\|node.*6006\")"
     ]
   }
 }
