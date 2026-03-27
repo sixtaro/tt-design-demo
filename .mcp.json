@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "tt-design": {
+      "command": "node",
+      "args": [
+        "/Volumes/code/tt-design/.worktrees/tt-design-mcp-server-plan/mcp/server.mjs"
+      ]
+    }
+  }
+}
