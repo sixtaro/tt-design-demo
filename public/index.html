@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>tt-design - 企业级 React 组件库</title>
+  <!-- ========== 配置区 - 部署时修改这里的路径 ========== -->
+  <script>
+    window.APP_CONFIG = {
+      // 首页地址
+      HOME_URL: window.location.href,
+      // Storybook 访问地址
+      STORYBOOK_URL: window.location.hostname === 'localhost'
+        ? 'http://localhost:6006'
+        : window.location.origin + '/storybook'
+    };
+  </script>
+  <!-- ================================================ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -782,5 +794,14 @@
       </div>
     </footer>
   </div>
+  <!-- 替换所有 Storybook 链接 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var links = document.querySelectorAll('a[href*="localhost:6006"]');
+      links.forEach(function(link) {
+        link.href = link.href.replace(/http:\/\/localhost:6006/gi, window.APP_CONFIG.STORYBOOK_URL);
+      });
+    });
+  </script>
 </body>
 </html>
