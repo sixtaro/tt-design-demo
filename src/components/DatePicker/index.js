@@ -26,23 +26,7 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
   return [];
 };
 
-const QuickActionPanel = ({ actions, currentValue, onActionClick, getTrigger }) => {
-  const handleButtonClick = (e, action) => {
-    // Stop propagation so Ant's document-level rc-trigger listener doesn't
-    // see this click and close the popup.
-    e.stopPropagation();
-    onActionClick(action);
-  };
-
-  const handleMouseDown = (e) => {
-    // Keep focus on the trigger so Ant's rc-trigger doesn't detect a blur.
-    e.stopPropagation();
-    const input = getTrigger();
-    if (input) {
-      input.focus({ preventScroll: true });
-    }
-  };
-
+const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
   return (
     <div className="tt-picker-quick-actions">
       {actions.map((action) => {
@@ -56,8 +40,7 @@ const QuickActionPanel = ({ actions, currentValue, onActionClick, getTrigger }) 
             className={classNames('tt-picker-quick-action', {
               'tt-picker-quick-action-active': isActive,
             })}
-            onClick={(e) => handleButtonClick(e, action)}
-            onMouseDown={handleMouseDown}
+            onClick={() => onActionClick(action)}
           >
             {action.label}
           </button>
@@ -80,17 +63,7 @@ const DatePicker = forwardRef(({
   panelRender,
   ...props
 }, ref) => {
-  // Get the trigger input directly via document query.
-  // The trigger is always in the DOM once the component renders.
-  const triggerRef = useRef(null);
-  const getTrigger = () => {
-    if (typeof document === 'undefined') return null;
-    if (!triggerRef.current) {
-      triggerRef.current = document.querySelector('.ant-picker-input > input') ||
-                           document.querySelector('.ant-picker > input');
-    }
-    return triggerRef.current;
-  };
+  const quickActionPendingRef = useRef(false);
 
   const datePickerClassName = classNames('tt-datepicker', className);
   const pickerPopupClassName = classNames('tt-picker-dropdown', popupClassName);
@@ -107,6 +80,13 @@ const DatePicker = forwardRef(({
   const mergedValue = isValueControlled ? props.value : innerValue;
 
   const handleOpenChange = (nextOpen) => {
+    // If a quick action just fired, Ant may call onOpenChange(false) as part of
+    // its internal change handling. Suppress it — the popup should stay open.
+    if (quickActionPendingRef.current && nextOpen === false) {
+      quickActionPendingRef.current = false;
+      return;
+    }
+
     if (!isOpenControlled) {
       setInnerOpen(nextOpen);
     }
@@ -137,8 +117,19 @@ const DatePicker = forwardRef(({
       return;
     }
 
+    // Set flag BEFORE calling handleChange.
+    // When Ant processes this change and fires onOpenChange(false),
+    // handleOpenChange will see the flag and suppress the close.
+    quickActionPendingRef.current = true;
+
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
     handleChange(nextValue, nextDateString);
+
+    // Reset the flag after a tick so subsequent user interactions
+    // (e.g. clicking outside to close) work normally.
+    setTimeout(() => {
+      quickActionPendingRef.current = false;
+    }, 0);
   };
 
   const mergedPanelRender = (panelNode) => {
@@ -154,7 +145,6 @@ const DatePicker = forwardRef(({
           actions={mergedQuickActions}
           currentValue={mergedValue}
           onActionClick={handleQuickActionClick}
-          getTrigger={getTrigger}
         />
         <div className="tt-picker-quick-actions-divider" />
         <div className="tt-picker-panel-with-quick-actions-content">{renderedPanel}</div>
