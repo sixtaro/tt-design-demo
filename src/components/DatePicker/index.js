@@ -27,8 +27,22 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
 };
 
 const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
+  // Prevent Ant's rc-trigger close logic from firing when clicking inside the
+  // quick actions panel. Ant attaches document-level listeners for clicks
+  // outside the trigger. By stopping propagation at the capture phase,
+  // we prevent the document listener from seeing the click.
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
+
   return (
-    <div className="tt-picker-quick-actions">
+    <div
+      className="tt-picker-quick-actions"
+      onMouseDown={stopPropagation}
+      onClick={stopPropagation}
+      onKeyDown={stopPropagation}
+    >
       {actions.map((action) => {
         const actionValue = action.getValue();
         const isActive = currentValue && moment(currentValue).isSame(actionValue, 'day');
@@ -89,19 +103,6 @@ const DatePicker = forwardRef(({
   const [innerValue, setInnerValue] = useState(props.defaultValue);
   const mergedValue = isValueControlled ? props.value : innerValue;
 
-  // Used to force the Ant popup open during quick action processing.
-  // Set to true when a quick action is clicked, reset via setTimeout(0) after.
-  // This keeps the popup open even if Ant fires onOpenChange(false) from blur events.
-  const [forcedOpenForQuickAction, setForcedOpenForQuickAction] = useState(false);
-
-  // Compute the open prop for Ant DatePicker.
-  // During quick action processing: always pass true to prevent popup from closing.
-  // Otherwise: pass the controlled/uncontrolled merged value.
-  let antOpen = shouldShowQuickActions ? mergedValue : undefined; // placeholder
-  if (shouldShowQuickActions) {
-    antOpen = forcedOpenForQuickAction ? true : (isOpenControlled ? props.open : innerOpen);
-  }
-
   const handleOpenChange = (nextOpen) => {
     if (isProcessingQuickAction.current) {
       return; // suppress — don't notify parent, don't update innerOpen
@@ -138,14 +139,16 @@ const DatePicker = forwardRef(({
     }
 
     isProcessingQuickAction.current = true;
-    setForcedOpenForQuickAction(true);
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
     handleChange(nextValue, nextDateString);
-    // Reset after current event cycle so the suppression covers Ant's blur/focus events
+    // Reset after a short delay. Ant DatePicker's internal close logic
+    // (triggered by blur/focus events after the click) fires after the
+    // current microtask queue drains. We need the suppression flag to be
+    // true when Ant fires its onOpenChange(false). A 100ms delay covers
+    // most browser event timing scenarios.
     setTimeout(() => {
       isProcessingQuickAction.current = false;
-      setForcedOpenForQuickAction(false);
-    }, 0);
+    }, 100);
   };
 
   const mergedPanelRender = (panelNode) => {
@@ -175,7 +178,7 @@ const DatePicker = forwardRef(({
       disabled={disabled}
       format={format}
       picker={picker}
-      open={shouldShowQuickActions ? antOpen : props.open}
+      open={shouldShowQuickActions ? (isOpenControlled ? props.open : innerOpen) : props.open}
       value={shouldShowQuickActions ? mergedValue : props.value}
       onChange={shouldShowQuickActions ? handleChange : props.onChange}
       onOpenChange={shouldShowQuickActions ? handleOpenChange : props.onOpenChange}
