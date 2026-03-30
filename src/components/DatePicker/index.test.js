@@ -97,6 +97,7 @@ describe('DatePicker quick actions', () => {
   });
 
   it('does not fire onOpenChange(false) to parent when clicking quick action in controlled mode', async () => {
+    // Test with controlled open — parent manages open state via onOpenChange
     const handleOpenChange = jest.fn();
     const handleChange = jest.fn();
     render(

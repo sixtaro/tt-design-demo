@@ -66,10 +66,6 @@ const DatePicker = forwardRef(({
   const isProcessingQuickAction = useRef(false);
   useImperativeHandle(ref, () => ({
     triggerOpenChange: (val) => {
-      const isOpenControlled = typeof props.open === 'boolean';
-      if (!isOpenControlled) {
-        // In uncontrolled mode, skip suppress (this path shouldn't happen in tests)
-      }
       if (isProcessingQuickAction.current) {
         return; // suppress — don't notify parent
       }
@@ -91,8 +87,20 @@ const DatePicker = forwardRef(({
   const isValueControlled = Object.prototype.hasOwnProperty.call(props, 'value');
   const [innerOpen, setInnerOpen] = useState(Boolean(props.defaultOpen));
   const [innerValue, setInnerValue] = useState(props.defaultValue);
-  const mergedOpen = isOpenControlled ? props.open : innerOpen;
   const mergedValue = isValueControlled ? props.value : innerValue;
+
+  // Used to force the Ant popup open during quick action processing.
+  // Set to true when a quick action is clicked, reset via setTimeout(0) after.
+  // This keeps the popup open even if Ant fires onOpenChange(false) from blur events.
+  const [forcedOpenForQuickAction, setForcedOpenForQuickAction] = useState(false);
+
+  // Compute the open prop for Ant DatePicker.
+  // During quick action processing: always pass true to prevent popup from closing.
+  // Otherwise: pass the controlled/uncontrolled merged value.
+  let antOpen = shouldShowQuickActions ? mergedValue : undefined; // placeholder
+  if (shouldShowQuickActions) {
+    antOpen = forcedOpenForQuickAction ? true : (isOpenControlled ? props.open : innerOpen);
+  }
 
   const handleOpenChange = (nextOpen) => {
     if (isProcessingQuickAction.current) {
@@ -130,14 +138,13 @@ const DatePicker = forwardRef(({
     }
 
     isProcessingQuickAction.current = true;
+    setForcedOpenForQuickAction(true);
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
     handleChange(nextValue, nextDateString);
-    // Reset the flag after the current call stack. This ensures any synchronous
-    // Ant Design calls (onOpenChange triggered by the click) see the flag as true.
-    // We use setTimeout(0) instead of Promise.resolve() so it runs after all
-    // microtasks including await act() in tests, which drains microtasks eagerly.
+    // Reset after current event cycle so the suppression covers Ant's blur/focus events
     setTimeout(() => {
       isProcessingQuickAction.current = false;
+      setForcedOpenForQuickAction(false);
     }, 0);
   };
 
@@ -168,7 +175,7 @@ const DatePicker = forwardRef(({
       disabled={disabled}
       format={format}
       picker={picker}
-      open={shouldShowQuickActions ? mergedOpen : props.open}
+      open={shouldShowQuickActions ? antOpen : props.open}
       value={shouldShowQuickActions ? mergedValue : props.value}
       onChange={shouldShowQuickActions ? handleChange : props.onChange}
       onOpenChange={shouldShowQuickActions ? handleOpenChange : props.onOpenChange}
