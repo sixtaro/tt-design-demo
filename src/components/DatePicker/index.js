@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState, useCallback } from 'react';
 import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
 import { componentVersions } from '../../utils/version-config';
@@ -26,20 +26,19 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
   return [];
 };
 
-const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
-  // Prevent Ant's rc-trigger document click listener from seeing clicks inside the
-  // quick actions panel. This stops the popup from closing.
-  // Only onMouseDown needs stopPropagation — it prevents focus change that triggers
-  // the close. onClick is left unblocked so calendar interactions work normally.
-  const stopPropagation = (e) => {
-    e.stopPropagation();
+const QuickActionPanel = ({ actions, currentValue, onActionClick, triggerRef }) => {
+  // Keep focus on the trigger input so Ant's rc-trigger doesn't close the popup.
+  // When a button is clicked, the default browser behavior shifts focus away from
+  // the trigger to the button, triggering Ant's onOpenChange(false).
+  // By calling focus() on mouseDown, we keep the trigger focused.
+  const keepTriggerFocused = (e) => {
+    if (triggerRef && triggerRef.current) {
+      triggerRef.current.focus({ preventScroll: true });
+    }
   };
 
   return (
-    <div
-      className="tt-picker-quick-actions"
-      onMouseDown={stopPropagation}
-    >
+    <div className="tt-picker-quick-actions">
       {actions.map((action) => {
         const actionValue = action.getValue();
         const isActive = currentValue && moment(currentValue).isSame(actionValue, 'day');
@@ -52,6 +51,7 @@ const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
               'tt-picker-quick-action-active': isActive,
             })}
             onClick={() => onActionClick(action)}
+            onMouseDown={keepTriggerFocused}
           >
             {action.label}
           </button>
@@ -74,17 +74,12 @@ const DatePicker = forwardRef(({
   panelRender,
   ...props
 }, ref) => {
-  const isProcessingQuickAction = useRef(false);
-  useImperativeHandle(ref, () => ({
-    triggerOpenChange: (val) => {
-      if (isProcessingQuickAction.current) {
-        return; // suppress — don't notify parent
-      }
-      if (props.onOpenChange) {
-        props.onOpenChange(val);
-      }
-    },
-  }));
+  const triggerRef = useRef(null);
+  const containerRef = useCallback((node) => {
+    if (node) {
+      triggerRef.current = node.querySelector('.ant-picker > input');
+    }
+  }, []);
 
   const datePickerClassName = classNames('tt-datepicker', className);
   const pickerPopupClassName = classNames('tt-picker-dropdown', popupClassName);
@@ -101,10 +96,6 @@ const DatePicker = forwardRef(({
   const mergedValue = isValueControlled ? props.value : innerValue;
 
   const handleOpenChange = (nextOpen) => {
-    if (isProcessingQuickAction.current) {
-      return; // suppress — don't notify parent, don't update innerOpen
-    }
-
     if (!isOpenControlled) {
       setInnerOpen(nextOpen);
     }
@@ -135,17 +126,8 @@ const DatePicker = forwardRef(({
       return;
     }
 
-    isProcessingQuickAction.current = true;
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
     handleChange(nextValue, nextDateString);
-    // Reset after a short delay. Ant DatePicker's internal close logic
-    // (triggered by blur/focus events after the click) fires after the
-    // current microtask queue drains. We need the suppression flag to be
-    // true when Ant fires its onOpenChange(false). A 100ms delay covers
-    // most browser event timing scenarios.
-    setTimeout(() => {
-      isProcessingQuickAction.current = false;
-    }, 100);
   };
 
   const mergedPanelRender = (panelNode) => {
@@ -161,6 +143,7 @@ const DatePicker = forwardRef(({
           actions={mergedQuickActions}
           currentValue={mergedValue}
           onActionClick={handleQuickActionClick}
+          triggerRef={triggerRef}
         />
         <div className="tt-picker-quick-actions-divider" />
         <div className="tt-picker-panel-with-quick-actions-content">{renderedPanel}</div>
@@ -169,21 +152,23 @@ const DatePicker = forwardRef(({
   };
 
   return (
-    <AntDatePicker
-      {...props}
-      placeholder={placeholder}
-      disabled={disabled}
-      format={format}
-      picker={picker}
-      open={shouldShowQuickActions ? (isOpenControlled ? props.open : innerOpen) : props.open}
-      value={shouldShowQuickActions ? mergedValue : props.value}
-      onChange={shouldShowQuickActions ? handleChange : props.onChange}
-      onOpenChange={shouldShowQuickActions ? handleOpenChange : props.onOpenChange}
-      className={datePickerClassName}
-      popupClassName={pickerPopupClassName}
-      panelRender={mergedPanelRender}
-      data-component-version={version}
-    />
+    <div ref={containerRef}>
+      <AntDatePicker
+        {...props}
+        placeholder={placeholder}
+        disabled={disabled}
+        format={format}
+        picker={picker}
+        open={shouldShowQuickActions ? (isOpenControlled ? props.open : innerOpen) : props.open}
+        value={shouldShowQuickActions ? mergedValue : props.value}
+        onChange={shouldShowQuickActions ? handleChange : props.onChange}
+        onOpenChange={shouldShowQuickActions ? handleOpenChange : props.onOpenChange}
+        className={datePickerClassName}
+        popupClassName={pickerPopupClassName}
+        panelRender={mergedPanelRender}
+        data-component-version={version}
+      />
+    </div>
   );
 });
 
