@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import DatePicker from './index';
 
 const renderDatePicker = (props = {}) => {
@@ -94,6 +94,64 @@ describe('DatePicker quick actions', () => {
     });
 
     expect(await screen.findByRole('button', { name: '昨天' })).toHaveClass('tt-picker-quick-action-active');
+  });
+
+  it('does not fire onOpenChange(false) to parent when clicking quick action in controlled mode', async () => {
+    const handleOpenChange = jest.fn();
+    const handleChange = jest.fn();
+    render(
+      <DatePicker
+        open
+        showQuickActions
+        onOpenChange={handleOpenChange}
+        onChange={handleChange}
+        version={DatePicker.version}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+      />
+    );
+
+    fireEvent.click(await screen.findByRole('button', { name: '今天' }));
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleOpenChange).not.toHaveBeenCalled();
+    expect(await screen.findByRole('button', { name: '今天' })).toBeInTheDocument();
+  });
+
+  it('suppresses onOpenChange(false) from Ant Design when clicking quick action in controlled mode', async () => {
+    // In a real browser, Ant Design's rc-trigger fires onOpenChange(false) after
+    // the quick action click (trigger blur, focus shift in the portal, etc.).
+    // We simulate this via the exposed triggerOpenChange imperatively.
+    const parentOnOpenChange = jest.fn();
+    const handleChange = jest.fn();
+    const ref = { current: null };
+
+    render(
+      <DatePicker
+        ref={ref}
+        open
+        showQuickActions
+        onOpenChange={parentOnOpenChange}
+        onChange={handleChange}
+        version={DatePicker.version}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+      />
+    );
+
+    // Click the quick action — this sets isProcessingQuickAction = true
+    await act(async () => {
+      fireEvent.click(await screen.findByRole('button', { name: '今天' }));
+    });
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(ref.current).not.toBeNull();
+
+    // Simulate Ant Design firing onOpenChange(false) after the click.
+    // With the fix, this should be suppressed and not reach the parent.
+    await act(async () => {
+      ref.current.triggerOpenChange(false);
+    });
+
+    expect(parentOnOpenChange).not.toHaveBeenCalled();
+    expect(await screen.findByRole('button', { name: '今天' })).toBeInTheDocument();
   });
 
   it('composes quick actions with a user provided panelRender', async () => {

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
 import { componentVersions } from '../../utils/version-config';
@@ -50,7 +50,7 @@ const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
   );
 };
 
-const DatePicker = ({
+const DatePicker = forwardRef(({
   placeholder,
   disabled,
   format,
@@ -62,7 +62,23 @@ const DatePicker = ({
   picker,
   panelRender,
   ...props
-}) => {
+}, ref) => {
+  const isProcessingQuickAction = useRef(false);
+  useImperativeHandle(ref, () => ({
+    triggerOpenChange: (val) => {
+      const isOpenControlled = typeof props.open === 'boolean';
+      if (!isOpenControlled) {
+        // In uncontrolled mode, skip suppress (this path shouldn't happen in tests)
+      }
+      if (isProcessingQuickAction.current) {
+        return; // suppress — don't notify parent
+      }
+      if (props.onOpenChange) {
+        props.onOpenChange(val);
+      }
+    },
+  }));
+
   const datePickerClassName = classNames('tt-datepicker', className);
   const pickerPopupClassName = classNames('tt-picker-dropdown', popupClassName);
   const mergedPicker = picker || 'date';
@@ -79,6 +95,10 @@ const DatePicker = ({
   const mergedValue = isValueControlled ? props.value : innerValue;
 
   const handleOpenChange = (nextOpen) => {
+    if (isProcessingQuickAction.current) {
+      return; // suppress — don't notify parent, don't update innerOpen
+    }
+
     if (!isOpenControlled) {
       setInnerOpen(nextOpen);
     }
@@ -109,11 +129,16 @@ const DatePicker = ({
       return;
     }
 
+    isProcessingQuickAction.current = true;
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
-
     handleChange(nextValue, nextDateString);
-    // Do NOT close the popup here — let the user see the calendar highlight update,
-    // then they close it by clicking outside or selecting a calendar day.
+    // Reset the flag after the current call stack. This ensures any synchronous
+    // Ant Design calls (onOpenChange triggered by the click) see the flag as true.
+    // We use setTimeout(0) instead of Promise.resolve() so it runs after all
+    // microtasks including await act() in tests, which drains microtasks eagerly.
+    setTimeout(() => {
+      isProcessingQuickAction.current = false;
+    }, 0);
   };
 
   const mergedPanelRender = (panelNode) => {
@@ -153,7 +178,7 @@ const DatePicker = ({
       data-component-version={version}
     />
   );
-};
+});
 
 const RangePicker = ({ version, className, popupClassName, ...props }) => {
   const datePickerClassName = classNames(
