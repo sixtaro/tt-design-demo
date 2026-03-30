@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import DatePicker from './index';
 
@@ -128,6 +129,39 @@ export const 始终展开 = () => {
           <DatePicker open={true} placeholder="请选择日期" style={{ width: 260 }} version={DatePicker.version} />
         </div>
       </div>
+    </div>
+  );
+};
+
+export const 快捷操作 = () => {
+  return (
+    <div style={{ paddingBottom: '420px' }}>
+      <DatePicker
+        open={true}
+        showQuickActions
+        placeholder="请选择日期"
+        style={{ width: 280 }}
+        version={DatePicker.version}
+      />
+    </div>
+  );
+};
+
+export const 自定义快捷操作 = () => {
+  return (
+    <div style={{ paddingBottom: '420px' }}>
+      <DatePicker
+        open={true}
+        quickActions={[
+          { key: 'yesterday', label: '昨天', getValue: () => moment().subtract(1, 'day') },
+          { key: 'today', label: '今天', getValue: () => moment() },
+          { key: 'tomorrow', label: '明天', getValue: () => moment().add(1, 'day') },
+        ]}
+        value={moment().subtract(1, 'day')}
+        placeholder="请选择日期"
+        style={{ width: 280 }}
+        version={DatePicker.version}
+      />
     </div>
   );
 };
