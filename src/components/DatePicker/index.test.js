@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import DatePicker from './index';
 
@@ -96,25 +96,38 @@ describe('DatePicker quick actions', () => {
     expect(await screen.findByRole('button', { name: '昨天' })).toHaveClass('tt-picker-quick-action-active');
   });
 
-  it('does not fire onOpenChange(false) to parent when clicking quick action in controlled mode', async () => {
-    // Test with controlled open — parent manages open state via onOpenChange
+  it('does not close popup when clicking quick action in controlled mode', async () => {
+    // Real-world usage: parent controls open via onOpenChange
     const handleOpenChange = jest.fn();
     const handleChange = jest.fn();
-    render(
-      <DatePicker
-        open
-        showQuickActions
-        onOpenChange={handleOpenChange}
-        onChange={handleChange}
-        version={DatePicker.version}
-        getPopupContainer={(triggerNode) => triggerNode.parentElement}
-      />
-    );
 
+    const ControlledDatePicker = () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <DatePicker
+          open={open}
+          onOpenChange={(val) => { setOpen(val); handleOpenChange(val); }}
+          onChange={handleChange}
+          showQuickActions
+          version={DatePicker.version}
+          getPopupContainer={(triggerNode) => triggerNode.parentElement}
+        />
+      );
+    };
+
+    render(<ControlledDatePicker />);
+
+    // Open the popup
+    const trigger = document.querySelector('.ant-picker');
+    fireEvent.click(trigger);
+    expect(handleOpenChange).toHaveBeenLastCalledWith(true);
+
+    // Click quick action — popup should NOT close
     fireEvent.click(await screen.findByRole('button', { name: '今天' }));
 
     expect(handleChange).toHaveBeenCalledTimes(1);
-    expect(handleOpenChange).not.toHaveBeenCalled();
+    expect(handleOpenChange).not.toHaveBeenCalledWith(false);
+    // Popup should still be visible
     expect(await screen.findByRole('button', { name: '今天' })).toBeInTheDocument();
   });
 
