@@ -27,21 +27,18 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
 };
 
 const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
-  // Prevent Ant's rc-trigger close logic from firing when clicking inside the
-  // quick actions panel. Ant attaches document-level listeners for clicks
-  // outside the trigger. By stopping propagation at the capture phase,
-  // we prevent the document listener from seeing the click.
+  // Prevent Ant's rc-trigger document click listener from seeing clicks inside the
+  // quick actions panel. This stops the popup from closing.
+  // Only onMouseDown needs stopPropagation — it prevents focus change that triggers
+  // the close. onClick is left unblocked so calendar interactions work normally.
   const stopPropagation = (e) => {
     e.stopPropagation();
-    e.preventDefault();
   };
 
   return (
     <div
       className="tt-picker-quick-actions"
       onMouseDown={stopPropagation}
-      onClick={stopPropagation}
-      onKeyDown={stopPropagation}
     >
       {actions.map((action) => {
         const actionValue = action.getValue();
