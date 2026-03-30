@@ -141,6 +141,7 @@ export const 快捷操作 = () => {
         open={open}
         onOpenChange={setOpen}
         showQuickActions
+        showToday={false}
         placeholder="请选择日期"
         style={{ width: 280 }}
         version={DatePicker.version}
@@ -156,6 +157,8 @@ export const 自定义快捷操作 = () => {
       <DatePicker
         open={open}
         onOpenChange={setOpen}
+        showQuickActions
+        showToday={false}
         quickActions={[
           { key: 'yesterday', label: '昨天', getValue: () => moment().subtract(1, 'day') },
           { key: 'today', label: '今天', getValue: () => moment() },
