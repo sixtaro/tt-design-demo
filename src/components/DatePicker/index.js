@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState, useCallback } from 'react';
+import React, { forwardRef, useMemo, useRef, useState, useCallback } from 'react';
 import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
 import { componentVersions } from '../../utils/version-config';
@@ -27,11 +27,16 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
 };
 
 const QuickActionPanel = ({ actions, currentValue, onActionClick, triggerRef }) => {
-  // Keep focus on the trigger input so Ant's rc-trigger doesn't close the popup.
-  // When a button is clicked, the default browser behavior shifts focus away from
-  // the trigger to the button, triggering Ant's onOpenChange(false).
-  // By calling focus() on mouseDown, we keep the trigger focused.
-  const keepTriggerFocused = (e) => {
+  const handleButtonClick = (e, action) => {
+    // Stop propagation so Ant's document-level rc-trigger listener doesn't
+    // see this click and close the popup.
+    e.stopPropagation();
+    onActionClick(action);
+  };
+
+  const handleMouseDown = (e) => {
+    // Keep focus on the trigger so Ant's rc-trigger doesn't detect a blur.
+    e.stopPropagation();
     if (triggerRef && triggerRef.current) {
       triggerRef.current.focus({ preventScroll: true });
     }
@@ -50,8 +55,8 @@ const QuickActionPanel = ({ actions, currentValue, onActionClick, triggerRef }) 
             className={classNames('tt-picker-quick-action', {
               'tt-picker-quick-action-active': isActive,
             })}
-            onClick={() => onActionClick(action)}
-            onMouseDown={keepTriggerFocused}
+            onClick={(e) => handleButtonClick(e, action)}
+            onMouseDown={handleMouseDown}
           >
             {action.label}
           </button>
