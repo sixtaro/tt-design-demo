@@ -1,131 +1,255 @@
-# tt-design MCP 服务使用说明
+# tt-design MCP 接入与使用说明
 
-## 适用范围
-- 本文档说明如何在 Claude Code 中使用仓库内置的 tt-design MCP 服务。
-- MCP 只做**仓库源码静态分析**，不会读取 `node_modules`。
+## 简介
 
-## 1. 位置与配置
-### 1.1 `.mcp.json`
-仓库根目录提供 MCP server 注册信息：
+`tt-design MCP` 是面向 `tt-design` 组件库的源码静态分析服务，供开发者、产品经理、UI 设计师通过支持 MCP 的客户端查询组件库信息。
 
+当前版本主要能力包括：
+
+- 列出基础组件 / 业务组件
+- 查询组件导出位置与推荐导入方式
+- 查询组件 API 元信息
+- 查询组件样式元信息
+
+> 当前版本是“本地源码分析型 MCP”，需要配合本地 `tt-design` 仓库使用。
+
+## 适用对象
+
+### 开发者
+适合在开发前快速了解组件现状，例如：
+
+- 是否已有类似组件
+- 组件从哪里导出
+- 组件有哪些 props
+- 样式文件在哪里
+- 是否有版本配置 / propTypes
+
+### 产品经理
+适合快速了解组件库覆盖范围，例如：
+
+- 当前有哪些日期、表格、上传、选择器类组件
+- 某一类能力是否已有封装
+- 基础组件和业务组件分别有哪些
+
+### UI 设计师
+适合在设计前确认组件库已有能力，例如：
+
+- 某类组件是否已有现成封装
+- 某组件样式入口在哪
+- 哪些组件已经在库里沉淀
+
+## 前置条件
+
+使用前请确认：
+
+1. 本机已安装 Node.js
+2. 本机有 `tt-design` 仓库完整代码
+3. 已安装项目依赖
+4. 使用支持 MCP 的客户端（如 Claude Code）
+
+> 说明：当前服务会根据仓库结构自动确认项目根目录，因此使用者机器上必须存在本地仓库副本。
+
+## 快速接入
+
+### 1. 获取仓库
+
+```bash
+git clone <你的 tt-design 仓库地址>
+cd tt-design
+yarn install
 ```
-.mcp.json
-```
 
-内容示例（已在仓库内维护）：
+### 2. Claude Code 中使用
+
+#### 方式一：直接在仓库内使用
+当前仓库已内置 MCP 配置，打开仓库后可直接使用。
+
+项目内配置示例：
+
 ```json
 {
   "mcpServers": {
     "tt-design": {
       "command": "node",
-      "args": [
-        "mcp/server.mjs"
-      ]
+      "args": ["mcp/server.mjs"]
     }
   }
 }
 ```
 
-> 若你的运行目录不是仓库根目录，请确保 Claude Code 以仓库根目录启动，或将 args 改为绝对路径。
-
-### 1.2 Claude Code 启用
-在你的本地配置文件中启用该 MCP：
-
-```
-.claude/settings.local.json
-```
+#### 方式二：手动接入到自己的配置
+如果你希望在用户级或其他工作区中接入，可添加如下配置：
 
 ```json
 {
-  "enabledMcpjsonServers": ["tt-design"]
+  "mcpServers": {
+    "tt-design": {
+      "command": "node",
+      "args": ["/绝对路径/tt-design/mcp/server.mjs"]
+    }
+  }
 }
 ```
 
-也可以在用户级配置中启用（效果相同）：
+建议使用绝对路径，避免因工作目录不同导致启动失败。
 
-```
-~/.claude/settings.local.json
-```
+配置完成后：
 
-```json
-{
-  "enabledMcpjsonServers": ["tt-design"]
-}
-```
+1. 重启 Claude Code
+2. 打开 `tt-design` 仓库根目录
+3. 直接用自然语言提问
 
-> 如果配置后仍未生效，请重启 Claude Code 会话。
+## 是否需要手动启动
 
-## 2. 启动方式
-如果需要手动启动服务进行调试：
+正常使用时不需要手动启动。
+
+Claude Code 会按需拉起 MCP 服务。
+
+只有在调试服务本身时，才需要手动运行：
 
 ```bash
 yarn mcp:dev
 ```
 
-运行 MCP 测试：
+运行测试：
 
 ```bash
 yarn test:mcp
 ```
 
-## 3. 可用工具（Tools）
-服务提供 4 个工具，均返回统一的结果结构：
+## 如何确认接入成功
 
-```json
-{
-  "ok": true,
-  "data": {},
-  "error": null,
-  "sourceLocations": [],
-  "warnings": []
-}
-```
+配置完成后，直接在 Claude Code 中输入：
 
-### 3.1 list_components
-列出组件（支持可选筛选）：
+- `请用 tt-design MCP 列出所有基础组件`
+- `请用 tt-design MCP 查看 Button 的 API`
+- `请用 tt-design MCP 查看 DatePicker 的样式信息`
 
-输入：
-```json
-{
-  "category": "basic",
-  "keyword": "Button"
-}
-```
+如果能正常返回结果，说明接入成功。
 
-- `category`: `basic` 或 `business`
-- `keyword`: 关键字（可选）
+## 推荐使用流程
 
-### 3.2 find_component_exports
-查询组件的导出位置与推荐导入方式：
+### 开发者流程
+1. 先确认仓库里是否已有类似组件
+2. 查询目标组件 API、导出入口、样式入口
+3. 再决定是复用、扩展还是新增组件
+4. 开发完成后再结合 Storybook / 本地验证
 
-输入：
-```json
-{
-  "name": "Button"
-}
-```
+推荐问法：
 
-### 3.3 get_component_api
-读取组件 API 元信息：
+- `先用 tt-design MCP 看看库里有没有类似 DatePicker 的组件`
+- `帮我查 Button 的导出方式和 API`
+- `帮我看 Table 的样式入口和版本信息`
 
-输入：
-```json
-{
-  "name": "Button"
-}
-```
+### 产品经理流程
+1. 先让 Claude 列出某一类现有组件
+2. 再让 Claude 总结能力覆盖情况
+3. 最后确认是否需要新增组件需求
 
-### 3.4 get_component_style
-读取组件样式元信息：
+推荐问法：
 
-输入：
-```json
-{
-  "name": "Button"
-}
-```
+- `请列出 tt-design 中所有上传相关组件`
+- `当前组件库里有哪些日期和时间选择组件`
+- `请按基础组件和业务组件分别总结现有能力`
 
-## 4. 注意事项
-- MCP 只分析仓库源码，不会扫描 `node_modules`。
-- 如果组件缺少 `propTypes` 或版本配置，结果中会出现 `warnings`。
-- 组件样式分析仅覆盖当前仓库内可访问的 LESS 文件。
+### UI 设计师流程
+1. 先确认设计对象是否已在组件库中存在
+2. 再查看相近组件及其样式入口
+3. 设计时优先复用现有组件能力
+
+推荐问法：
+
+- `请列出库里现有的 Tabs、Drawer、Card 相关组件`
+- `帮我看 Button 和 FloatButton 的差异`
+- `帮我查 DatePicker 的样式入口`
+
+## 当前可用工具
+
+当前 `tt-design MCP` 提供 4 个工具：
+
+### `list_components`
+列出组件，支持按分类或关键字过滤。
+
+适合：
+
+- 看当前有哪些组件
+- 查某类组件是否存在
+
+### `find_component_exports`
+查询组件导出位置和推荐导入方式。
+
+适合：
+
+- 确认某组件从哪里导出
+- 确认业务组件 / 基础组件 / 根入口是否暴露
+
+### `get_component_api`
+查询组件 API 元信息。
+
+适合：
+
+- 看 props
+- 看默认值
+- 看是否有 `propTypes`
+- 看是否有版本信息
+
+### `get_component_style`
+查询组件样式元信息。
+
+适合：
+
+- 查样式文件
+- 查样式结构
+- 查组件样式入口
+
+## 使用限制
+
+当前版本有以下限制：
+
+1. 只分析本地仓库源码
+2. 不会扫描 `node_modules`
+3. 不会扫描 `.git`
+4. 不会读取 `.env`
+5. 主要面向组件源码静态分析
+6. 不替代 Storybook 预览和 Figma 设计工具
+
+因此：
+
+- 它适合“查现状、做分析、辅助决策”
+- 不适合直接替代视觉设计或运行时预览
+
+## 常见问题
+
+### Q1：我已经配置了，但没有生效
+请检查：
+
+- 当前打开的是不是 `tt-design` 仓库根目录
+- MCP 配置里的路径是否正确
+- 是否重启了 Claude Code
+
+### Q2：产品经理 / UI 设计师能直接用吗
+可以，但前提是：
+
+- 本机具备可运行环境
+- 本地有 `tt-design` 仓库
+- 已配置 MCP 客户端
+
+如果没有本地开发环境，当前版本不适合直接给非技术角色独立使用。
+
+### Q3：为什么查询结果和预期不一致
+当前 MCP 是静态分析型服务，结果取决于仓库现有源码结构。
+如果组件未完整导出、未配置版本、未声明 `propTypes`，结果中可能会出现 warning。
+
+## 建议的日常问法模板
+
+### 通用模板
+- `请用 tt-design MCP 列出所有基础组件`
+- `请用 tt-design MCP 查询 [组件名] 的 API`
+- `请用 tt-design MCP 查询 [组件名] 的导出位置`
+- `请用 tt-design MCP 查询 [组件名] 的样式信息`
+
+### 示例
+- `请用 tt-design MCP 查询 Button 的 API`
+- `请用 tt-design MCP 查询 DatePicker 的样式信息`
+- `请用 tt-design MCP 列出 business 组件`
+- `请用 tt-design MCP 查一下 Select 是怎么导出的`
