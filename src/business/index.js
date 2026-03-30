@@ -51,12 +51,23 @@ const updateTheme = (primaryColor, global) => {
   setTwoToneColor(primaryColor || window.globalThemeColor || window.themeColor);
 };
 
-const iconfontUrl = window.iconfontUrl || 'static/icon.js';
-
 const { isUrl } = Utils;
-const IconFont = createFromIconfontCN({
-  scriptUrl: window._app ? `${window._pageURL}/${iconfontUrl}` : iconfontUrl, // 在 iconfont.cn 上生成
-});
+let IconFont = null;
+
+const getIconFont = () => {
+  if (IconFont) {
+    return IconFont;
+  }
+  const iconfontUrl = window.iconfontUrl;
+  if (!iconfontUrl) {
+    return null;
+  }
+  const scriptUrl = window._app ? `${window._pageURL}/${iconfontUrl}` : iconfontUrl;
+  IconFont = createFromIconfontCN({
+    scriptUrl,
+  });
+  return IconFont;
+};
 const iconMap = new Map([
   ['user', UserOutlined],
   ['question', QuestionOutlined],
@@ -95,7 +106,11 @@ const getIcon = (icon, props) => {
       return <img src={icon} alt="icon" className="icon" {...props} />;
     }
     if (icon.startsWith('icon-') || icon.startsWith('picon-')) {
-      return <IconFont className="icon" {...props} type={icon.replace('picon-', 'icon-')} />;
+      const IconFontComponent = getIconFont();
+      if (IconFontComponent) {
+        return <IconFontComponent className="icon" {...props} type={icon.replace('picon-', 'icon-')} />;
+      }
+      return <FrownOutlined {...props} />;
     }
     const findKeys = Object.keys(icons).find(i => i.toLowerCase().indexOf(icon.replace('-', '').toLowerCase()) === 0);
     if (findKeys) {

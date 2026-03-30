@@ -112,7 +112,8 @@ const DatePicker = ({
     const nextDateString = nextValue ? nextValue.format(format || 'YYYY-MM-DD') : '';
 
     handleChange(nextValue, nextDateString);
-    handleOpenChange(false);
+    // Do NOT close the popup here — let the user see the calendar highlight update,
+    // then they close it by clicking outside or selecting a calendar day.
   };
 
   const mergedPanelRender = (panelNode) => {

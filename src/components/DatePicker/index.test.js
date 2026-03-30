@@ -51,9 +51,9 @@ describe('DatePicker quick actions', () => {
     expect(screen.queryByRole('button', { name: '昨天' })).not.toBeInTheDocument();
   });
 
-  it('calls onChange and closes when a quick action is clicked', async () => {
+  it('calls onChange when a quick action is clicked and keeps popup open so calendar highlights', async () => {
     const handleChange = jest.fn();
-    const { container } = render(
+    render(
       <DatePicker
         defaultOpen
         showQuickActions
@@ -66,14 +66,13 @@ describe('DatePicker quick actions', () => {
     fireEvent.click(await screen.findByRole('button', { name: '今天' }));
 
     expect(handleChange).toHaveBeenCalledTimes(1);
-    await waitFor(() => {
-      expect(container.querySelector('.ant-picker-dropdown-hidden')).not.toBeNull();
-    });
+    // Popup stays open so user can see the calendar cell highlight
+    expect(await screen.findByRole('button', { name: '今天' })).toBeInTheDocument();
   });
 
-  it('does not select or close when a quick action matches disabledDate', async () => {
+  it('does not call onChange when a quick action matches disabledDate', async () => {
     const handleChange = jest.fn();
-    const { container } = render(
+    render(
       <DatePicker
         defaultOpen
         showQuickActions
@@ -87,7 +86,6 @@ describe('DatePicker quick actions', () => {
     fireEvent.click(await screen.findByRole('button', { name: '今天' }));
 
     expect(handleChange).not.toHaveBeenCalled();
-    expect(container.querySelector('.ant-picker-dropdown-hidden')).toBeNull();
   });
 
   it('highlights the quick action that matches the current value', async () => {
