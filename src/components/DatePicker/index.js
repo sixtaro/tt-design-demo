@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import moment from 'moment';
 import { DatePicker as AntDatePicker } from 'antd';
 import { componentVersions } from '../../utils/version-config';
@@ -26,7 +26,14 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
   return [];
 };
 
-const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
+const QuickActionPanel = ({ actions, currentValue, onActionClick, focusTrigger }) => {
+  const handleMouseDown = (e) => {
+    e.stopPropagation();
+    if (focusTrigger) {
+      focusTrigger();
+    }
+  };
+
   return (
     <div className="tt-picker-quick-actions">
       {actions.map((action) => {
@@ -40,6 +47,7 @@ const QuickActionPanel = ({ actions, currentValue, onActionClick }) => {
             className={classNames('tt-picker-quick-action', {
               'tt-picker-quick-action-active': isActive,
             })}
+            onMouseDown={handleMouseDown}
             onClick={() => onActionClick(action)}
           >
             {action.label}
@@ -64,6 +72,7 @@ const DatePicker = forwardRef(({
   ...props
 }, ref) => {
   const quickActionPendingRef = useRef(false);
+  const pickerRef = useRef(null);
 
   const datePickerClassName = classNames('tt-datepicker', className);
   const pickerPopupClassName = classNames('tt-picker-dropdown', popupClassName);
@@ -78,6 +87,8 @@ const DatePicker = forwardRef(({
   const [innerOpen, setInnerOpen] = useState(Boolean(props.defaultOpen));
   const [innerValue, setInnerValue] = useState(props.defaultValue);
   const mergedValue = isValueControlled ? props.value : innerValue;
+
+  useImperativeHandle(ref, () => pickerRef.current);
 
   const handleOpenChange = (nextOpen) => {
     // If a quick action just fired, Ant may call onOpenChange(false) as part of
@@ -108,6 +119,12 @@ const DatePicker = forwardRef(({
 
   const isQuickActionDisabled = (nextValue) => {
     return typeof props.disabledDate === 'function' && nextValue ? props.disabledDate(nextValue) : false;
+  };
+
+  const focusTrigger = () => {
+    if (pickerRef.current && typeof pickerRef.current.focus === 'function') {
+      pickerRef.current.focus();
+    }
   };
 
   const handleQuickActionClick = (action) => {
@@ -145,6 +162,7 @@ const DatePicker = forwardRef(({
           actions={mergedQuickActions}
           currentValue={mergedValue}
           onActionClick={handleQuickActionClick}
+          focusTrigger={focusTrigger}
         />
         <div className="tt-picker-quick-actions-divider" />
         <div className="tt-picker-panel-with-quick-actions-content">{renderedPanel}</div>
@@ -155,6 +173,7 @@ const DatePicker = forwardRef(({
   return (
     <AntDatePicker
       {...props}
+      ref={pickerRef}
       placeholder={placeholder}
       disabled={disabled}
       format={format}

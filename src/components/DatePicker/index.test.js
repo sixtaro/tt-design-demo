@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useState } from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, createEvent, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import DatePicker from './index';
 
 const renderDatePicker = (props = {}) => {
@@ -156,6 +156,43 @@ describe('DatePicker quick actions', () => {
     expect(handleChange).toHaveBeenCalledTimes(1);
     // Popup should stay open
     expect(await screen.findByRole('button', { name: '今天' })).toBeInTheDocument();
+  });
+
+  it('re-focuses the matching picker instance on quick action mousedown', async () => {
+    const firstRef = React.createRef();
+    const secondRef = React.createRef();
+
+    render(
+      <div>
+        <DatePicker
+          ref={firstRef}
+          open
+          showQuickActions
+          version={DatePicker.version}
+          getPopupContainer={(triggerNode) => triggerNode.parentElement}
+        />
+        <DatePicker
+          ref={secondRef}
+          open
+          showQuickActions
+          version={DatePicker.version}
+          getPopupContainer={(triggerNode) => triggerNode.parentElement}
+        />
+      </div>
+    );
+
+    expect(firstRef.current).not.toBeNull();
+    expect(secondRef.current).not.toBeNull();
+
+    const firstFocusSpy = jest.spyOn(firstRef.current, 'focus');
+    const secondFocusSpy = jest.spyOn(secondRef.current, 'focus');
+    const quickActions = await screen.findAllByRole('button', { name: '今天' });
+    const mouseDownEvent = createEvent.mouseDown(quickActions[1]);
+
+    quickActions[1].dispatchEvent(mouseDownEvent);
+
+    expect(secondFocusSpy).toHaveBeenCalled();
+    expect(firstFocusSpy).not.toHaveBeenCalled();
   });
 
   it('composes quick actions with a user provided panelRender', async () => {
