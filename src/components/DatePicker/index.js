@@ -28,6 +28,7 @@ const getMergedQuickActions = ({ showQuickActions, quickActions }) => {
 
 const QuickActionPanel = ({ actions, currentValue, onActionClick, focusTrigger }) => {
   const handleMouseDown = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     if (focusTrigger) {
       focusTrigger();

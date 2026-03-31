@@ -195,6 +195,24 @@ describe('DatePicker quick actions', () => {
     expect(firstFocusSpy).not.toHaveBeenCalled();
   });
 
+  it('prevents default blur-close behavior on quick action mousedown', async () => {
+    render(
+      <DatePicker
+        open
+        showQuickActions
+        version={DatePicker.version}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+      />
+    );
+
+    const quickAction = await screen.findByRole('button', { name: '今天' });
+    const mouseDownEvent = createEvent.mouseDown(quickAction);
+
+    quickAction.dispatchEvent(mouseDownEvent);
+
+    expect(mouseDownEvent.defaultPrevented).toBe(true);
+  });
+
   it('composes quick actions with a user provided panelRender', async () => {
     render(
       <DatePicker

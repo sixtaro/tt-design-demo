@@ -16,7 +16,7 @@
       box-shadow: 0 0 0 2px var(--tt-color-primary-2);
     }
 
-    .ant-picker-input > input {
+    .ant-picker-input>input {
       color: var(--tt-color-grey-7);
 
       &::placeholder {
@@ -40,7 +40,7 @@
       background-color: var(--tt-color-grey-1);
       border-color: var(--tt-color-grey-2);
 
-      .ant-picker-input > input {
+      .ant-picker-input>input {
         color: var(--tt-color-grey-5);
 
         &::placeholder {
@@ -68,6 +68,7 @@
 }
 
 .tt-picker-dropdown {
+
   .ant-picker-panel-container {
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -363,17 +364,17 @@
     }
 
     .ant-picker-ok button {
-      background-color: var(--tt-color-primary-6) !important;
-      border-color: var(--tt-color-primary-6) !important;
-      color: #fff !important;
+      background-color: var(--tt-color-primary-6);
+      border-color: var(--tt-color-primary-6);
+      color: #fff;
       border-radius: 6px;
       height: 32px;
       font-size: 14px;
 
       &:hover {
-        background-color: var(--tt-color-primary-5) !important;
-        border-color: var(--tt-color-primary-5) !important;
-        color: #fff !important;
+        background-color: var(--tt-color-primary-5);
+        border-color: var(--tt-color-primary-5);
+        color: #fff;
       }
     }
   }
@@ -437,7 +438,7 @@
       border-right: none;
     }
 
-    .ant-picker-time-panel-column + .ant-picker-time-panel-column {
+    .ant-picker-time-panel-column+.ant-picker-time-panel-column {
       border-left: none;
     }
 
@@ -468,5 +469,9 @@
     .ant-picker-active-bar {
       background-color: var(--tt-color-primary-6);
     }
+  }
+
+  .ant-picker-panel .ant-picker-content td.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border-color: transparent !important;
   }
 }
