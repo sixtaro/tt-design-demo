@@ -12,13 +12,7 @@ const TEST_DIR = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(TEST_DIR, '../..');
 const DIST_META_DIR = path.join(REPO_ROOT, 'dist/meta');
 
-function removeGeneratedMetaDir() {
-  fs.rmSync(DIST_META_DIR, { recursive: true, force: true });
-}
-
 test('buildGeneratedMeta creates schema-valid metadata files for published package consumption', () => {
-  removeGeneratedMetaDir();
-
   const bundle = buildGeneratedMeta();
   const parsedBundle = generatedMetaBundleSchema.parse(bundle);
 

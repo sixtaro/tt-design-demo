@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -145,4 +146,14 @@ test('stdio MCP server keeps stdout protocol-clean and stays alive long enough f
     await client.close();
     await transport.close();
   }
+});
+
+test('repository metadata build produces files required by the published tt-design-mcp package', () => {
+  const metaRoot = path.resolve(REPO_ROOT, 'dist/meta');
+
+  assert.equal(fs.existsSync(path.join(metaRoot, 'components.json')), true);
+  assert.equal(fs.existsSync(path.join(metaRoot, 'exports.json')), true);
+  assert.equal(fs.existsSync(path.join(metaRoot, 'api.json')), true);
+  assert.equal(fs.existsSync(path.join(metaRoot, 'styles.json')), true);
+  assert.equal(fs.existsSync(path.join(metaRoot, 'version.json')), true);
 });
