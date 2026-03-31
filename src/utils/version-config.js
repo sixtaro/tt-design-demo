@@ -19,7 +19,7 @@ export const componentVersions = {
   InputNumber: '1.1.0',
   Table: '1.0.0',
   Form: '1.0.0',
-  DatePicker: '1.0.0',
+  DatePicker: '1.0.2',
   Pagination: '1.0.0',
   Message: '1.0.0',
   Notification: '1.0.0',

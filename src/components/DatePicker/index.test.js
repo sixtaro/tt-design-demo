@@ -24,14 +24,53 @@ describe('DatePicker quick actions', () => {
     expect(await screen.findByRole('button', { name: '明天' })).toBeInTheDocument();
   });
 
-  it('does not render quick actions for non-date pickers', async () => {
+  it('renders month quick actions when picker is month', async () => {
     const { container } = renderDatePicker({ picker: 'month' });
 
     await waitFor(() => {
       expect(container.querySelector('.ant-picker-panel-container')).not.toBeNull();
     });
 
+    expect(await screen.findByRole('button', { name: '上月' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '本月' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '下月' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: '昨天' })).not.toBeInTheDocument();
+  });
+
+  it('renders week quick actions when picker is week', async () => {
+    const { container } = renderDatePicker({ picker: 'week' });
+
+    await waitFor(() => {
+      expect(container.querySelector('.ant-picker-panel-container')).not.toBeNull();
+    });
+
+    expect(await screen.findByRole('button', { name: '上周' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '本周' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '下周' })).toBeInTheDocument();
+  });
+
+  it('renders quarter quick actions when picker is quarter', async () => {
+    const { container } = renderDatePicker({ picker: 'quarter' });
+
+    await waitFor(() => {
+      expect(container.querySelector('.ant-picker-panel-container')).not.toBeNull();
+    });
+
+    expect(await screen.findByRole('button', { name: '上季度' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '本季度' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '下季度' })).toBeInTheDocument();
+  });
+
+  it('renders year quick actions when picker is year', async () => {
+    const { container } = renderDatePicker({ picker: 'year' });
+
+    await waitFor(() => {
+      expect(container.querySelector('.ant-picker-panel-container')).not.toBeNull();
+    });
+
+    expect(await screen.findByRole('button', { name: '去年' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '今年' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '明年' })).toBeInTheDocument();
   });
 
   it('does not render quick actions when disabled', () => {
@@ -94,6 +133,68 @@ describe('DatePicker quick actions', () => {
     });
 
     expect(await screen.findByRole('button', { name: '昨天' })).toHaveClass('tt-picker-quick-action-active');
+  });
+
+  it('highlights the month quick action that matches the current value', async () => {
+    renderDatePicker({
+      picker: 'month',
+      value: moment(),
+    });
+
+    expect(await screen.findByRole('button', { name: '本月' })).toHaveClass('tt-picker-quick-action-active');
+  });
+
+  it('highlights the quarter quick action that matches the current value', async () => {
+    renderDatePicker({
+      picker: 'quarter',
+      value: moment(),
+    });
+
+    expect(await screen.findByRole('button', { name: '本季度' })).toHaveClass('tt-picker-quick-action-active');
+  });
+
+  it('highlights the year quick action that matches the current value', async () => {
+    renderDatePicker({
+      picker: 'year',
+      value: moment(),
+    });
+
+    expect(await screen.findByRole('button', { name: '今年' })).toHaveClass('tt-picker-quick-action-active');
+  });
+
+  it('renders range quick actions when showQuickActions is true', async () => {
+    render(
+      <DatePicker.RangePicker
+        open
+        showQuickActions
+        version={DatePicker.version}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+      />
+    );
+
+    expect(await screen.findByRole('button', { name: '近一周' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '近一月' })).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: '近一季' })).toBeInTheDocument();
+  });
+
+  it('calls onChange when a range quick action is clicked', async () => {
+    const handleChange = jest.fn();
+
+    render(
+      <DatePicker.RangePicker
+        defaultOpen
+        showQuickActions
+        onChange={handleChange}
+        version={DatePicker.version}
+        getPopupContainer={(triggerNode) => triggerNode.parentElement}
+      />
+    );
+
+    fireEvent.click(await screen.findByRole('button', { name: '近一周' }));
+
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange.mock.calls[0][0]).toHaveLength(2);
+    expect(handleChange.mock.calls[0][1]).toHaveLength(2);
   });
 
   it('does not close popup when clicking quick action in controlled mode', async () => {

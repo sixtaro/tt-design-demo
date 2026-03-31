@@ -134,18 +134,86 @@ export const 始终展开 = () => {
 };
 
 export const 快捷操作 = () => {
-  const [open, setOpen] = useState(false);
+  const [dateOpen, setDateOpen] = useState(false);
+  const [weekOpen, setWeekOpen] = useState(false);
+  const [monthOpen, setMonthOpen] = useState(false);
+  const [quarterOpen, setQuarterOpen] = useState(false);
+  const [yearOpen, setYearOpen] = useState(false);
+  const [rangeOpen, setRangeOpen] = useState(false);
+
   return (
-    <div style={{ paddingBottom: '420px' }}>
-      <DatePicker
-        open={open}
-        onOpenChange={setOpen}
-        showQuickActions
-        showToday={false}
-        placeholder="请选择日期"
-        style={{ width: 280 }}
-        version={DatePicker.version}
-      />
+    <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', paddingBottom: '520px' }}>
+      <div style={{ minWidth: 280 }}>
+        <h4>日期快捷操作</h4>
+        <DatePicker
+          open={dateOpen}
+          onOpenChange={setDateOpen}
+          showQuickActions
+          showToday={false}
+          placeholder="请选择日期"
+          style={{ width: 280 }}
+          version={DatePicker.version}
+        />
+      </div>
+      <div style={{ minWidth: 280 }}>
+        <h4>周快捷操作</h4>
+        <DatePicker
+          picker="week"
+          open={weekOpen}
+          onOpenChange={setWeekOpen}
+          showQuickActions
+          placeholder="请选择周"
+          style={{ width: 280 }}
+          version={DatePicker.version}
+        />
+      </div>
+      <div style={{ minWidth: 280 }}>
+        <h4>月份快捷操作</h4>
+        <DatePicker
+          picker="month"
+          open={monthOpen}
+          onOpenChange={setMonthOpen}
+          showQuickActions
+          placeholder="请选择月份"
+          style={{ width: 280 }}
+          version={DatePicker.version}
+        />
+      </div>
+      <div style={{ minWidth: 280 }}>
+        <h4>季度快捷操作</h4>
+        <DatePicker
+          picker="quarter"
+          open={quarterOpen}
+          onOpenChange={setQuarterOpen}
+          showQuickActions
+          placeholder="请选择季度"
+          style={{ width: 280 }}
+          version={DatePicker.version}
+        />
+      </div>
+      <div style={{ minWidth: 280 }}>
+        <h4>年份快捷操作</h4>
+        <DatePicker
+          picker="year"
+          open={yearOpen}
+          onOpenChange={setYearOpen}
+          showQuickActions
+          placeholder="请选择年份"
+          style={{ width: 280 }}
+          version={DatePicker.version}
+        />
+      </div>
+      <div style={{ minWidth: 560 }}>
+        <h4>范围快捷操作</h4>
+        <DatePicker.RangePicker
+          open={rangeOpen}
+          onOpenChange={setRangeOpen}
+          showQuickActions
+          placeholder={['开始日期', '结束日期']}
+          style={{ width: 560 }}
+          version={DatePicker.version}
+        />
+      </div>
     </div>
   );
 };
