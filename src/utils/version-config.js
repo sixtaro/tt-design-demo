@@ -33,7 +33,7 @@ export const componentVersions = {
   Row: '1.0.0',
   Menu: '1.0.0',
   Dropdown: '1.0.0',
-  Breadcrumb: '1.0.0',
+  Breadcrumb: '1.0.1',
   Steps: '1.0.0',
   Font: '1.0.0',
   Color: '1.0.0',
