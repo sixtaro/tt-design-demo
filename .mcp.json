@@ -3,7 +3,7 @@
     "tt-design": {
       "command": "node",
       "args": [
-        "mcp/server.mjs"
+        "mcp-package/bin/cli.mjs"
       ]
     }
   }

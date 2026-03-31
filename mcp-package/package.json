@@ -1,0 +1,20 @@
+{
+  "name": "tt-design-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for querying tt-design component metadata",
+  "type": "module",
+  "bin": {
+    "tt-design-mcp": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test ./test/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.18.0",
+    "zod": "^3.23.8"
+  }
+}

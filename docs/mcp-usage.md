@@ -11,7 +11,7 @@
 - 查询组件 API 元信息
 - 查询组件样式元信息
 
-> 当前版本是“本地源码分析型 MCP”，需要配合本地 `tt-design` 仓库使用。
+> 当前版本通过 npm 包分发，会从用户项目的 `node_modules/tt-design/dist/meta` 中读取元数据。
 
 ## 适用对象
 
@@ -43,67 +43,39 @@
 使用前请确认：
 
 1. 本机已安装 Node.js
-2. 本机有 `tt-design` 仓库完整代码
-3. 已安装项目依赖
+2. 当前项目已安装 `tt-design`
+3. 当前项目可安装开发依赖 `tt-design-mcp`
 4. 使用支持 MCP 的客户端（如 Claude Code）
 
-> 说明：当前服务会根据仓库结构自动确认项目根目录，因此使用者机器上必须存在本地仓库副本。
+> 说明：当前发布版本会从用户项目的 `node_modules/tt-design/dist/meta` 中读取元数据，不再要求本地 clone `tt-design` 仓库。
 
 ## 快速接入
 
-### 1. 获取仓库
+### 1. 安装 npm 包
 
 ```bash
-git clone <你的 tt-design 仓库地址>
-cd tt-design
-yarn install
+npm install tt-design
+npm install -D tt-design-mcp
 ```
 
 ### 2. Claude Code 中使用
 
-#### 方式一：直接在仓库内使用
-当前仓库已内置 MCP 配置，打开仓库后可直接使用。
-
-项目内配置示例：
+在 MCP 配置中添加：
 
 ```json
 {
   "mcpServers": {
     "tt-design": {
-      "command": "node",
-      "args": ["mcp/server.mjs"]
+      "command": "npx",
+      "args": ["-y", "tt-design-mcp"]
     }
   }
 }
 ```
-
-#### 方式二：手动接入到自己的配置
-如果你希望在用户级或其他工作区中接入，可添加如下配置：
-
-```json
-{
-  "mcpServers": {
-    "tt-design": {
-      "command": "node",
-      "args": ["/绝对路径/tt-design/mcp/server.mjs"]
-    }
-  }
-}
-```
-
-建议使用绝对路径，避免因工作目录不同导致启动失败。
-
-配置完成后：
-
-1. 重启 Claude Code
-2. 打开 `tt-design` 仓库根目录
-3. 直接用自然语言提问
 
 ## 是否需要手动启动
 
-正常使用时不需要手动启动。
-
-Claude Code 会按需拉起 MCP 服务。
+正常使用时不需要手动启动，Claude Code 会按需通过 `npx -y tt-design-mcp` 拉起 MCP 服务。
 
 只有在调试服务本身时，才需要手动运行：
 
@@ -206,16 +178,16 @@ yarn test:mcp
 
 当前版本有以下限制：
 
-1. 只分析本地仓库源码
-2. 不会扫描 `node_modules`
+1. 只分析 `node_modules/tt-design/dist/meta` 中的元数据文件
+2. 不会扫描 `node_modules` 中的其他内容
 3. 不会扫描 `.git`
 4. 不会读取 `.env`
-5. 主要面向组件源码静态分析
+5. 主要面向组件元数据查询
 6. 不替代 Storybook 预览和 Figma 设计工具
 
 因此：
 
-- 它适合“查现状、做分析、辅助决策”
+- 它适合"查现状、做分析、辅助决策"
 - 不适合直接替代视觉设计或运行时预览
 
 ## 常见问题
@@ -223,22 +195,38 @@ yarn test:mcp
 ### Q1：我已经配置了，但没有生效
 请检查：
 
-- 当前打开的是不是 `tt-design` 仓库根目录
-- MCP 配置里的路径是否正确
+- 当前项目是否已安装 `tt-design`
+- 当前项目是否已安装 `tt-design-mcp`
+- `node_modules/tt-design/dist/meta` 是否存在
 - 是否重启了 Claude Code
 
 ### Q2：产品经理 / UI 设计师能直接用吗
 可以，但前提是：
 
 - 本机具备可运行环境
-- 本地有 `tt-design` 仓库
+- 当前项目已安装 `tt-design` 和 `tt-design-mcp`
 - 已配置 MCP 客户端
 
 如果没有本地开发环境，当前版本不适合直接给非技术角色独立使用。
 
 ### Q3：为什么查询结果和预期不一致
-当前 MCP 是静态分析型服务，结果取决于仓库现有源码结构。
-如果组件未完整导出、未配置版本、未声明 `propTypes`，结果中可能会出现 warning。
+当前 MCP 依赖 `tt-design` 构建产物中的元数据。如果组件未完整导出、未配置版本、未声明 `propTypes`，结果中可能会出现 warning。
+
+### Q4：本地仓库开发模式还支持吗
+支持。在 `tt-design` 仓库本地开发时，可使用仓库内置的 MCP 配置：
+
+```json
+{
+  "mcpServers": {
+    "tt-design": {
+      "command": "node",
+      "args": ["mcp/server.mjs"]
+    }
+  }
+}
+```
+
+此模式直接从源码读取元数据，适合调试和贡献者使用。
 
 ## 建议的日常问法模板
 
