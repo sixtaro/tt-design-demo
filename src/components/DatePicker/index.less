@@ -1,6 +1,9 @@
 @import (reference) '../../style/themes/default.less';
 
 .tt-datepicker {
+  .ant-picker-active-bar {
+    background-color: var(--tt-color-primary-6);
+  }
   &.ant-picker {
     color: var(--tt-color-grey-7);
     border-color: var(--tt-color-grey-3);
@@ -68,37 +71,33 @@
 }
 
 .tt-picker-dropdown {
+  .ant-picker-week-panel {
+    .ant-picker-week-panel-row-selected {
 
-  .ant-picker-panel-container {
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      td:nth-child(2),
+      td:last-child {
+        .ant-picker-cell-inner {
+          background-color: var(--tt-color-primary-6) !important;
+          color: #fff !important;
+        }
+      }
+
+      .ant-picker-cell-selected {
+        .ant-picker-cell-inner {
+          color: var(--tt-color-grey-7) !important;
+        }
+      }
+
+      td {
+        background-color: var(--tt-color-primary-1);
+      }
+
+    }
   }
 
-  // 周选择侧边栏样式
-  .tt-picker-week-sidebar {
-    width: 120px;
-    border-right: 1px solid var(--tt-color-grey-2);
-    padding: 8px 0;
-    flex-shrink: 0;
-
-    .tt-picker-week-item {
-      padding: 10px 16px;
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--tt-color-grey-7);
-      transition: all 0.2s;
-      text-align: center;
-
-      &:hover {
-        background-color: var(--tt-color-grey-1);
-      }
-
-      &.tt-picker-week-item-selected {
-        background-color: var(--tt-color-primary-1);
-        color: var(--tt-color-primary-6);
-        font-weight: 500;
-      }
-    }
+  .ant-picker-panel-container {
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .tt-picker-panel-with-quick-actions {
@@ -110,7 +109,14 @@
   }
 
   .tt-picker-panel-with-quick-actions-month {
-    min-height: 296px;
+    .ant-picker-body {
+      height: 232px;
+
+    }
+
+    .ant-picker-content {
+      height: 128px;
+    }
 
     .tt-picker-quick-actions {
       width: 104px;
@@ -130,26 +136,13 @@
     }
 
     .ant-picker-panel {
-      .ant-picker-header {
-        padding: 12px 8px;
-      }
-
       .ant-picker-body {
         padding: 12px 8px 16px;
       }
     }
 
     .ant-picker-month-panel {
-      width: 238px;
-
-      .ant-picker-cell {
-        padding: 8px 4px;
-      }
-
       .ant-picker-cell-inner {
-        min-width: 60px;
-        height: 36px;
-        line-height: 36px;
         border-radius: 4px;
       }
     }
@@ -167,19 +160,15 @@
       width: 96px;
       padding: 12px 8px;
     }
-
-    .tt-picker-panel-with-quick-actions-content {
-      min-width: 188px;
-    }
   }
 
   .tt-picker-panel-with-quick-actions-quarter {
     .ant-picker-quarter-panel {
-      width: 180px;
 
       .ant-picker-content {
-        td {
-          padding: 4px 0;
+        tr {
+          display: flex;
+          flex-direction: column;
         }
       }
 
@@ -193,18 +182,20 @@
   }
 
   .tt-picker-panel-with-quick-actions-year {
+
     .ant-picker-year-panel,
     .ant-picker-decade-panel {
-      width: 180px;
-
       .ant-picker-body {
-        max-height: 210px;
+        max-height: 272px;
         overflow-y: auto;
       }
 
       .ant-picker-content {
-        td {
-          padding: 4px 0;
+
+
+        tr {
+          display: flex;
+          flex-direction: column;
         }
       }
 
@@ -284,12 +275,13 @@
 
   .ant-picker-panel {
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
 
     .ant-picker-header {
       color: var(--tt-color-grey-7);
       border-bottom: 1px solid var(--tt-color-grey-2);
-      padding: 8px 0;
+      height: 40px;
+      line-height: 40px;
 
       .ant-picker-header-view {
         button {
@@ -334,11 +326,11 @@
 
         .ant-picker-cell-inner {
           color: var(--tt-color-grey-7);
-          border-radius: 6px;
+          border-radius: 4px;
           font-size: 14px;
-          height: 36px;
-          line-height: 36px;
-          min-width: 36px;
+          height: 32px;
+          line-height: 32px;
+          min-width: 32px;
 
           &:hover {
             background-color: var(--tt-color-grey-1);
@@ -407,15 +399,11 @@
         table-layout: fixed;
 
         td {
-          padding: 6px 8px;
           text-align: center;
 
           .ant-picker-cell-inner {
-            border-radius: 8px;
+            border-radius: 4px;
             font-size: 15px;
-            height: 48px;
-            line-height: 48px;
-            min-width: 72px;
             width: 100%;
             transition: all 0.2s;
           }
@@ -447,7 +435,6 @@
         td {
           .ant-picker-cell-inner {
             font-size: 16px;
-            font-weight: 500;
           }
         }
       }
@@ -493,7 +480,7 @@
       background-color: var(--tt-color-primary-6);
       border-color: var(--tt-color-primary-6);
       color: #fff;
-      border-radius: 6px;
+      border-radius: 4px;
       height: 32px;
       font-size: 14px;
 
@@ -519,12 +506,12 @@
       border-right: none;
 
       li {
-        border-radius: 6px;
+        border-radius: 4px;
         margin: 2px 8px;
 
         .ant-picker-time-panel-cell-inner {
           color: var(--tt-color-grey-7);
-          border-radius: 6px;
+          border-radius: 4px;
           height: 32px;
           line-height: 32px;
         }
@@ -580,16 +567,16 @@
 .tt-picker-dropdown {
   .ant-picker-range {
     .ant-picker-panel-container {
-      border-radius: 8px;
+      border-radius: 4px;
     }
 
     .ant-picker-panel:first-child {
       border-right: 1px solid var(--tt-color-grey-2);
-      border-radius: 8px 0 0 8px;
+      border-radius: 4px 0 0 4px;
     }
 
     .ant-picker-panel:last-child {
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 4px 4px 0;
     }
 
     .ant-picker-active-bar {
@@ -599,5 +586,27 @@
 
   .ant-picker-panel .ant-picker-content td.ant-picker-cell-today .ant-picker-cell-inner::before {
     border-color: transparent !important;
+  }
+
+  .ant-picker-content {
+    .ant-picker-cell-in-range {
+      &::before {
+        height: 32px;
+      }
+    }
+
+    .ant-picker-cell-range-start {
+      .ant-picker-cell-inner {
+        background-color: var(--tt-color-primary-6) !important;
+        color: #fff !important;
+      }
+    }
+
+    .ant-picker-cell-range-end {
+      .ant-picker-cell-inner {
+        background-color: var(--tt-color-primary-6) !important;
+        color: #fff !important;
+      }
+    }
   }
 }
