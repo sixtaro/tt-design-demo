@@ -32,6 +32,8 @@ export const exportEntrySchema = z.object({
       export: z.string(),
     })
     .nullable(),
+  sourceLocations: z.array(sourceLocationSchema),
+  warnings: z.array(z.string()),
 });
 
 export const apiComponentSchema = z.object({
@@ -44,6 +46,8 @@ export const apiComponentSchema = z.object({
   subcomponents: z.array(z.string()),
   hasDataComponentVersion: z.boolean(),
   hasPropTypes: z.boolean(),
+  sourceLocations: z.array(sourceLocationSchema),
+  warnings: z.array(z.string()),
 });
 
 export const styleThemeImportSchema = z.object({
@@ -62,6 +66,8 @@ export const styleComponentSchema = z.object({
   cssVariables: z.array(z.string()),
   hardcodedColors: z.array(z.string()),
   themeImport: styleThemeImportSchema.nullable(),
+  sourceLocations: z.array(sourceLocationSchema),
+  warnings: z.array(z.string()),
 });
 
 // Version file envelope

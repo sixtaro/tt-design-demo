@@ -10,27 +10,23 @@ const path = require('path');
 const packageJson = require('./package.json');
 
 const peerDependencies = Object.keys(packageJson.peerDependencies || {});
-const staticExternal = [
-  'react',
-  'react-dom',
-  'antd',
-  '@wangeditor/editor',
-  '@wangeditor/editor-for-react',
-  'animejs',
-  'axios',
-  'echarts',
+// Prefer peerDependencies as the single source of truth for host-provided runtime deps.
+// Keep this list only for packages we intentionally externalize without asking consumers
+// to install them as peers.
+const alwaysExternalPackages = [
   'mockjs',
-  'pinyin-pro',
-  'react-beautiful-dnd',
-  'react-resizable',
-  'sa-sdk-javascript',
-  'swiper',
-  'xlsx',
-  'xlsx-js-style',
 ];
+const externalPackages = [...new Set([...alwaysExternalPackages, ...peerDependencies])];
 
 const isExternal = (id) => {
-  return [...new Set([...staticExternal, ...peerDependencies])].some((pkg) => id === pkg || id.startsWith(`${pkg}/`));
+  const normalizedId = id.replace(/\\/g, '/');
+
+  return externalPackages.some((pkg) => {
+    const normalizedPackagePath = `/node_modules/${pkg}/`;
+    return normalizedId === pkg
+      || normalizedId.startsWith(`${pkg}/`)
+      || normalizedId.includes(normalizedPackagePath);
+  });
 };
 
 export default {

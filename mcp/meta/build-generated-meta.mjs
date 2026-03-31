@@ -50,6 +50,8 @@ function buildGeneratedMeta() {
         sourcePath: exportsResult.data.sourcePath,
         exportedFrom: exportsResult.data.exportedFrom,
         preferredImport: exportsResult.data.preferredImport,
+        sourceLocations: exportsResult.sourceLocations || [],
+        warnings: exportsResult.warnings || [],
       });
     }
 
@@ -65,6 +67,8 @@ function buildGeneratedMeta() {
         subcomponents: apiResult.data.subcomponents,
         hasDataComponentVersion: apiResult.data.hasDataComponentVersion,
         hasPropTypes: apiResult.data.hasPropTypes,
+        sourceLocations: apiResult.sourceLocations || [],
+        warnings: apiResult.warnings || [],
       });
     }
 
@@ -81,6 +85,8 @@ function buildGeneratedMeta() {
         cssVariables: styleResult.data.cssVariables,
         hardcodedColors: styleResult.data.hardcodedColors,
         themeImport: styleResult.data.themeImport,
+        sourceLocations: styleResult.sourceLocations || [],
+        warnings: styleResult.warnings || [],
       });
     }
   }

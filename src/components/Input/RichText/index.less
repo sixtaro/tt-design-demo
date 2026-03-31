@@ -1,21 +1,125 @@
 @import (reference) '../../../style/themes/default.less';
 
+@rich-text-border-color: var(--tt-border-color, #dde1eb);
+@rich-text-bg: #fff;
+@rich-text-btn-bg: #fff;
+@rich-text-btn-bg-selected: #f5f7fa;
+@rich-text-separator-color: #e9ecf2;
+@rich-text-border-radius: 4px;
+@rich-text-btn-size: 32px;
+
 .tt-rich-text {
+  border: 1px solid @rich-text-border-color;
+  border-radius: @rich-text-border-radius;
+  background-color: @rich-text-bg;
+  overflow: hidden;
+
   .tt-rich-text-toolbar {
-    border: 1px solid var(--tt-color-grey-3);
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
-    background-color: #fff;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    border-bottom: 1px solid @rich-text-separator-color;
+    background-color: @rich-text-bg;
+
+    .toolbar-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: @rich-text-btn-size;
+      height: @rich-text-btn-size;
+      border: 1px solid @rich-text-border-color;
+      border-radius: @rich-text-border-radius;
+      background-color: @rich-text-btn-bg;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: var(--tt-color-primary-6);
+      }
+
+      &.selected {
+        background-color: @rich-text-btn-bg-selected;
+      }
+
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .w-e-icon {
+        font-size: 16px;
+        color: var(--tt-text-body, #235);
+      }
+    }
+
+    .toolbar-separator {
+      width: 1px;
+      height: 20px;
+      background-color: @rich-text-separator-color;
+      margin: 0 4px;
+    }
+
+    .toolbar-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: @rich-text-btn-size;
+      padding: 0 8px;
+      border: 1px solid @rich-text-border-color;
+      border-radius: @rich-text-border-radius;
+      background-color: @rich-text-btn-bg-selected;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--tt-text-body, #235);
+      line-height: 22px;
+
+      &:hover {
+        border-color: var(--tt-color-primary-6);
+      }
+
+      .w-e-icon-down {
+        font-size: 12px;
+      }
+    }
   }
 
   .tt-rich-text-editor {
-    border: 1px solid var(--tt-color-grey-3);
-    border-radius: 0 0 4px 4px;
-    background-color: #fff;
-    min-height: 200px;
+    .w-e-text-container {
+      background-color: @rich-text-bg;
 
-    &:hover {
-      border-color: var(--tt-color-primary-6);
+      .w-e-scroll {
+        min-height: 200px;
+      }
     }
+
+    .w-e-panel-tab-content {
+      border: none;
+    }
+  }
+
+  // 覆盖 wangeditor 默认样式
+  .w-e-toolbar {
+    border: none !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+
+    .w-e-divider {
+      width: 1px;
+      height: 20px;
+      background-color: @rich-text-separator-color;
+      margin: 0 4px;
+    }
+
+    .w-e-panel-tab-title {
+      display: none !important;
+    }
+  }
+
+  .w-e-panel-container {
+    border: 1px solid @rich-text-border-color !important;
+    border-radius: @rich-text-border-radius !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
 }
