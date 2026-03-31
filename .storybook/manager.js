@@ -10,7 +10,7 @@ const getHomeUrl = () => {
       if (parentConfig && parentConfig.HOME_URL) {
         return parentConfig.HOME_URL;
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   var pathname = window.location.pathname;
@@ -37,5 +37,6 @@ addons.setConfig({
     brandUrl: getHomeUrl(),
     brandTarget: '_self',
     brandImage: undefined,
+    locale: 'zh-CN',
   }),
 });

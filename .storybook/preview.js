@@ -5,6 +5,9 @@ import { ThemeDecorator, themeList } from './ThemeDecorator';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  globals: {
+    locale: 'zh-CN',
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
