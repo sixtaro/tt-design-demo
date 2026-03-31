@@ -13,6 +13,7 @@ import FloatButton from './FloatButton';
 import Form from './Form';
 import Input from './Input';
 import Menu from './Menu';
+import Masonry from './Masonry';
 import Message from './Message';
 import Modal from './Modal';
 import Money from './Money';
@@ -25,11 +26,14 @@ import Select from './Select';
 import Spin from './Spin';
 import Steps from './Steps';
 import Switch from './Switch';
+import Watermark from './Watermark';
 import InputNumber from './InputNumber';
 import Cascader from './Cascader';
+import Splitter from './Splitter';
 import Table from './Table';
 import Tabs from './Tabs';
 import Rate from './Rate';
+import Statistic from './Statistic';
 import CardSelect from './CardSelect';
 import Upload from './Upload';
 import ColorPicker from './ColorPicker';
@@ -52,6 +56,7 @@ export {
   Form,
   Input,
   Menu,
+  Masonry,
   Message,
   Modal,
   Money,
@@ -64,11 +69,14 @@ export {
   Spin,
   Steps,
   Switch,
+  Watermark,
   InputNumber,
   Cascader,
+  Splitter,
   Table,
   Tabs,
   Rate,
+  Statistic,
   CardSelect,
   Upload,
   ColorPicker,

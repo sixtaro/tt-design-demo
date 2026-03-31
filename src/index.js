@@ -24,15 +24,19 @@ import Divider from './components/Divider';
 import Empty from './components/Empty';
 import Row from './components/Row';
 import Menu from './components/Menu';
+import Masonry from './components/Masonry';
 import Dropdown from './components/Dropdown';
 import Breadcrumb from './components/Breadcrumb';
 import Steps from './components/Steps';
+import Watermark from './components/Watermark';
 import Font from './components/Font';
 import Color from './components/Color';
 import Icon from './components/Icon';
 import BackTop from './components/BackTop';
 import Cascader from './components/Cascader';
+import Splitter from './components/Splitter';
 import Rate from './components/Rate';
+import Statistic from './components/Statistic';
 import CardSelect from './components/CardSelect';
 import Upload from './components/Upload';
 import TreeSelect from './components/TreeSelect';
@@ -85,15 +89,19 @@ export {
   Empty,
   Row,
   Menu,
+  Masonry,
   Dropdown,
   Breadcrumb,
   Steps,
+  Watermark,
   Font,
   Color,
   Icon,
   BackTop,
   Cascader,
+  Splitter,
   Rate,
+  Statistic,
   CardSelect,
   Upload,
   TreeSelect,
@@ -131,15 +139,19 @@ const components = {
   Empty,
   Row,
   Menu,
+  Masonry,
   Dropdown,
   Breadcrumb,
   Steps,
+  Watermark,
   Font,
   Color,
   Icon,
   BackTop,
   Cascader,
+  Splitter,
   Rate,
+  Statistic,
   CardSelect,
   Upload,
   TreeSelect,

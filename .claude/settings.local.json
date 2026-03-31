@@ -52,7 +52,12 @@
       "Bash(mv static:*)",
       "Bash(mv *.js storybook_temp/)",
       "Bash(mv *.html storybook_temp/)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(node -e \"require\\(''''./mcp/meta/schema.mjs''''\\)\")",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(npm install:*)",
+      "Bash(NODE_OPTIONS='--no-node-snapshot' node --test test/load-meta.test.mjs)",
+      "Bash(grep:*)"
     ]
   }
 }
