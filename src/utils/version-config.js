@@ -31,7 +31,7 @@ export const componentVersions = {
   Divider: '1.0.0',
   Empty: '1.0.0',
   Row: '1.0.0',
-  Menu: '1.0.0',
+  Menu: '1.0.4',
   Dropdown: '1.0.0',
   Breadcrumb: '1.0.1',
   Steps: '1.0.0',

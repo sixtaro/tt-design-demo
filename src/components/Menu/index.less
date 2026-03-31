@@ -1,16 +1,76 @@
 @import (reference) '../../style/themes/default.less';
 
+.tt-menu-horizontal-pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+
+  .tt-menu-horizontal-pagination-content {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .tt-menu-horizontal-pagination-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+    margin-left: 4px;
+  }
+
+  .tt-menu-pagination-button {
+    min-width: 20px;
+    height: 20px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    color: var(--tt-color-grey-5);
+    background-color: transparent;
+    flex-shrink: 0;
+
+    &:hover:not(.tt-button-disabled) {
+      color: var(--tt-color-primary-6);
+      background-color: transparent;
+    }
+
+    &.tt-button-disabled {
+      color: var(--tt-color-grey-4);
+    }
+  }
+}
+
 .tt-menu.tt-menu.tt-menu {
+  background-color: var(--tt-bg-white);
+  color: var(--tt-text-body);
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+
   .ant-menu-item,
   .ant-menu-submenu-title {
+    display: flex;
+    align-items: center;
+    min-height: 38px;
+    margin: 0;
+    padding: 8px;
     color: var(--tt-color-grey-7);
+    border-radius: 4px;
+    line-height: @line-height-base;
+    transition: all 0.2s ease;
 
     .anticon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: var(--tt-color-grey-7);
+      line-height: 1;
     }
 
     &:hover {
-      background-color: var(--tt-color-primary-1);
+      background-color: var(--tt-color-grey-1);
       color: var(--tt-color-primary-6);
 
       .anticon {
@@ -23,9 +83,32 @@
   .ant-menu-item-active {
     background-color: var(--tt-color-primary-1);
     color: var(--tt-color-primary-6);
+    font-weight: @font-weight-medium;
 
     .anticon {
       color: var(--tt-color-primary-6);
+    }
+  }
+
+  .ant-menu-item::after,
+  .ant-menu-submenu::after,
+  .ant-menu-submenu-title::after {
+    display: none !important;
+    border: none !important;
+  }
+
+  &.tt-menu-with-indicator {
+
+    &.ant-menu-inline,
+    &.ant-menu-vertical,
+    &.ant-menu-vertical-left {
+
+      .ant-menu-item-selected::after,
+      .ant-menu-submenu-selected>.ant-menu-submenu-title::after {
+        display: block !important;
+        right: 0;
+        border-right: 3px solid var(--tt-color-primary-6) !important;
+      }
     }
   }
 
@@ -33,9 +116,23 @@
     .ant-menu-submenu-title {
       background-color: var(--tt-color-primary-1);
       color: var(--tt-color-primary-6);
+      font-weight: @font-weight-medium;
 
       .anticon {
         color: var(--tt-color-primary-6);
+      }
+    }
+  }
+
+  &.tt-menu-active-text {
+    .ant-menu-item-selected,
+    .ant-menu-item-active {
+      background-color: transparent;
+    }
+
+    .ant-menu-submenu-selected {
+      .ant-menu-submenu-title {
+        background-color: transparent;
       }
     }
   }
@@ -44,15 +141,45 @@
   &.ant-menu-vertical,
   &.ant-menu-vertical-left {
     border-right: none;
+    padding: 4px;
+
+    .ant-menu-sub.ant-menu-inline,
+    .ant-menu-sub.ant-menu-vertical {
+      background-color: transparent;
+    }
+
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      margin-bottom: 2px;
+    }
+
+    .ant-menu-title-content {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+    }
   }
 
   &.ant-menu-horizontal {
     border-bottom: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
 
     .ant-menu-item,
     .ant-menu-submenu {
+      display: flex;
+      align-items: center;
+      margin: 0 2px 0 0;
+      padding: 0 10px;
+      border-radius: 4px 4px 0 0;
+      flex-shrink: 0;
+      white-space: nowrap;
+
       &:hover {
         color: var(--tt-color-primary-6);
+        background-color: transparent;
 
         .anticon {
           color: var(--tt-color-primary-6);
@@ -66,10 +193,22 @@
 
     .ant-menu-item-selected {
       color: var(--tt-color-primary-6);
+      background-color: transparent;
 
       .anticon {
         color: var(--tt-color-primary-6);
       }
     }
+  }
+
+  .ant-menu-item-group-title {
+    padding: 8px 12px 4px;
+    color: var(--tt-text-secondary);
+    font-size: @font-size-sm;
+    line-height: @line-height-sm;
+  }
+
+  .ant-menu-inline-collapsed {
+    width: 72px;
   }
 }
