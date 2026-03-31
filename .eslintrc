@@ -1,8 +1,5 @@
 {
     "extends": "react-app",
-    "plugins": [
-        "react-hooks"
-    ],
     "rules": {
         "no-debugger": 1, //不允许出现debugger语句
         "no-dupe-args": 2, //函数定义的时候不允许出现重复的参数
