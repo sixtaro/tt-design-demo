@@ -4,6 +4,7 @@
   .ant-picker-active-bar {
     background-color: var(--tt-color-primary-6);
   }
+
   &.ant-picker {
     color: var(--tt-color-grey-7);
     border-color: var(--tt-color-grey-3);
@@ -71,6 +72,10 @@
 }
 
 .tt-picker-dropdown {
+  .ant-picker-today-btn {
+    color: var(--tt-color-primary-6);
+  }
+
   .ant-picker-week-panel {
     .ant-picker-week-panel-row-selected {
 
@@ -108,10 +113,19 @@
     overflow: hidden;
   }
 
+  .ant-picker-month-panel {
+    .ant-picker-body {
+      height: 232px;
+    }
+
+    .ant-picker-content {
+      height: 128px;
+    }
+  }
+
   .tt-picker-panel-with-quick-actions-month {
     .ant-picker-body {
       height: 232px;
-
     }
 
     .ant-picker-content {
@@ -286,7 +300,6 @@
       .ant-picker-header-view {
         button {
           color: var(--tt-color-grey-7);
-          font-size: 16px;
           font-weight: 500;
 
           &:hover {
@@ -317,7 +330,6 @@
     .ant-picker-content {
       th {
         color: var(--tt-color-grey-6);
-        font-weight: 500;
         padding: 8px 0;
       }
 
@@ -347,7 +359,6 @@
         &.ant-picker-cell-today {
           .ant-picker-cell-inner {
             color: var(--tt-color-primary-6);
-            font-weight: 500;
           }
         }
 
@@ -355,7 +366,6 @@
           .ant-picker-cell-inner {
             background-color: var(--tt-color-primary-6);
             color: #fff;
-            font-weight: 500;
 
             &:hover {
               background-color: var(--tt-color-primary-5);
@@ -412,7 +422,6 @@
             .ant-picker-cell-inner {
               background-color: var(--tt-color-primary-6);
               color: #fff;
-              font-weight: 500;
 
               &:hover {
                 background-color: var(--tt-color-primary-5);
@@ -431,12 +440,18 @@
 
     // 季度选择面板特殊样式
     .ant-picker-quarter-panel {
+      .ant-picker-body {
+        height: 232px;
+      }
+
       .ant-picker-content {
-        td {
-          .ant-picker-cell-inner {
-            font-size: 16px;
-          }
+        height: 128px;
+
+        tr {
+          display: flex;
+          flex-direction: column;
         }
+
       }
     }
 
@@ -452,16 +467,24 @@
     }
 
     // 年份/十年选择面板特殊样式
-    .ant-picker-year-panel,
-    .ant-picker-decade-panel {
+    .ant-picker-year-panel {
+      .ant-picker-body {
+        height: 232px;
+        overflow-x: auto;
+
+      }
+
       .ant-picker-content {
-        td {
-          .ant-picker-cell-inner {
-            font-size: 15px;
-          }
+        height: 128px;
+
+        tr {
+          display: flex;
+          flex-direction: column;
         }
+
       }
     }
+
 
     .ant-picker-footer {
       border-top: 1px solid var(--tt-color-grey-2);
@@ -527,7 +550,6 @@
           .ant-picker-time-panel-cell-inner {
             background-color: var(--tt-color-primary-6);
             color: #fff;
-            font-weight: 500;
           }
 
           &:hover {

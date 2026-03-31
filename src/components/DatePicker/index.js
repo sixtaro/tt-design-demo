@@ -167,6 +167,7 @@ const DatePicker = forwardRef(({
   quickActions,
   picker,
   panelRender,
+  showToday = false,
   ...props
 }, ref) => {
   const quickActionPendingRef = useRef(false);
@@ -288,6 +289,7 @@ const DatePicker = forwardRef(({
       className={datePickerClassName}
       popupClassName={pickerPopupClassName}
       panelRender={mergedPanelRender}
+      showToday={showToday}
       data-component-version={version}
     />
   );
@@ -495,6 +497,7 @@ DatePicker.propTypes = {
   picker: PropTypes.oneOf(['date', 'week', 'month', 'quarter', 'year']),
   popupClassName: PropTypes.string,
   showQuickActions: PropTypes.bool,
+  showToday: PropTypes.bool,
   quickActions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,

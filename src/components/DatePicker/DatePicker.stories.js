@@ -113,7 +113,7 @@ export const 多种选择类型 = () => {
         </div>
         <div style={{ minWidth: 560 }}>
           <h4>日期范围选择</h4>
-          <DatePicker.RangePicker open={true} placeholder={['开始日期', '结束日期']} style={{ width: 560 }} version={DatePicker.version} />
+          {/* <DatePicker.RangePicker open={true} placeholder={['开始日期', '结束日期']} style={{ width: 560 }} version={DatePicker.version} /> */}
         </div>
       </div>
     </div>
