@@ -22,6 +22,7 @@
     "test:components": "jest --runInBand",
     "build:mcp-meta": "node scripts/build-mcp-meta.js",
     "verify:mcp-meta": "node scripts/verify-mcp-meta.js",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "prepublishOnly": "yarn build && yarn verify:mcp-meta"
   },
   "keywords": [
@@ -61,8 +62,9 @@
     "antd": "^4.24.8",
     "babel-jest": "^29.7.0",
     "css-loader": "^7.1.4",
-    "eslint": "^10.0.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",

@@ -25,7 +25,9 @@ const Uploader = ({ className, style, getUrl, ...props }) => {
     const { name } = file;
     const ext = name?.split('.').pop()?.toLowerCase();
 
-    if (!ext) return <FileOutlined />;
+    if (!ext) {
+      return <FileOutlined />;
+    }
 
     switch (ext) {
       case 'jpg':
