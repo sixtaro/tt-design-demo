@@ -5,10 +5,11 @@
   "module": "dist/esm/index.js",
   "files": [
     "dist/cjs",
-    "dist/esm"
+    "dist/esm",
+    "dist/meta"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && node scripts/build-mcp-meta.js && node scripts/verify-mcp-meta.js",
     "watch": "rollup -c -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -18,7 +19,10 @@
     "test:mcp": "node --test ./mcp/test/*.test.mjs",
     "homepage": "node scripts/start-homepage.js",
     "build:docs": "node scripts/deploy-docs.js",
-    "test:components": "jest --runInBand"
+    "test:components": "jest --runInBand",
+    "build:mcp-meta": "node scripts/build-mcp-meta.js",
+    "verify:mcp-meta": "node scripts/verify-mcp-meta.js",
+    "prepublishOnly": "yarn build && yarn verify:mcp-meta"
   },
   "keywords": [
     "react",
