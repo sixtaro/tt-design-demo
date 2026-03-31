@@ -7,6 +7,31 @@ import image from '@rollup/plugin-image';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 const path = require('path');
+const packageJson = require('./package.json');
+
+const peerDependencies = Object.keys(packageJson.peerDependencies || {});
+const staticExternal = [
+  'react',
+  'react-dom',
+  'antd',
+  '@wangeditor/editor',
+  '@wangeditor/editor-for-react',
+  'animejs',
+  'axios',
+  'echarts',
+  'mockjs',
+  'pinyin-pro',
+  'react-beautiful-dnd',
+  'react-resizable',
+  'sa-sdk-javascript',
+  'swiper',
+  'xlsx',
+  'xlsx-js-style',
+];
+
+const isExternal = (id) => {
+  return [...new Set([...staticExternal, ...peerDependencies])].some((pkg) => id === pkg || id.startsWith(`${pkg}/`));
+};
 
 export default {
   input: 'src/index.js',
@@ -65,22 +90,5 @@ export default {
     commonjs(),
     terser(),
   ],
-  external: [
-    'react',
-    'react-dom',
-    'antd',
-    '@wangeditor/editor',
-    '@wangeditor/editor-for-react',
-    'animejs',
-    'axios',
-    'echarts',
-    'mockjs',
-    'pinyin-pro',
-    'react-beautiful-dnd',
-    'react-resizable',
-    'sa-sdk-javascript',
-    'swiper',
-    'xlsx',
-    'xlsx-js-style',
-  ],
+  external: isExternal,
 };

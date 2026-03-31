@@ -44,6 +44,7 @@ export const componentVersions = {
   TreeSelect: '1.0.0',
   TimePicker: '1.0.0',
   ColorPicker: '1.0.0',
+  QRCode: '1.0.0',
   Popover: '1.0.0',
   CardSelect: '1.0.0',
   Upload: '1.0.0',

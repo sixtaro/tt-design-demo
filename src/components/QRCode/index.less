@@ -1,0 +1,19 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-qrcode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: var(--tt-bg-white);
+  border: 1px solid var(--tt-border-color-light);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}

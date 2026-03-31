@@ -38,6 +38,7 @@ import Upload from './components/Upload';
 import TreeSelect from './components/TreeSelect';
 import TimePicker from './components/TimePicker';
 import ColorPicker from './components/ColorPicker';
+import QRCode from './components/QRCode';
 import Plate from './components/Plate';
 import Chart from './components/Chart';
 import * as versionUtils from './utils/version';
@@ -98,6 +99,7 @@ export {
   TreeSelect,
   TimePicker,
   ColorPicker,
+  QRCode,
   Plate,
   Chart,
   versionUtils,
@@ -143,6 +145,7 @@ const components = {
   TreeSelect,
   TimePicker,
   ColorPicker,
+  QRCode,
   Plate,
   Chart,
   ThemeProvider,

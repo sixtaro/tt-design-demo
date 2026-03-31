@@ -33,6 +33,7 @@ import Rate from './Rate';
 import CardSelect from './CardSelect';
 import Upload from './Upload';
 import ColorPicker from './ColorPicker';
+import QRCode from './QRCode';
 import Plate from './Plate';
 import Chart from './Chart';
 
@@ -71,6 +72,7 @@ export {
   CardSelect,
   Upload,
   ColorPicker,
+  QRCode,
   Plate,
   Chart,
 };
