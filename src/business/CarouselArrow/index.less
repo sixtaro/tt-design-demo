@@ -1,0 +1,51 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-carousel-arrow-wrapper {
+  position: relative;
+
+  .slick-next::before,
+  .slick-prev::before {
+    display: none;
+  }
+
+  .tt-carousel-arrow-content {
+    position: relative;
+  }
+
+  .slick-slider {
+    position: relative;
+  }
+
+  .tt-carousel-arrow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 1;
+    z-index: 10;
+    cursor: pointer;
+    color: var(--tt-color-primary);
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--tt-color-grey-3);
+    }
+    &:hover:not(.tt-carousel-arrow-disabled) {
+      color: var(--tt-color-primary);
+    }
+
+    &-left {
+      left: 0;
+    }
+
+    &-right {
+      right: 10px;
+    }
+
+    &-disabled {
+      color: var(--tt-color-grey-3);
+      cursor: not-allowed;
+    }
+  }
+}

@@ -55,5 +55,11 @@ export const componentVersions = {
   Upload: '1.0.0',
   Plate: '1.0.0',
   Chart: '1.0.0',
+  CalendarSelect: '1.0.0',
+  CarouselArrow: '1.0.0',
+  DragTable: '1.0.0',
+  HourRangeSelect: '1.0.0',
+  MaskedInput: '1.0.0',
+  SecretInput: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };

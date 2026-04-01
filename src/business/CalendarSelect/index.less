@@ -1,0 +1,43 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-calendar-select {
+  min-width: 260px;
+  border: 1px solid var(--tt-border-color-light, #f0f0f0);
+  border-radius: 2px;
+
+  .ant-picker-cell:hover:not(.ant-picker-cell-selected):not(.ant-picker-cell-range-start):not(.ant-picker-cell-range-end):not(
+      .ant-picker-cell-range-hover-start
+    ):not(.ant-picker-cell-range-hover-end) {
+    .ant-picker-cell-inner.tt-calendar-date-selected {
+      color: var(--tt-bg-white, #fff);
+      background: var(--tt-color-primary, @primary-color);
+    }
+  }
+
+  .ant-picker-cell-in-view .ant-picker-cell-inner {
+    color: inherit;
+    background: transparent;
+
+    // 禁用
+    &.tt-calendar-date-disabled {
+      color: var(--tt-text-disabled, rgba(0, 0, 0, 0.25));
+      pointer-events: none;
+    }
+
+    // 选中
+    &.tt-calendar-date-selected {
+      color: var(--tt-bg-white, #fff);
+      background: var(--tt-color-primary, @primary-color);
+    }
+  }
+
+  // 去除当天的border
+  .ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner:before {
+    border: none;
+  }
+
+  // 去除年月切换，只保留月选择
+  .ant-radio-group.ant-picker-calendar-mode-switch {
+    display: none;
+  }
+}

@@ -37,6 +37,12 @@ import ExcelImportBtn from './excelImport/excelImportBtn';
 import BreadcrumbOrgOld from './breadcrumbOrg/breadcrumbOrg';
 import BreadcrumbOrgTag from './breadcrumbOrg/breadcrumbOrgTag';
 import TelWithCode from './telWithCode';
+import CalendarSelect from './CalendarSelect';
+import CarouselArrow from './CarouselArrow';
+import DragTable from './DragTable';
+import HourRangeSelect from './HourRangeSelect';
+import MaskedInput from './MaskedInput';
+import SecretInput from './SecretInput';
 
 // 动态更改主题色
 const updateTheme = (primaryColor, global) => {
@@ -128,4 +134,4 @@ const getIcon = (icon, props) => {
 
 const BreadcrumbOrg = window.projectName === 'desktop' ? BreadcrumbOrgTag : BreadcrumbOrgOld;
 
-export { getIcon, updateTheme, Selector, PageLayout, PictureSwiper, Condition, ExcelImportBtn, BreadcrumbOrg, TelWithCode };
+export { getIcon, updateTheme, Selector, PageLayout, PictureSwiper, Condition, ExcelImportBtn, BreadcrumbOrg, TelWithCode, CalendarSelect, CarouselArrow, DragTable, HourRangeSelect, MaskedInput, SecretInput };

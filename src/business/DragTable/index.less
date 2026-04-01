@@ -1,0 +1,30 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-drag-table {
+    border: 1px solid var(--tt-border-color);
+
+    &.tt-drag-table-footer-no-padding {
+        .ant-table-footer {
+            padding: 0;
+        }
+    }
+}
+
+.tt-drag-table-handle {
+    cursor: grab;
+    color: var(--tt-text-secondary);
+    font-size: 16px;
+
+    &:hover {
+        color: var(--tt-color-primary-6);
+    }
+}
+
+.tt-drag-table-row-dragging {
+    z-index: 9999;
+    background: var(--tt-bg-lighter);
+    border: 1px solid var(--tt-border-color-light);
+    td {
+        padding: 0 15px;
+    }
+}
