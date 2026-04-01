@@ -28,6 +28,7 @@ import Masonry from './components/Masonry';
 import Dropdown from './components/Dropdown';
 import Breadcrumb from './components/Breadcrumb';
 import Steps from './components/Steps';
+import Tour from './components/Tour';
 import Watermark from './components/Watermark';
 import Font from './components/Font';
 import Color from './components/Color';
@@ -93,6 +94,7 @@ export {
   Dropdown,
   Breadcrumb,
   Steps,
+  Tour,
   Watermark,
   Font,
   Color,
@@ -143,6 +145,7 @@ const components = {
   Dropdown,
   Breadcrumb,
   Steps,
+  Tour,
   Watermark,
   Font,
   Color,

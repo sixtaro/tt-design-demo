@@ -26,6 +26,7 @@ import Select from './Select';
 import Spin from './Spin';
 import Steps from './Steps';
 import Switch from './Switch';
+import Tour from './Tour';
 import Watermark from './Watermark';
 import InputNumber from './InputNumber';
 import Cascader from './Cascader';
@@ -69,6 +70,7 @@ export {
   Spin,
   Steps,
   Switch,
+  Tour,
   Watermark,
   InputNumber,
   Cascader,
