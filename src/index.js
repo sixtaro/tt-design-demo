@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import { Selector, PageLayout, CalendarSelect, CarouselArrow, DragTable, HourRangeSelect, MaskedInput, SecretInput } from './business';
 import A from './components/A';
+import Anchor from './components/Anchor';
 import Button from './components/Button';
 import Input from './components/Input';
 import Select from './components/Select';
@@ -74,6 +75,7 @@ export {
   MaskedInput,
   SecretInput,
   A,
+  Anchor,
   Button,
   Input,
   Select,
@@ -131,6 +133,7 @@ const components = {
   MaskedInput,
   SecretInput,
   A,
+  Anchor,
   Button,
   Input,
   Select,

@@ -12,8 +12,8 @@
 
 ## 组件库概览
 
-- 当前共收录 `61` 个组件
-- 基础组件：`48` 个
+- 当前共收录 `62` 个组件
+- 基础组件：`49` 个
 - 业务组件：`13` 个
 - 技术基座：`React 17.0.1`、`Ant Design 4.24.8`、`Rollup 2.x`、`Storybook 6.x`
 
@@ -32,6 +32,7 @@ import { Button, DatePicker, PageLayout } from 'tt-design';
 | 组件名 | 版本 | 推荐引入 | 源码位置 | 备注 |
 | --- | --- | --- | --- | --- |
 | A | 未配置 | `import { A } from 'tt-design'` | `src/components/A/index.js` | 已从基础组件入口和根入口导出 |
+| Anchor | 1.0.0 | `import { Anchor } from 'tt-design'` | `src/components/Anchor/index.js` | 已从基础组件入口和根入口导出 |
 | BackTop | 1.0.0 | `import { BackTop } from 'tt-design'` | `src/components/BackTop/index.js` | 仅根入口导出 |
 | Breadcrumb | 1.0.1 | `import { Breadcrumb } from 'tt-design'` | `src/components/Breadcrumb/index.js` | 已从基础组件入口和根入口导出 |
 | Button | 1.0.0 | `import { Button } from 'tt-design'` | `src/components/Button/index.js` | 已从基础组件入口和根入口导出 |
@@ -339,6 +340,48 @@ import { Steps } from 'tt-design';
   - `导航模式`
   - `点状步骤条`
 
+### Anchor
+
+- 推荐引入：`import { Anchor } from 'tt-design'`
+- 版本：`1.0.0`
+- 常用属性：`affix`、`bounds`、`getContainer`、`offsetTop`、`showInkInFixed`、`targetOffset`、`onChange`、`onClick`
+- 默认值：
+  - `affix: true`
+  - `bounds: 5`
+  - `offsetTop: 0`
+  - `showInkInFixed: false`
+- 子能力：
+  - `Anchor.Link`（锚点链接，支持 `href`、`title`、`target`、`children` 等属性）
+- 锚点层级说明：
+  - 一级锚点：14px 字号 + 24px 行高 + 7px 圆点 + 8px 间距，选中时 Medium 字重 + 主题色
+  - 二级锚点：12px 字号 + 22px 行高 + 7px 圆点 + 16px 间距，选中时主题色
+- 基本用法：
+
+```jsx
+import { Anchor } from 'tt-design';
+
+<Anchor>
+  <Anchor.Link href="#section-1" title="基础用法" />
+  <Anchor.Link href="#section-2" title="自定义偏移" />
+  <Anchor.Link href="#section-3" title="API 说明" />
+</Anchor>
+```
+
+- 带子级锚点：
+
+```jsx
+<Anchor>
+  <Anchor.Link href="#overview" title="组件概览">
+    <Anchor.Link href="#list" title="组件列表" />
+    <Anchor.Link href="#version" title="版本信息" />
+  </Anchor.Link>
+</Anchor>
+```
+
+- 对应案例：
+  - `基础用法`
+  - `带子级锚点`
+
 ## 组件属性索引
 
 下表用于快速查找“某个组件当前暴露了哪些属性”，便于后续继续补完整 API 文档。
@@ -357,6 +400,7 @@ import { Steps } from 'tt-design';
 | Statistic | `version`、`className`、`title`、`value`、`precision`、`prefix`、`suffix`、`loading`、`valueStyle`、`groupSeparator`、`decimalSeparator`、`formatter`、`props` | 无显式默认值 | `Statistic.Countdown` |
 | Tour | `open`、`defaultOpen`、`current`、`defaultCurrent`、`steps`、`placement`、`mask`、`gap`、`zIndex`、`className`、`style`、`onClose`、`onFinish`、`onChange`、`getPopupContainer`、`scrollIntoViewOptions`、`version` | 默认值由组件内部提供 `mask`、`gap`、`zIndex` 等 | 无 |
 | Steps | `current`、`direction`、`size`、`status`、`labelPlacement`、`className`、`children`、`version` | `current=0`；`direction='horizontal'`；`size='default'`；`labelPlacement='horizontal'` | `Step` |
+| Anchor | `affix`、`bounds`、`getContainer`、`offsetTop`、`showInkInFixed`、`targetOffset`、`onChange`、`onClick`、`version`、`className`、`children` | `affix=true`；`bounds=5`；`offsetTop=0`；`showInkInFixed=false` | `Link` |
 | CalendarSelect | 当前元数据暂未解析出 props | 无 | 无 |
 | DragTable | `value`、`onChange`、`tableProps`、`columns`、`rowKey`、`version`、`className`、`restProps` | 无 | 无 |
 | PageLayout | 当前元数据暂未解析出 props | 无 | `PageLayout.ModalLayout` |

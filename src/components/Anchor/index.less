@@ -1,0 +1,88 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-anchor {
+
+  // ========== 墨迹竖线（左侧指示线） ==========
+  .ant-anchor-ink {
+    left: 0;
+    width: 8px;
+
+    .ant-anchor-ink-front {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      background: var(--tt-color-primary);
+      width: 1px;
+      height: 100%;
+    }
+
+    &::before {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      background-color: var(--tt-bg-lighter);
+      width: 1px;
+      height: 100%;
+      margin: 0;
+    }
+  }
+
+  .ant-anchor-ink-ball {
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin-top: 0;
+    margin-left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid var(--tt-color-primary);
+    background-color: var(--tt-bg-white);
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    &.ant-anchor-ink-ball-visible {
+      display: block;
+    }
+  }
+
+  // ========== 一级锚点链接 ==========
+  .ant-anchor-link {
+    padding: 0 0 0 16px;
+
+    >.ant-anchor-link-title {
+      display: flex;
+      align-items: center;
+      font-size: @font-size-base;
+      line-height: @line-height-h4;
+      color: var(--tt-color-grey-8);
+    }
+
+    &.ant-anchor-link-active>.ant-anchor-link-title {
+      color: var(--tt-color-primary);
+    }
+
+    &:not(.ant-anchor-link-active):hover>.ant-anchor-link-title {
+      color: var(--tt-color-primary);
+    }
+  }
+
+  // ========== 二级锚点链接 ==========
+  .ant-anchor-link .ant-anchor-link {
+    padding-left: 16px;
+
+    >.ant-anchor-link-title {
+      font-size: @font-size-sm;
+      line-height: @line-height-base;
+      color: var(--tt-text-secondary);
+    }
+
+    &.ant-anchor-link-active>.ant-anchor-link-title {
+      color: var(--tt-color-primary);
+    }
+
+    &:not(.ant-anchor-link-active):hover>.ant-anchor-link-title {
+      color: var(--tt-color-primary);
+    }
+  }
+}

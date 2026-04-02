@@ -1,5 +1,6 @@
 // 基础组件导出
 import A from './A';
+import Anchor from './Anchor';
 import Breadcrumb from './Breadcrumb';
 import Button from './Button';
 import Card from './Card';
@@ -44,6 +45,7 @@ import Chart from './Chart';
 
 export {
   A,
+  Anchor,
   Breadcrumb,
   Button,
   Card,

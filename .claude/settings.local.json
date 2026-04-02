@@ -57,7 +57,11 @@
       "Bash(echo \"Exit code: $?\")",
       "Bash(npm install:*)",
       "Bash(NODE_OPTIONS='--no-node-snapshot' node --test test/load-meta.test.mjs)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "mcp__tt-design__find_component_exports",
+      "Bash(curl -s http://localhost:6009)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:6006)",
+      "Bash(npx eslint:*)"
     ]
   }
 }

@@ -61,5 +61,6 @@ export const componentVersions = {
   HourRangeSelect: '1.0.0',
   MaskedInput: '1.0.0',
   SecretInput: '1.0.0',
+  Anchor: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };
