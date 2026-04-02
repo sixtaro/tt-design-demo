@@ -284,6 +284,61 @@ import { Button, DatePicker, PageLayout } from 'tt-design';
   - `无目标卡片`
   - `自定义封面`
 
+### Steps
+
+- 推荐引入：`import { Steps } from 'tt-design'`
+- 版本：`1.0.0`
+- 常用属性：`current`、`direction`、`size`、`status`、`labelPlacement`、`className`
+- 默认值：
+  - `current: 0`
+  - `direction: 'horizontal'`
+  - `size: 'default'`
+  - `labelPlacement: 'horizontal'`
+- 子能力：
+  - `Steps.Step`（步骤项，支持 `title`、`description`、`icon`、`status` 等属性）
+- 步骤状态说明：
+  - `wait`（未开始）：灰色圆形节点 + 灰色文字 + 灰色连接线
+  - `process`（进行中）：主题色填充节点 + 白色图标/数字 + 主题色文字 + 灰色连接线
+  - `finish`（已完成）：主题色边框节点 + 勾选图标 + 主题色文字 + 主题色连接线
+  - `error`（出错）：红色边框节点 + 红色图标/文字
+- 支持的模式：
+  - 水平方向（默认）
+  - 垂直方向（`direction="vertical"`）
+  - 导航模式（`type="navigation"`）
+  - 点状步骤条（`progressDot`）
+  - 小尺寸（`size="small"`）
+- 基本用法：
+
+```jsx
+import { Steps } from 'tt-design';
+
+<Steps current={1}>
+  <Steps.Step title="已完成" />
+  <Steps.Step title="进行中" />
+  <Steps.Step title="未开始" />
+  <Steps.Step title="未开始" />
+</Steps>
+```
+
+- 带描述与图标：
+
+```jsx
+<Steps current={1}>
+  <Steps.Step title="填写信息" description="请填写基本信息" />
+  <Steps.Step title="实名认证" description="上传身份证件" />
+  <Steps.Step title="审核中" description="等待后台审核" />
+</Steps>
+```
+
+- 对应案例：
+  - `基础状态总览`
+  - `带描述与图标`
+  - `方向与标签位置`
+  - `垂直方向`
+  - `小尺寸`
+  - `导航模式`
+  - `点状步骤条`
+
 ## 组件属性索引
 
 下表用于快速查找“某个组件当前暴露了哪些属性”，便于后续继续补完整 API 文档。
@@ -301,6 +356,7 @@ import { Button, DatePicker, PageLayout } from 'tt-design';
 | Masonry | `items`、`renderItem`、`children`、`columnCount`、`minColumnWidth`、`gap`、`itemKey`、`className`、`style`、`version`、`props` | 默认值由组件内部提供列宽、间距和 `itemKey` | 无 |
 | Statistic | `version`、`className`、`title`、`value`、`precision`、`prefix`、`suffix`、`loading`、`valueStyle`、`groupSeparator`、`decimalSeparator`、`formatter`、`props` | 无显式默认值 | `Statistic.Countdown` |
 | Tour | `open`、`defaultOpen`、`current`、`defaultCurrent`、`steps`、`placement`、`mask`、`gap`、`zIndex`、`className`、`style`、`onClose`、`onFinish`、`onChange`、`getPopupContainer`、`scrollIntoViewOptions`、`version` | 默认值由组件内部提供 `mask`、`gap`、`zIndex` 等 | 无 |
+| Steps | `current`、`direction`、`size`、`status`、`labelPlacement`、`className`、`children`、`version` | `current=0`；`direction='horizontal'`；`size='default'`；`labelPlacement='horizontal'` | `Step` |
 | CalendarSelect | 当前元数据暂未解析出 props | 无 | 无 |
 | DragTable | `value`、`onChange`、`tableProps`、`columns`、`rowKey`、`version`、`className`、`restProps` | 无 | 无 |
 | PageLayout | 当前元数据暂未解析出 props | 无 | `PageLayout.ModalLayout` |

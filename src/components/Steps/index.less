@@ -1,41 +1,43 @@
 @import (reference) '../../style/themes/default.less';
 
 .tt-steps {
-  // 步骤图标样式
-  .ant-steps-item-icon {
-    border-color: var(--tt-border-color);
-    background-color: var(--tt-bg-white);
 
-    .ant-steps-icon {
-      color: var(--tt-color-grey-5);
-    }
-  }
-
-  // 等待状态
-  &.ant-steps-wait {
+  // ========== 完成状态 ==========
+  .ant-steps-item-finish {
     .ant-steps-item-icon {
-      border-color: var(--tt-border-color);
+      background: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-1);
 
       .ant-steps-icon {
-        color: var(--tt-color-grey-5);
+        color: var(--tt-color-primary);
       }
     }
 
     .ant-steps-item-content {
       .ant-steps-item-title {
-        color: var(--tt-text-secondary);
+        color: var(--tt-color-primary);
+
+        &::after {
+          background-color: var(--tt-color-primary);
+        }
       }
 
       .ant-steps-item-description {
         color: var(--tt-text-secondary);
+        font-size: @font-size-sm;
+        line-height: @line-height-sm;
       }
+    }
+
+    >.ant-steps-item-container>.ant-steps-item-tail::after {
+      background-color: var(--tt-color-primary);
     }
   }
 
-  // 进行中状态
+  // ========== 进行中状态 ==========
   .ant-steps-item-process {
     .ant-steps-item-icon {
-      background-color: var(--tt-color-primary);
+      background: var(--tt-color-primary);
       border-color: var(--tt-color-primary);
 
       .ant-steps-icon {
@@ -45,45 +47,76 @@
 
     .ant-steps-item-content {
       .ant-steps-item-title {
-        color: var(--tt-text-title);
+        color: var(--tt-color-primary);
 
         &::after {
-          background-color: var(--tt-border-color);
+          background-color: var(--tt-bg-lighter);
         }
       }
+
+      .ant-steps-item-description {
+        color: var(--tt-text-secondary);
+        font-size: @font-size-sm;
+        line-height: @line-height-sm;
+      }
     }
+
+    >.ant-steps-item-container>.ant-steps-item-tail::after {
+      background-color: var(--tt-bg-lighter);
+    }
+
   }
 
-  // 完成状态
-  .ant-steps-item-finish {
+  // ========== 等待状态 ==========
+  .ant-steps-item-wait {
     .ant-steps-item-icon {
-      background-color: var(--tt-bg-white);
-      border-color: var(--tt-color-primary);
+      background: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-1);
 
       .ant-steps-icon {
-        color: var(--tt-color-primary);
+        color: var(--tt-color-primary-5);
       }
     }
 
     .ant-steps-item-content {
       .ant-steps-item-title {
-        color: var(--tt-text-title);
+        color: var(--tt-color-primary-6);
+      }
 
-        &::after {
-          background-color: var(--tt-color-primary);
-        }
+      .ant-steps-item-description {
+        color: var(--tt-text-secondary);
+        font-size: @font-size-sm;
+        line-height: @line-height-sm;
       }
     }
 
-    > .ant-steps-item-container > .ant-steps-item-tail::after {
-      background-color: var(--tt-color-primary);
+    >.ant-steps-item-container>.ant-steps-item-tail::after {
+      background-color: var(--tt-bg-lighter);
+    }
+
+    .ant-steps-item-container {
+      &:hover {
+
+        .ant-steps-item-title,
+        .ant-steps-item-icon {
+          color: var(--tt-color-primary) !important;
+          border-color: var(--tt-color-primary) !important;
+
+        }
+
+        .ant-steps-icon {
+          color: var(--tt-color-primary) !important;
+
+        }
+
+      }
     }
   }
 
-  // 错误状态
+  // ========== 错误状态 ==========
   .ant-steps-item-error {
     .ant-steps-item-icon {
-      background-color: var(--tt-bg-white);
+      background: var(--tt-bg-white);
       border-color: var(--tt-color-error);
 
       .ant-steps-icon {
@@ -98,11 +131,13 @@
 
       .ant-steps-item-description {
         color: var(--tt-color-error);
+        font-size: @font-size-sm;
+        line-height: @line-height-sm;
       }
     }
   }
 
-  // 悬停状态（可点击时）
+  // ========== 悬停状态 ==========
   .ant-steps-item:not(.ant-steps-item-active):hover {
     .ant-steps-item-icon {
       border-color: var(--tt-color-primary-hover);
@@ -113,47 +148,110 @@
     }
   }
 
-  // 小尺寸样式
+  // ========== 小尺寸 ==========
   &.ant-steps-small {
     .ant-steps-item-icon {
-      border-color: var(--tt-border-color);
-    }
+      border-color: var(--tt-color-primary-1);
+      background: var(--tt-color-primary-1);
 
-    .ant-steps-item-process {
-      .ant-steps-item-icon {
-        background-color: var(--tt-color-primary);
-        border-color: var(--tt-color-primary);
+      .ant-steps-icon {
+        color: var(--tt-color-primary-5);
       }
     }
 
-    .ant-steps-item-finish {
-      .ant-steps-item-icon {
-        background-color: var(--tt-color-primary);
-        border-color: var(--tt-color-primary);
+    .ant-steps-item-process .ant-steps-item-icon {
+      background: var(--tt-color-primary);
+      border-color: var(--tt-color-primary);
+
+      .ant-steps-icon {
+        color: #fff;
       }
     }
 
-    .ant-steps-item-error {
-      .ant-steps-item-icon {
-        border-color: var(--tt-color-error);
-      }
+    .ant-steps-item-finish .ant-steps-item-icon {
+      background: var(--tt-bg-white);
+      border-color: var(--tt-color-primary);
+    }
+
+    .ant-steps-item-error .ant-steps-item-icon {
+      border-color: var(--tt-color-error);
     }
   }
 
-  // 导航模式样式
+  // ========== 导航模式 ==========
   &.ant-steps-navigation {
     .ant-steps-item {
       &::before {
-        background-color: var(--tt-border-color);
+        background-color: var(--tt-bg-lighter);
       }
 
       &.ant-steps-item-active {
         color: var(--tt-color-primary);
+      }
+    }
+  }
 
-        &::after {
-          background-color: var(--tt-color-primary);
+  // ========== 百分比进度 ==========
+  &.ant-steps-with-progress {
+    .ant-steps-item-process {
+      .ant-steps-progress-icon {
+        .ant-progress-circle-path {
+          stroke: var(--tt-color-primary);
+        }
+
+        .ant-progress-circle-trail {
+          stroke: var(--tt-color-primary-1);
         }
       }
+    }
+
+    .ant-steps-item-error {
+      .ant-steps-progress-icon {
+        .ant-progress-circle-path {
+          stroke: var(--tt-color-error);
+        }
+
+        .ant-progress-circle-trail {
+          stroke: rgba(255, 68, 51, 0.16);
+        }
+      }
+    }
+  }
+
+  // ========== 垂直方向 ==========
+  &.ant-steps-vertical {
+    >.ant-steps-item>.ant-steps-item-container>.ant-steps-item-tail::after {
+      background-color: var(--tt-bg-lighter);
+    }
+
+    .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-tail::after {
+      background-color: var(--tt-color-primary);
+    }
+  }
+
+  // ========== 点状步骤条 ==========
+  &.ant-steps-dot {
+    .ant-steps-item-icon {
+      width: 8px;
+      height: 8px;
+      border-color: transparent;
+      background: transparent;
+
+      .ant-steps-icon-dot {
+        background: var(--tt-color-grey-5);
+      }
+    }
+
+    .ant-steps-item-process .ant-steps-item-icon .ant-steps-icon-dot {
+      background: var(--tt-color-primary);
+    }
+
+    .ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon-dot {
+      background: var(--tt-color-primary);
+    }
+
+    .ant-steps-item-error .ant-steps-item-icon .ant-steps-icon-dot {
+      background: var(--tt-color-error);
     }
   }
 }
