@@ -10,34 +10,30 @@ export default {
         component: `Pagination 组件 - 版本: ${Pagination.version}`
       }
     }
-  },
-  argTypes: {
-    version: {
-      control: 'text',
-      description: '组件版本号，会渲染为 data-component-version 属性'
-    }
   }
 };
 
 const Template = (args) => <Pagination {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  total: 50,
-  version: Pagination.version
+export const 默认案例 = Template.bind({});
+默认案例.args = {
+  total: 50
 };
 
-export const WithCurrent = Template.bind({});
-WithCurrent.args = {
-  current: 3,
-  total: 50,
-  version: Pagination.version
+export const 大量数据 = Template.bind({});
+大量数据.args = {
+  total: 500,
+  pageSize: 10
 };
 
-export const WithPageSize = Template.bind({});
-WithPageSize.args = {
-  pageSize: 10,
-  total: 100,
-  showSizeChanger: true,
-  version: Pagination.version
+export const 极简模式 = Template.bind({});
+极简模式.args = {
+  total: 50,
+  simple: true
+};
+
+export const 禁用状态 = Template.bind({});
+禁用状态.args = {
+  total: 50,
+  disabled: true
 };
