@@ -31,3 +31,4 @@ ant-design-pro.less
 public/static/color.less
 /.worktrees
 .vscode
+/.agents

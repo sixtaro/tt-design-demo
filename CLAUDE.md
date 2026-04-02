@@ -165,6 +165,7 @@ import PropTypes from 'prop-types';
 3. **引用主题文件**：首行 `@import (reference) '../../style/themes/default.less';`
 4. **类名前缀**：以 `tt-` 为前缀
 5. **相关文件**：颜色单一来源定义在 `src/theme/color-palette.js`，CSS 变量输出层见 `src/style/color.less`
+6. **Portal 样式隔离**：对于使用 Portal 渲染的下拉框、弹窗等组件（如 Select、Modal），必须使用 Ant Design 的 `dropdownClassName` / `modalClassName` 等属性传入自定义类名（如 `tt-xxx-dropdown`），并在 LESS 文件中用该类名包裹样式，禁止使用全局选择器
 
 ## 字体与排版规范
 
