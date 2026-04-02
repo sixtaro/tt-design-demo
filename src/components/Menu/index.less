@@ -76,11 +76,24 @@
       .anticon {
         color: var(--tt-color-primary-6);
       }
+
+      .ant-menu-submenu-arrow,
+      .ant-menu-submenu-arrow::before,
+      .ant-menu-submenu-arrow::after {
+        color: var(--tt-color-primary-6);
+        background-color: var(--tt-color-primary-6);
+      }
     }
   }
 
-  .ant-menu-item-selected,
-  .ant-menu-item-active {
+  .ant-menu.ant-menu-vertical.ant-menu-sub > .ant-menu-item.ant-menu-item-selected,
+  .ant-menu.ant-menu-vertical.ant-menu-sub > .ant-menu-item.ant-menu-item-active,
+  .ant-menu.ant-menu-vertical.ant-menu-sub > .ant-menu-item.ant-menu-item-selected:hover,
+  .ant-menu.ant-menu-vertical.ant-menu-sub > .ant-menu-item.ant-menu-item-active:hover,
+  .ant-menu.ant-menu-vertical-left.ant-menu-sub > .ant-menu-item.ant-menu-item-selected,
+  .ant-menu.ant-menu-vertical-left.ant-menu-sub > .ant-menu-item.ant-menu-item-active,
+  .ant-menu.ant-menu-vertical-left.ant-menu-sub > .ant-menu-item.ant-menu-item-selected:hover,
+  .ant-menu.ant-menu-vertical-left.ant-menu-sub > .ant-menu-item.ant-menu-item-active:hover {
     background-color: var(--tt-color-primary-1);
     color: var(--tt-color-primary-6);
     font-weight: @font-weight-medium;
@@ -121,6 +134,13 @@
       .anticon {
         color: var(--tt-color-primary-6);
       }
+
+      .ant-menu-submenu-arrow,
+      .ant-menu-submenu-arrow::before,
+      .ant-menu-submenu-arrow::after {
+        color: var(--tt-color-primary-6);
+        background-color: var(--tt-color-primary-6);
+      }
     }
   }
 
@@ -142,6 +162,35 @@
   &.ant-menu-vertical-left {
     border-right: none;
     padding: 4px;
+
+    .ant-menu-submenu-title:hover {
+      background-color: var(--tt-color-primary-1);
+      color: var(--tt-color-primary-6);
+
+      .anticon {
+        color: var(--tt-color-primary-6);
+      }
+
+      .ant-menu-submenu-arrow,
+      .ant-menu-submenu-arrow::before,
+      .ant-menu-submenu-arrow::after {
+        color: var(--tt-color-primary-6);
+        background-color: var(--tt-color-primary-6);
+      }
+    }
+
+    .ant-menu-item-selected,
+    .ant-menu-item-active,
+    .ant-menu-item-selected:hover,
+    .ant-menu-item-active:hover {
+      background-color: var(--tt-color-primary-1);
+      color: var(--tt-color-primary-6);
+      font-weight: @font-weight-medium;
+
+      .anticon {
+        color: var(--tt-color-primary-6);
+      }
+    }
 
     .ant-menu-sub.ant-menu-inline,
     .ant-menu-sub.ant-menu-vertical {
@@ -210,5 +259,68 @@
 
   .ant-menu-inline-collapsed {
     width: 72px;
+  }
+}
+
+.tt-menu-submenu-popup.ant-menu-submenu-popup {
+  .ant-menu {
+    padding: 8px;
+    background-color: var(--tt-bg-white);
+    border-radius: 4px;
+    box-shadow: 0 2px 20px 0 var(--tt-color-grey-2);
+    border: none;
+  }
+
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    min-height: 38px;
+    margin: 0;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    color: var(--tt-color-grey-7);
+    line-height: 22px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    .anticon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--tt-color-grey-7);
+      line-height: 1;
+    }
+
+    &:hover {
+      background-color: var(--tt-color-grey-1);
+      color: var(--tt-color-grey-7);
+
+      .anticon {
+        color: var(--tt-color-grey-7);
+      }
+    }
+  }
+
+  .ant-menu > .ant-menu-item.ant-menu-item-selected,
+  .ant-menu > .ant-menu-item.ant-menu-item-active,
+  .ant-menu > .ant-menu-item.ant-menu-item-selected:hover,
+  .ant-menu > .ant-menu-item.ant-menu-item-active:hover {
+    background-color: var(--tt-color-primary-1);
+    color: var(--tt-color-primary-6);
+    font-weight: @font-weight-medium;
+
+    .anticon {
+      color: var(--tt-color-primary-6);
+    }
+  }
+
+  .ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title,
+  .ant-menu .ant-menu-submenu-selected > .ant-menu-submenu-title:hover {
+    background-color: var(--tt-color-primary-1);
+    color: var(--tt-color-primary-6);
+
+    .anticon {
+      color: var(--tt-color-primary-6);
+    }
   }
 }

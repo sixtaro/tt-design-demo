@@ -46,7 +46,11 @@ export const 水平导航 = () => (
 
     <div>
       <h4>带下拉</h4>
-      <Menu mode="horizontal" selectedKeys={['asset']} version={Menu.version}>
+      <Menu
+        mode="horizontal"
+        selectedKeys={['asset']}
+        version={Menu.version}
+      >
         <Menu.Item key="home">首页</Menu.Item>
         <Menu.SubMenu key="finance" title="财务管理">
           <Menu.Item key="invoice">发票管理</Menu.Item>

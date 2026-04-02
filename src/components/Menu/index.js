@@ -9,6 +9,17 @@ import './index.less';
 
 const { Item, SubMenu, Divider, ItemGroup } = AntMenu;
 
+const MenuSubMenu = ({ popupClassName, ...props }) => {
+  const mergedPopupClassName = classNames('tt-menu-submenu-popup', popupClassName);
+
+  return (
+    <SubMenu
+      popupClassName={mergedPopupClassName}
+      {...props}
+    />
+  );
+};
+
 const getDefaultPage = (childrenArray, pageSize, selectedKeys, defaultSelectedKeys) => {
   const activeKeys = selectedKeys && selectedKeys.length > 0 ? selectedKeys : defaultSelectedKeys;
 
@@ -113,7 +124,7 @@ const Menu = ({
 };
 
 Menu.Item = Item;
-Menu.SubMenu = SubMenu;
+Menu.SubMenu = MenuSubMenu;
 Menu.Divider = Divider;
 Menu.Group = ItemGroup;
 Menu.version = componentVersions.Menu;
@@ -137,6 +148,10 @@ Menu.propTypes = {
   activeStyle: PropTypes.oneOf(['filled', 'text']),
   pagination: PropTypes.bool,
   pageSize: PropTypes.number,
+};
+
+MenuSubMenu.propTypes = {
+  popupClassName: PropTypes.string,
 };
 
 Menu.defaultProps = {
