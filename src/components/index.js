@@ -42,6 +42,7 @@ import ColorPicker from './ColorPicker';
 import QRCode from './QRCode';
 import Plate from './Plate';
 import Chart from './Chart';
+import Transfer from './Transfer';
 
 export {
   A,
@@ -87,4 +88,5 @@ export {
   QRCode,
   Plate,
   Chart,
+  Transfer,
 };

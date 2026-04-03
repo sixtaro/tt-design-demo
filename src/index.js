@@ -47,6 +47,7 @@ import ColorPicker from './components/ColorPicker';
 import QRCode from './components/QRCode';
 import Plate from './components/Plate';
 import Chart from './components/Chart';
+import Transfer from './components/Transfer';
 import * as versionUtils from './utils/version';
 import { libraryVersion } from './utils/version-config';
 import { themeConfig, colors, getTheme, applyTheme } from './theme';
@@ -120,6 +121,7 @@ export {
   QRCode,
   Plate,
   Chart,
+  Transfer,
   versionUtils,
 };
 
@@ -178,6 +180,7 @@ const components = {
   QRCode,
   Plate,
   Chart,
+  Transfer,
   ThemeProvider,
   colors,
   themeConfig,

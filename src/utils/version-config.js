@@ -30,7 +30,7 @@ export const componentVersions = {
   Spin: '1.0.0',
   FloatButton: '1.0.0',
   Divider: '1.0.0',
-  Empty: '1.0.0',
+  Empty: '1.0.2',
   Row: '1.0.0',
   Menu: '1.0.4',
   Masonry: '1.0.0',
@@ -62,5 +62,6 @@ export const componentVersions = {
   MaskedInput: '1.0.0',
   SecretInput: '1.0.0',
   Anchor: '1.0.0',
+  Transfer: '1.0.0',
   // 后续添加的组件版本号将在此处配置
 };

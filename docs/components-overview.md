@@ -12,8 +12,8 @@
 
 ## 组件库概览
 
-- 当前共收录 `62` 个组件
-- 基础组件：`49` 个
+- 当前共收录 `63` 个组件
+- 基础组件：`50` 个
 - 业务组件：`13` 个
 - 技术基座：`React 17.0.1`、`Ant Design 4.24.8`、`Rollup 2.x`、`Storybook 6.x`
 
@@ -77,6 +77,7 @@ import { Button, DatePicker, PageLayout } from 'tt-design';
 | Tabs | 1.0.0 | `import { Tabs } from 'tt-design'` | `src/components/Tabs/index.js` | 已从基础组件入口和根入口导出 |
 | TimePicker | 1.0.0 | `import { TimePicker } from 'tt-design'` | `src/components/TimePicker/index.js` | 仅根入口导出 |
 | Tour | 1.0.0 | `import { Tour } from 'tt-design'` | `src/components/Tour/index.js` | 已从基础组件入口和根入口导出 |
+| Transfer | 1.0.0 | `import { Transfer } from 'tt-design'` | `src/components/Transfer/index.js` | 已从基础组件入口和根入口导出 |
 | TreeSelect | 1.0.0 | `import { TreeSelect } from 'tt-design'` | `src/components/TreeSelect/index.js` | 仅根入口导出 |
 | Upload | 1.0.0 | `import { Upload } from 'tt-design'` | `src/components/Upload/index.js` | 已从基础组件入口和根入口导出 |
 | Watermark | 1.0.0 | `import { Watermark } from 'tt-design'` | `src/components/Watermark/index.js` | 已从基础组件入口和根入口导出 |
@@ -382,6 +383,69 @@ import { Anchor } from 'tt-design';
   - `基础用法`
   - `带子级锚点`
 
+### Transfer
+
+- 推荐引入：`import { Transfer } from 'tt-design'`
+- 版本：`1.0.0`
+- 常用属性：`dataSource`、`targetKeys`、`selectedKeys`、`onChange`、`onSelectChange`、`render`、`showSearch`、`filterOption`、`titles`、`operations`、`footer`、`disabled`、`oneWay`、`pagination`、`showSelectAll`、`selectAllLabels`、`status`、`locale`
+- 默认值：
+  - `dataSource: []`
+  - `targetKeys: []`
+  - `showSearch: false`
+  - `disabled: false`
+  - `oneWay: false`
+  - `pagination: false`
+  - `showSelectAll: true`
+  - `locale: { itemUnit: '项', itemsUnit: '项', searchPlaceholder: '请输入关键字', notFoundContent: '暂无数据' }`
+- 基本用法：
+
+```jsx
+import { Transfer } from 'tt-design';
+
+const mockData = Array.from({ length: 12 }).map((_, i) => ({
+  key: `item-${i + 1}`,
+  title: `选项 ${i + 1}`,
+  description: `描述内容 ${i + 1}`,
+}));
+
+const [targetKeys, setTargetKeys] = useState([]);
+
+<Transfer
+  dataSource={mockData}
+  targetKeys={targetKeys}
+  onChange={setTargetKeys}
+  render={item => item.title}
+  version={Transfer.version}
+/>
+```
+
+- 带搜索：
+
+```jsx
+<Transfer
+  dataSource={mockData}
+  targetKeys={targetKeys}
+  onChange={setTargetKeys}
+  render={item => item.title}
+  showSearch
+  filterOption={(inputValue, item) =>
+    item.title.indexOf(inputValue) !== -1
+  }
+  version={Transfer.version}
+/>
+```
+
+- 对应案例：
+  - `基础用法`
+  - `带搜索`
+  - `分页模式`
+  - `不同状态`
+  - `单向穿梭`
+  - `自定义标题`
+  - `自定义渲染`
+  - `自定义底部`
+  - `含禁用项`
+
 ## 组件属性索引
 
 下表用于快速查找“某个组件当前暴露了哪些属性”，便于后续继续补完整 API 文档。
@@ -401,6 +465,7 @@ import { Anchor } from 'tt-design';
 | Tour | `open`、`defaultOpen`、`current`、`defaultCurrent`、`steps`、`placement`、`mask`、`gap`、`zIndex`、`className`、`style`、`onClose`、`onFinish`、`onChange`、`getPopupContainer`、`scrollIntoViewOptions`、`version` | 默认值由组件内部提供 `mask`、`gap`、`zIndex` 等 | 无 |
 | Steps | `current`、`direction`、`size`、`status`、`labelPlacement`、`className`、`children`、`version` | `current=0`；`direction='horizontal'`；`size='default'`；`labelPlacement='horizontal'` | `Step` |
 | Anchor | `affix`、`bounds`、`getContainer`、`offsetTop`、`showInkInFixed`、`targetOffset`、`onChange`、`onClick`、`version`、`className`、`children` | `affix=true`；`bounds=5`；`offsetTop=0`；`showInkInFixed=false` | `Link` |
+| Transfer | `dataSource`、`targetKeys`、`selectedKeys`、`onChange`、`onSelectChange`、`render`、`showSearch`、`filterOption`、`titles`、`operations`、`footer`、`disabled`、`oneWay`、`pagination`、`showSelectAll`、`selectAllLabels`、`status`、`locale`、`version`、`className` | `showSearch=false`；`disabled=false`；`oneWay=false`；`pagination=false`；`showSelectAll=true` | 无 |
 | CalendarSelect | 当前元数据暂未解析出 props | 无 | 无 |
 | DragTable | `value`、`onChange`、`tableProps`、`columns`、`rowKey`、`version`、`className`、`restProps` | 无 | 无 |
 | PageLayout | 当前元数据暂未解析出 props | 无 | `PageLayout.ModalLayout` |

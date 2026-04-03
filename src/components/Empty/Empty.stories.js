@@ -1,6 +1,13 @@
 import React from 'react';
 import Empty from './index';
 import Button from '../Button';
+import { Empty as AntEmpty } from 'antd';
+import NoDownloadIllustration from './svg/NoDownloadIllustration';
+import NoContentIllustration from './svg/NoContentIllustration';
+import NoSearchResultIllustration from './svg/NoSearchResultIllustration';
+import NoMessageIllustration from './svg/NoMessageIllustration';
+import NoPictureIllustration from './svg/NoPictureIllustration';
+import NoDataIllustration from './svg/NoDataIllustration';
 
 export default {
   title: '反馈/Empty 空状态',
@@ -14,12 +21,6 @@ export default {
     },
   },
   argTypes: {
-    preset: {
-      control: {
-        type: 'select',
-        options: Object.values(Empty.presets),
-      },
-    },
     description: {
       control: 'text',
     },
@@ -39,27 +40,36 @@ const Template = args => <Empty {...args} />;
 
 export const 基础用法 = Template.bind({});
 基础用法.args = {
-  preset: Empty.presets.default,
   description: '暂无数据',
   version: Empty.version,
 };
 
-export const 预设缺省图 = {
+export const 组合展示 = {
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 24 }}>
-      <Empty preset={Empty.presets.default} description="AntD 默认空状态" version={Empty.version} />
-      <Empty preset={Empty.presets.noData} description="本地预设无数据" version={Empty.version} />
-      <Empty preset={Empty.presets.simple} description="AntD 简洁样式" version={Empty.version} />
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24 }}>
+      <Empty description="默认空状态" version={Empty.version} />
+      <Empty image={AntEmpty.PRESENTED_IMAGE_SIMPLE} description="简洁图片" version={Empty.version} />
+      <Empty description="当前没有可展示内容" version={Empty.version}>
+        <Button type="primary" version={Button.version}>
+          立即新增
+        </Button>
+      </Empty>
+      <Empty image={<NoDownloadIllustration />} description="暂无可下载内容" version={Empty.version} />
     </div>
   ),
 };
 
-export const 带操作按钮 = {
+export const 主题联动插画 = {
   render: () => (
-    <Empty preset={Empty.presets.noData} description="当前没有可展示内容" version={Empty.version}>
-      <Button type="primary" version={Button.version}>
-        立即新增
-      </Button>
-    </Empty>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24 }}>
+      <Empty image={<NoContentIllustration />} description="暂无内容" version={Empty.version} />
+      <Empty image={<NoSearchResultIllustration />} description="无搜索结果" version={Empty.version} />
+      <Empty image={<NoMessageIllustration />} description="暂无消息" version={Empty.version} />
+      <Empty image={<NoPictureIllustration />} description="暂无图片" version={Empty.version} />
+      <Empty image={<NoDataIllustration />} description="暂无数据" version={Empty.version} />
+      <div style={{ padding: 24, background: 'var(--tt-color-primary-1)', borderRadius: 12 }}>
+        <Empty image={<NoDownloadIllustration />} description="暂无下载记录" version={Empty.version} />
+      </div>
+    </div>
   ),
 };
