@@ -1,6 +1,18 @@
 import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
-import { Selector, PageLayout, CalendarSelect, CarouselArrow, DragTable, HourRangeSelect, MaskedInput, SecretInput } from './business';
+import {
+  Selector,
+  PageLayout,
+  CalendarSelect,
+  CarouselArrow,
+  DragTable,
+  HourRangeSelect,
+  MaskedInput,
+  SecretInput,
+  VerificationCode,
+  CountdownButton,
+  TabsPage,
+} from './business';
 import A from './components/A';
 import Anchor from './components/Anchor';
 import Button from './components/Button';
@@ -75,6 +87,9 @@ export {
   HourRangeSelect,
   MaskedInput,
   SecretInput,
+  VerificationCode,
+  CountdownButton,
+  TabsPage,
   A,
   Anchor,
   Button,
@@ -134,6 +149,9 @@ const components = {
   HourRangeSelect,
   MaskedInput,
   SecretInput,
+  VerificationCode,
+  CountdownButton,
+  TabsPage,
   A,
   Anchor,
   Button,

@@ -1,0 +1,425 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-verification-code-popover {
+  .ant-popover-inner {
+    background: #f2f8ff66;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+  }
+
+  .ant-popover-inner-content {
+    padding: 20px;
+    padding-top: 10px;
+  }
+}
+
+.tt-verification-code-outer {
+  position: relative;
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+
+  .tt-verification-code-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--tt-text-title);
+    line-height: 38px;
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 18px;
+  }
+
+  .tt-verification-code-buttons {
+    display: flex;
+    justify-content: space-between;
+    color: var(--tt-text-secondary);
+    font-size: 18px;
+    width: 56px;
+    position: absolute;
+    top: 3px;
+    right: 0px;
+
+    > div {
+      cursor: pointer;
+
+      &.refreshDisabled {
+        color: #ccc;
+        cursor: wait;
+      }
+
+      &:hover {
+        color: var(--tt-text-secondary);
+      }
+    }
+  }
+
+  .tt-verification-code {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid var(--tt-border-color);
+    background-color: var(--tt-bg-light);
+    position: relative;
+    margin: 0 auto;
+    border-radius: 2px;
+    user-select: none;
+
+    .tt-verification-code-bg {
+      width: 40px;
+      height: 100%;
+      position: absolute;
+      background-color: var(--tt-color-primary-5);
+    }
+
+    .tt-verification-code-input {
+      position: relative;
+      height: 100%;
+      max-height: 36px;
+      color: var(--tt-text-secondary);
+
+      .tt-verification-code-text {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        user-select: none;
+        background: var(--tt-bg-lighter);
+        border-radius: 2px;
+        backdrop-filter: blur(10px);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+
+        &:before {
+          content: '向右拖动滑块填充拼图';
+        }
+      }
+
+      .tt-verification-code-status-bg {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(51, 136, 255, 0.2);
+        border-radius: 2px;
+        border: 1px solid var(--tt-color-primary-5);
+        backdrop-filter: blur(10px);
+      }
+
+      &.auto {
+        .btn-round,
+        .tt-verification-code-btn,
+        .tt-verification-code-pic-index,
+        .tt-verification-code-status-bg {
+          transition: all 0.2s;
+        }
+      }
+
+      .tt-verification-code-btn {
+        position: absolute;
+        width: 45px;
+        height: 100%;
+        top: 0;
+        line-height: 32px;
+        border: 1px solid #ffffff80;
+        cursor: move;
+        font-family: '宋体';
+        text-align: center;
+        background-color: #fff;
+        user-select: none;
+        outline: none;
+        border-radius: 2px;
+      }
+    }
+
+    .btn-round {
+      width: 50px;
+      height: 28px;
+      border-radius: 14px;
+      background-color: var(--tt-color-primary-5);
+      position: absolute;
+      bottom: 6px;
+      text-align: center;
+      user-select: none;
+      cursor: move;
+      outline: none;
+      color: #fff;
+      line-height: 28px;
+      box-shadow:
+        4px 4px 8px 0px var(--tt-color-primary-1),
+        -4px -4px 8px 0px var(--tt-color-primary-1);
+
+      > span {
+        margin-left: 6px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .tt-verification-code-image-outer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tt-verification-code-pic {
+      width: 100%;
+      display: none;
+      position: absolute;
+      bottom: 38px;
+
+      .tt-verification-code-pic-bg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .tt-verification-code-pic-index {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        outline: none;
+      }
+
+      .tt-verification-code-load-box {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #aaa;
+        font-size: 50px;
+      }
+    }
+
+    .slide {
+      @slideHeight: 12px;
+
+      height: 40px;
+      width: 100%;
+      user-select: none;
+      position: relative;
+
+      &:before {
+        content: '';
+        display: block;
+        height: @slideHeight;
+        width: 100%;
+        position: absolute;
+        border-radius: 10px;
+        background-color: #e4e4e4;
+        left: 0;
+        top: calc(50% - @slideHeight / 2);
+      }
+    }
+
+    &.moving {
+      .tt-verification-code-pic {
+        display: block;
+      }
+      .tt-verification-code-status-bg {
+        opacity: 1;
+      }
+      .tt-verification-code-btn {
+        background: var(--tt-color-primary-5);
+        color: #fff;
+      }
+    }
+
+    &.success {
+      border-color: var(--tt-color-success);
+      background-color: var(--tt-bg-success-light);
+      .tt-verification-code-bg {
+        display: none;
+      }
+
+      .tt-verification-code-btn {
+        display: none;
+      }
+
+      .tt-verification-code-text {
+        color: var(--tt-color-success);
+        background-color: var(--tt-bg-success-light);
+        cursor: pointer;
+
+        &:before {
+          content: '验证通过';
+        }
+      }
+    }
+
+    &.trying {
+      .tt-verification-code-pic {
+        display: block;
+      }
+    }
+
+    &.loadding {
+      .tt-verification-code-bg {
+        display: none;
+      }
+
+      .tt-verification-code-btn {
+        display: none;
+      }
+
+      .tt-verification-code-text {
+        &:before {
+          content: '加载中...';
+        }
+      }
+    }
+
+    &.checking {
+      .tt-verification-code-bg {
+        display: none;
+      }
+
+      .tt-verification-code-btn {
+        display: none;
+      }
+
+      .tt-verification-code-text {
+        &:before {
+          content: '验证中...';
+        }
+      }
+    }
+
+    &.fail {
+      border-color: var(--tt-color-error);
+      background-color: var(--tt-bg-error-light);
+      .tt-verification-code-bg {
+        display: none;
+      }
+
+      .tt-verification-code-btn {
+        display: none;
+      }
+
+      .tt-verification-code-text {
+        background-color: var(--tt-bg-error-light);
+        &:before {
+          color: var(--tt-color-error);
+          content: '验证失败';
+        }
+      }
+
+      .tt-verification-code-load-box {
+        color: red;
+      }
+    }
+
+    &.error {
+      border-color: var(--tt-color-error);
+      background-color: var(--tt-bg-error-light);
+      .tt-verification-code-bg {
+        display: none;
+      }
+
+      .tt-verification-code-btn {
+        display: none;
+      }
+
+      .tt-verification-code-text {
+        background-color: var(--tt-bg-error-light);
+        &:before {
+          color: var(--tt-color-error);
+          content: '加载失败，点击重试';
+        }
+      }
+
+      .tt-verification-code-load-box {
+        color: red;
+      }
+    }
+
+    &.tt-verification-code-defaultShowPic {
+      height: initial;
+      border: none;
+      background-color: transparent;
+
+      .tt-verification-code-bg {
+        background-color: transparent;
+      }
+
+      .tt-verification-code-input {
+        margin-top: 20px;
+        box-shadow: 0 0 10px 0px #6b7a9930;
+        .tt-verification-code-text {
+          position: initial;
+          border: 1px solid #ffffff;
+        }
+      }
+
+      .tt-verification-code-pic {
+        width: 300px;
+        height: 180px;
+        display: block;
+        position: relative;
+        bottom: 0;
+
+        &:before {
+          display: block;
+          width: 100%;
+          text-align: center;
+          position: absolute;
+          top: calc(50% + 30px);
+        }
+      }
+
+      &.success {
+        .tt-verification-code-pic {
+          border-color: var(--tt-color-success);
+          background-color: var(--tt-bg-success-light);
+
+          &:before {
+            color: var(--tt-color-success);
+            content: '验证通过';
+          }
+        }
+      }
+
+      &.loadding {
+        .tt-verification-code-pic {
+          &:before {
+            content: '加载中...';
+          }
+        }
+      }
+
+      &.checking {
+        .tt-verification-code-pic {
+          &:before {
+            content: '验证中...';
+          }
+        }
+      }
+
+      &.fail {
+        .tt-verification-code-pic {
+          border-color: var(--tt-color-error);
+          background-color: var(--tt-bg-error-light);
+
+          &:before {
+            color: var(--tt-color-error);
+            content: '验证失败';
+          }
+        }
+      }
+
+      &.error {
+        .tt-verification-code-pic {
+          border-color: var(--tt-color-error);
+          background-color: var(--tt-bg-error-light);
+
+          &:before {
+            color: var(--tt-color-error);
+            content: '加载失败，点击刷新按钮重试';
+          }
+        }
+      }
+    }
+  }
+}
