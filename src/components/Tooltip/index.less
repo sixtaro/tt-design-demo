@@ -1,0 +1,21 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-tooltip {
+  &.ant-tooltip {
+    // 提示框
+    .ant-tooltip-inner {
+      background-color: var(--tt-color-grey-8);
+      color: var(--tt-bg-white);
+      font-size: @font-size-sm;
+      line-height: @line-height-sm;
+      border-radius: 4px;
+      min-height: auto;
+      padding: 6px 8px;
+    }
+
+    // 箭头
+    .ant-tooltip-arrow-content {
+      background-color: var(--tt-color-grey-8);
+    }
+  }
+}

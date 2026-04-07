@@ -1,0 +1,44 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-comment {
+  &.ant-comment {
+    // 作者名称
+    .ant-comment-content-author {
+      > span {
+        color: var(--tt-text-title);
+        font-weight: 500;
+        font-size: @font-size-base;
+      }
+
+      > .ant-comment-content-author-name {
+        color: var(--tt-text-secondary);
+        font-weight: normal;
+      }
+    }
+
+    // 内容
+    .ant-comment-content-detail {
+      color: var(--tt-text-body);
+      font-size: @font-size-base;
+      line-height: @line-height-base;
+    }
+
+    // 操作区
+    .ant-comment-actions {
+      > li {
+        > span {
+          color: var(--tt-text-secondary);
+
+          &:hover {
+            color: var(--tt-color-primary-6);
+          }
+        }
+      }
+    }
+
+    // 内嵌评论
+    .ant-comment-inner {
+      padding-bottom: inherit;
+    }
+  }
+}

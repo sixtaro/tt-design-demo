@@ -1,0 +1,91 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-alert {
+  &.ant-alert {
+    border-radius: 6px;
+    font-size: @font-size-base;
+
+    // 成功
+    &.ant-alert-success {
+      background-color: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-3);
+
+      .ant-alert-icon {
+        color: var(--tt-color-success);
+      }
+
+      .ant-alert-message {
+        color: var(--tt-text-title);
+      }
+
+      .ant-alert-description {
+        color: var(--tt-text-body);
+      }
+    }
+
+    // 信息
+    &.ant-alert-info {
+      background-color: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-3);
+
+      .ant-alert-icon {
+        color: var(--tt-color-primary);
+      }
+
+      .ant-alert-message {
+        color: var(--tt-text-title);
+      }
+
+      .ant-alert-description {
+        color: var(--tt-text-body);
+      }
+    }
+
+    // 警告
+    &.ant-alert-warning {
+      background-color: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-3);
+
+      .ant-alert-icon {
+        color: var(--tt-color-warning);
+      }
+
+      .ant-alert-message {
+        color: var(--tt-text-title);
+      }
+
+      .ant-alert-description {
+        color: var(--tt-text-body);
+      }
+    }
+
+    // 错误
+    &.ant-alert-error {
+      background-color: var(--tt-color-primary-1);
+      border-color: var(--tt-color-primary-3);
+
+      .ant-alert-icon {
+        color: var(--tt-color-error);
+      }
+
+      .ant-alert-message {
+        color: var(--tt-text-title);
+      }
+
+      .ant-alert-description {
+        color: var(--tt-text-body);
+      }
+    }
+
+    // 关闭按钮
+    .ant-alert-close-icon {
+      color: var(--tt-text-secondary);
+    }
+
+    // 横幅模式
+    &.ant-alert-banner {
+      border-radius: 0;
+      border: none;
+    }
+  }
+}

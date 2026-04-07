@@ -1,0 +1,61 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-skeleton {
+  &.ant-skeleton {
+    // 头像占位
+    .ant-skeleton-avatar {
+      background-color: var(--tt-bg-light);
+    }
+
+    &.ant-skeleton-avatar-circle .ant-skeleton-avatar {
+      border-radius: 50%;
+    }
+
+    // 段落占位
+    .ant-skeleton-paragraph {
+      > li {
+        background-color: var(--tt-bg-light);
+        border-radius: 4px;
+      }
+    }
+
+    // 标题占位
+    .ant-skeleton-title {
+      background-color: var(--tt-bg-light);
+      border-radius: 4px;
+    }
+
+    // 圆角
+    &.ant-skeleton-round {
+      .ant-skeleton-paragraph > li,
+      .ant-skeleton-title {
+        border-radius: 100px;
+      }
+    }
+
+    // 激活动画
+    &.ant-skeleton-active {
+      .ant-skeleton-avatar,
+      .ant-skeleton-title,
+      .ant-skeleton-paragraph > li {
+        background: linear-gradient(
+          90deg,
+          var(--tt-bg-light) 25%,
+          var(--tt-bg-lighter) 37%,
+          var(--tt-bg-light) 63%
+        );
+        background-size: 400% 100%;
+        animation: ant-skeleton-loading 1.4s ease infinite;
+      }
+    }
+  }
+}
+
+@keyframes ant-skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

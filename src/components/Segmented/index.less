@@ -1,0 +1,56 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-segmented {
+  // 基础样式覆盖
+  &.ant-segmented {
+    background-color: var(--tt-bg-light);
+    border-radius: 6px;
+    padding: 2px;
+
+    .ant-segmented-item {
+      border-radius: 4px;
+      color: var(--tt-text-body);
+      transition: all 0.3s;
+
+      &:hover:not(.ant-segmented-item-selected):not(.ant-segmented-item-disabled) {
+        color: var(--tt-color-primary-6);
+      }
+    }
+
+    // 选中项
+    .ant-segmented-item-selected {
+      color: var(--tt-color-primary-6);
+      font-weight: 500;
+      background-color: var(--tt-bg-white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    // 禁用项
+    .ant-segmented-item-disabled {
+      color: var(--tt-color-grey-4);
+      cursor: not-allowed;
+    }
+
+    // 整体禁用状态
+    &.ant-segmented-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      .ant-segmented-item {
+        cursor: not-allowed;
+      }
+    }
+
+    // 幽灵选中指示器
+    .ant-segmented-thumb {
+      background-color: var(--tt-bg-white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+    }
+
+    // 图标样式
+    .ant-segmented-item-icon {
+      margin-right: 4px;
+    }
+  }
+}

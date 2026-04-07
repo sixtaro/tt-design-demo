@@ -1,0 +1,56 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-list {
+  &.ant-list {
+    // 头部和底部
+    .ant-list-header {
+      color: var(--tt-text-title);
+      font-weight: 500;
+    }
+
+    .ant-list-footer {
+      color: var(--tt-text-secondary);
+    }
+
+    // 列表项
+    .ant-list-item {
+      // 标题
+      .ant-list-item-meta-title {
+        color: var(--tt-text-title);
+        font-weight: 500;
+      }
+
+      // 描述
+      .ant-list-item-meta-description {
+        color: var(--tt-text-secondary);
+      }
+
+      // 操作
+      .ant-list-item-action {
+        > li {
+          color: var(--tt-text-secondary);
+
+          &:hover {
+            color: var(--tt-color-primary-6);
+          }
+        }
+      }
+    }
+
+    // 边框模式
+    &.ant-list-bordered {
+      border-color: var(--tt-border-color);
+
+      .ant-list-item {
+        border-color: var(--tt-border-color);
+      }
+    }
+
+    // 分割线
+    &.ant-list-split {
+      .ant-list-item {
+        border-color: var(--tt-border-color);
+      }
+    }
+  }
+}

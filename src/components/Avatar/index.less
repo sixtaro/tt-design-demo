@@ -1,0 +1,28 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-avatar {
+  &.ant-avatar {
+    background-color: var(--tt-color-primary-6);
+    color: var(--tt-bg-white);
+    font-weight: 500;
+
+    // 图片加载失败
+    &.ant-avatar-image {
+      background-color: var(--tt-bg-light);
+    }
+
+    // 不同尺寸
+    &.ant-avatar-lg {
+      font-size: @font-size-h4;
+    }
+
+    &.ant-avatar-sm {
+      font-size: @font-size-sm;
+    }
+
+    // 图标
+    .ant-avatar-icon {
+      font-size: inherit;
+    }
+  }
+}

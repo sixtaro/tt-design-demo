@@ -1,0 +1,79 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-tree {
+  &.ant-tree {
+    color: var(--tt-text-body);
+    font-size: @font-size-base;
+
+    // 节点
+    .ant-tree-node-content-wrapper {
+      &:hover {
+        background-color: var(--tt-color-primary-1);
+        color: var(--tt-color-primary-6);
+      }
+
+      &.ant-tree-node-selected {
+        background-color: var(--tt-color-primary-1);
+        color: var(--tt-color-primary-6);
+      }
+    }
+
+    // 展开/收起图标
+    .ant-tree-switcher {
+      color: var(--tt-text-secondary);
+
+      .ant-tree-switcher-icon svg {
+        color: var(--tt-text-secondary);
+      }
+    }
+
+    // 复选框
+    .ant-tree-checkbox {
+      .ant-tree-checkbox-inner {
+        border-color: var(--tt-border-color);
+      }
+
+      &.ant-tree-checkbox-checked .ant-tree-checkbox-inner {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+      }
+
+      &.ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner {
+        background-color: var(--tt-bg-white);
+        border-color: var(--tt-color-primary-6);
+
+        &::after {
+          background-color: var(--tt-color-primary-6);
+        }
+      }
+    }
+
+    // 拖拽
+    .ant-tree-treenode-draggable {
+      .ant-tree-draggable-icon {
+        color: var(--tt-text-secondary);
+      }
+    }
+
+    // 目录树
+    &.ant-tree-directory {
+      .ant-tree-treenode-selected {
+        .ant-tree-node-content-wrapper {
+          background-color: var(--tt-color-primary-6);
+          color: var(--tt-bg-white);
+        }
+      }
+    }
+
+    // 连接线
+    &.ant-tree-show-line {
+      .ant-tree-indent-unit {
+        border-inline-end-color: var(--tt-border-color);
+      }
+
+      .ant-tree-switcher-line-icon {
+        color: var(--tt-text-secondary);
+      }
+    }
+  }
+}

@@ -55,10 +55,10 @@ const colorReplacements = [
   ['#7492FF', 'var(--tt-color-primary-5)'],
   ['#5577F0', 'var(--tt-color-primary-6)'],
   ['#496AE0', 'var(--tt-color-primary-7)'],
-  ['#FD6300', 'var(--tt-color-primary-5)'],
+  ['#FD6300', 'var(--tt-color-primary-4)'],
   ['#FFE2D7', 'var(--tt-color-primary-1)'],
   ['#FFC9A9', 'var(--tt-color-primary-2)'],
-  ['#FFFAF4', 'var(--tt-color-primary-1)'],
+  ['#FFFAF4', 'var(--tt-bg-white)'],
   ['#F2F7FF', 'var(--tt-bg-white)'],
   ['#F9FAFF', 'var(--tt-bg-white)'],
 ];

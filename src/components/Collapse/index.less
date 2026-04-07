@@ -1,0 +1,53 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-collapse {
+  &.ant-collapse {
+    background-color: var(--tt-bg-white);
+    border-color: var(--tt-border-color);
+
+    // 面板项
+    > .ant-collapse-item {
+      border-color: var(--tt-border-color);
+
+      > .ant-collapse-header {
+        color: var(--tt-text-title);
+        font-weight: 500;
+        font-size: @font-size-base;
+
+        .ant-collapse-arrow {
+          color: var(--tt-text-secondary);
+        }
+      }
+
+      // 激活状态
+      &.ant-collapse-item-active {
+        > .ant-collapse-header {
+          color: var(--tt-color-primary-6);
+        }
+      }
+
+      > .ant-collapse-content {
+        border-color: var(--tt-border-color);
+
+        > .ant-collapse-content-box {
+          color: var(--tt-text-body);
+          font-size: @font-size-base;
+        }
+      }
+    }
+
+    // 幽灵模式
+    &.ant-collapse-ghost {
+      background-color: transparent;
+      border: none;
+    }
+
+    // 禁用状态
+    .ant-collapse-item-disabled {
+      > .ant-collapse-header {
+        color: var(--tt-color-grey-4);
+        cursor: not-allowed;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-popconfirm {
+  &.ant-popover {
+    .ant-popover-inner {
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .ant-popconfirm-title {
+      color: var(--tt-text-title);
+      font-size: @font-size-base;
+    }
+
+    .ant-popconfirm-description {
+      color: var(--tt-text-secondary);
+      font-size: @font-size-sm;
+    }
+
+    .ant-popconfirm-message-icon {
+      color: var(--tt-color-warning);
+    }
+
+    .ant-popconfirm-buttons {
+      .ant-btn-default {
+        color: var(--tt-text-body);
+        border-color: var(--tt-border-color);
+      }
+
+      .ant-btn-primary {
+        background-color: var(--tt-color-primary-6);
+        border-color: var(--tt-color-primary-6);
+      }
+    }
+  }
+}

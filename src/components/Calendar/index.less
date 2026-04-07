@@ -1,0 +1,50 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-calendar {
+  &.ant-picker-calendar {
+    // 头部
+    .ant-picker-calendar-header {
+      .ant-select {
+        color: var(--tt-text-title);
+      }
+    }
+
+    // 日期单元格
+    .ant-picker-cell {
+      color: var(--tt-text-secondary);
+
+      &.ant-picker-cell-in-view {
+        color: var(--tt-text-body);
+      }
+
+      &.ant-picker-cell-selected {
+        .ant-picker-calendar-date {
+          background-color: var(--tt-color-primary-6);
+          color: var(--tt-bg-white);
+          border-color: var(--tt-color-primary-6);
+        }
+      }
+
+      &.ant-picker-cell-today {
+        .ant-picker-calendar-date {
+          border-color: var(--tt-color-primary-6);
+          color: var(--tt-color-primary-6);
+        }
+      }
+    }
+
+    // 日期面板
+    .ant-picker-calendar-date {
+      border-color: var(--tt-border-color);
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: var(--tt-color-primary-1);
+      }
+    }
+
+    .ant-picker-calendar-date-content {
+      color: var(--tt-text-body);
+    }
+  }
+}

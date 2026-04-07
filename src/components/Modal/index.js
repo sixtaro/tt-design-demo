@@ -3,20 +3,20 @@ import { Modal as AntModal } from 'antd';
 import { componentVersions } from '../../utils/version-config';
 import classNames from 'classnames';
 
-const Modal = ({ 
-  title, 
-  visible, 
-  onCancel, 
-  onOk, 
-  footer, 
-  width, 
-  centered, 
-  mask, 
-  maskClosable, 
-  confirmLoading, 
-  version, 
-  className, 
-  ...props 
+const Modal = ({
+  title,
+  visible,
+  onCancel,
+  onOk,
+  footer,
+  width,
+  centered,
+  mask,
+  maskClosable,
+  confirmLoading,
+  version,
+  className,
+  ...props
 }) => {
   const modalClassName = classNames(
     'tt-modal',

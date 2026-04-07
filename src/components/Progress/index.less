@@ -1,0 +1,102 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-progress {
+  &.ant-progress {
+    // 线型进度条
+    .ant-progress-bg {
+      background-color: var(--tt-color-primary-6);
+    }
+
+    .ant-progress-inner {
+      background-color: var(--tt-bg-light);
+      border-radius: 100px;
+    }
+
+    .ant-progress-success-bg {
+      background-color: var(--tt-color-success);
+    }
+
+    .ant-progress-text {
+      color: var(--tt-text-body);
+      font-size: @font-size-sm;
+    }
+
+    // 成功状态
+    &.ant-progress-status-success {
+      .ant-progress-bg {
+        background-color: var(--tt-color-success);
+      }
+
+      .ant-progress-text {
+        color: var(--tt-color-success);
+      }
+    }
+
+    // 异常状态
+    &.ant-progress-status-exception {
+      .ant-progress-bg {
+        background-color: var(--tt-color-error);
+      }
+
+      .ant-progress-text {
+        color: var(--tt-color-error);
+      }
+    }
+
+    // 圆形进度条
+    &.ant-progress-circle {
+      .ant-progress-circle-trail {
+        stroke: var(--tt-bg-light);
+      }
+
+      .ant-progress-circle-path {
+        stroke: var(--tt-color-primary-6);
+      }
+
+      .ant-progress-text {
+        color: var(--tt-text-title);
+        font-size: @font-size-h4;
+      }
+
+      &.ant-progress-status-success {
+        .ant-progress-circle-path {
+          stroke: var(--tt-color-success);
+        }
+
+        .ant-progress-text {
+          color: var(--tt-color-success);
+        }
+      }
+
+      &.ant-progress-status-exception {
+        .ant-progress-circle-path {
+          stroke: var(--tt-color-error);
+        }
+
+        .ant-progress-text {
+          color: var(--tt-color-error);
+        }
+      }
+    }
+
+    // 仪表盘
+    &.ant-progress-dashboard {
+      .ant-progress-circle-trail {
+        stroke: var(--tt-bg-light);
+      }
+
+      .ant-progress-circle-path {
+        stroke: var(--tt-color-primary-6);
+      }
+    }
+
+    // 步骤进度条
+    .ant-progress-steps-item {
+      background-color: var(--tt-bg-light);
+    }
+
+    .ant-progress-steps-item-active {
+      background-color: var(--tt-color-primary-6);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-image {
+  &.ant-image {
+    // 加载中占位
+    .ant-image-placeholder {
+      background-color: var(--tt-bg-light);
+    }
+
+    // 预览遮罩
+    .ant-image-mask {
+      background-color: rgba(0, 0, 0, 0.5);
+
+      .ant-image-mask-info {
+        color: var(--tt-bg-white);
+      }
+    }
+  }
+}

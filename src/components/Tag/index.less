@@ -1,0 +1,42 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-tag {
+  &.ant-tag {
+    border-radius: 4px;
+    font-size: @font-size-sm;
+    line-height: @line-height-sm;
+
+    // 各颜色标签边框透明
+    &.ant-tag-has-color {
+      border-color: transparent;
+    }
+
+    // 关闭图标
+    .anticon-close {
+      color: var(--tt-text-secondary);
+
+      &:hover {
+        color: var(--tt-text-title);
+      }
+    }
+  }
+
+  // 可选标签
+  .ant-tag-checkable {
+    background-color: var(--tt-bg-light);
+    border-color: var(--tt-border-color);
+    color: var(--tt-text-body);
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--tt-color-primary-6);
+    }
+
+    &.ant-tag-checkable-checked {
+      background-color: var(--tt-color-primary-6);
+      border-color: var(--tt-color-primary-6);
+      color: var(--tt-bg-white);
+    }
+  }
+}

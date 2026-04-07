@@ -1,0 +1,38 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-carousel {
+  &.ant-carousel {
+    // 指示点样式
+    .slick-dots {
+      li {
+        button {
+          background: var(--tt-text-secondary);
+          opacity: 0.3;
+          border-radius: 2px;
+        }
+
+        &.slick-active button {
+          opacity: 1;
+          background: var(--tt-color-primary-6);
+        }
+      }
+    }
+
+    // 左右指示点
+    &.slick-vertical {
+      .slick-dots {
+        li {
+          button {
+            background: var(--tt-text-secondary);
+            opacity: 0.3;
+          }
+
+          &.slick-active button {
+            opacity: 1;
+            background: var(--tt-color-primary-6);
+          }
+        }
+      }
+    }
+  }
+}

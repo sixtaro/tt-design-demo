@@ -2,34 +2,51 @@ import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import { Selector, PageLayout, CalendarSelect, CarouselArrow, DragTable, HourRangeSelect, MaskedInput, SecretInput } from './business';
 import A from './components/A';
+import Alert from './components/Alert';
 import Anchor from './components/Anchor';
+import Avatar from './components/Avatar';
+import Badge from './components/Badge';
 import Button from './components/Button';
-import Input from './components/Input';
-import Select from './components/Select';
-import Modal from './components/Modal';
-import Checkbox from './components/Checkbox';
-import Radio from './components/Radio';
-import Switch from './components/Switch';
-import Table from './components/Table';
-import Form from './components/Form';
-import DatePicker from './components/DatePicker';
-import Pagination from './components/Pagination';
-import Message from './components/Message';
-import Notification from './components/Notification';
-import Drawer from './components/Drawer';
-import Tabs from './components/Tabs';
+import Calendar from './components/Calendar';
 import Card from './components/Card';
-import Spin from './components/Spin';
-import FloatButton from './components/FloatButton';
+import Carousel from './components/Carousel';
+import Checkbox from './components/Checkbox';
+import Collapse from './components/Collapse';
+import Comment from './components/Comment';
+import DatePicker from './components/DatePicker';
+import Descriptions from './components/Descriptions';
 import Divider from './components/Divider';
 import Empty from './components/Empty';
-import Row from './components/Row';
+import Drawer from './components/Drawer';
+import Dropdown from './components/Dropdown';
+import FloatButton from './components/FloatButton';
+import Form from './components/Form';
+import Image from './components/Image';
+import Input from './components/Input';
+import List from './components/List';
 import Menu from './components/Menu';
 import Masonry from './components/Masonry';
-import Dropdown from './components/Dropdown';
-import Breadcrumb from './components/Breadcrumb';
+import Message from './components/Message';
+import Modal from './components/Modal';
+import Money from './components/Money';
+import Notification from './components/Notification';
+import Pagination from './components/Pagination';
+import Popconfirm from './components/Popconfirm';
+import Popover from './components/Popover';
+import Progress from './components/Progress';
+import Radio from './components/Radio';
+import Row from './components/Row';
+import Select from './components/Select';
+import Segmented from './components/Segmented';
+import Skeleton from './components/Skeleton';
+import Spin from './components/Spin';
 import Steps from './components/Steps';
+import Switch from './components/Switch';
+import Tag from './components/Tag';
+import Timeline from './components/Timeline';
+import Tooltip from './components/Tooltip';
 import Tour from './components/Tour';
+import Tree from './components/Tree';
 import Watermark from './components/Watermark';
 import Font from './components/Font';
 import Color from './components/Color';
@@ -38,6 +55,7 @@ import BackTop from './components/BackTop';
 import Cascader from './components/Cascader';
 import Splitter from './components/Splitter';
 import Rate from './components/Rate';
+import Result from './components/Result';
 import Statistic from './components/Statistic';
 import CardSelect from './components/CardSelect';
 import Upload from './components/Upload';
@@ -76,34 +94,51 @@ export {
   MaskedInput,
   SecretInput,
   A,
+  Alert,
   Anchor,
+  Avatar,
+  Badge,
   Button,
-  Input,
-  Select,
-  Modal,
-  Checkbox,
-  Radio,
-  Switch,
-  Table,
-  Form,
-  DatePicker,
-  Pagination,
-  Message,
-  Notification,
-  Drawer,
-  Tabs,
+  Calendar,
   Card,
-  Spin,
-  FloatButton,
+  Carousel,
+  Checkbox,
+  Collapse,
+  Comment,
+  DatePicker,
+  Descriptions,
   Divider,
   Empty,
-  Row,
+  Drawer,
+  Dropdown,
+  FloatButton,
+  Form,
+  Image,
+  Input,
+  List,
   Menu,
   Masonry,
-  Dropdown,
-  Breadcrumb,
+  Message,
+  Modal,
+  Money,
+  Notification,
+  Pagination,
+  Popconfirm,
+  Popover,
+  Progress,
+  Radio,
+  Row,
+  Select,
+  Segmented,
+  Skeleton,
+  Spin,
   Steps,
+  Switch,
+  Tag,
+  Timeline,
+  Tooltip,
   Tour,
+  Tree,
   Watermark,
   Font,
   Color,
@@ -112,6 +147,7 @@ export {
   Cascader,
   Splitter,
   Rate,
+  Result,
   Statistic,
   CardSelect,
   Upload,
@@ -135,34 +171,51 @@ const components = {
   MaskedInput,
   SecretInput,
   A,
+  Alert,
   Anchor,
+  Avatar,
+  Badge,
   Button,
-  Input,
-  Select,
-  Modal,
-  Checkbox,
-  Radio,
-  Switch,
-  Table,
-  Form,
-  DatePicker,
-  Pagination,
-  Message,
-  Notification,
-  Drawer,
-  Tabs,
+  Calendar,
   Card,
-  Spin,
-  FloatButton,
+  Carousel,
+  Checkbox,
+  Collapse,
+  Comment,
+  DatePicker,
+  Descriptions,
   Divider,
   Empty,
-  Row,
+  Drawer,
+  Dropdown,
+  FloatButton,
+  Form,
+  Image,
+  Input,
+  List,
   Menu,
   Masonry,
-  Dropdown,
-  Breadcrumb,
+  Message,
+  Modal,
+  Money,
+  Notification,
+  Pagination,
+  Popconfirm,
+  Popover,
+  Progress,
+  Radio,
+  Row,
+  Select,
+  Segmented,
+  Skeleton,
+  Spin,
   Steps,
+  Switch,
+  Tag,
+  Timeline,
+  Tooltip,
   Tour,
+  Tree,
   Watermark,
   Font,
   Color,
@@ -171,6 +224,7 @@ const components = {
   Cascader,
   Splitter,
   Rate,
+  Result,
   Statistic,
   CardSelect,
   Upload,

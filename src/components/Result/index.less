@@ -1,0 +1,64 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-result {
+  &.ant-result {
+    padding: 32px;
+
+    // 标题
+    .ant-result-title {
+      color: var(--tt-text-title);
+      font-size: @font-size-h3;
+      font-weight: 500;
+      line-height: @line-height-h3;
+    }
+
+    // 副标题
+    .ant-result-subtitle {
+      color: var(--tt-text-secondary);
+      font-size: @font-size-base;
+      line-height: @line-height-base;
+    }
+
+    // 图标颜色
+    .ant-result-icon {
+      margin-bottom: 16px;
+
+      > .anticon {
+        font-size: 72px;
+      }
+    }
+
+    &.ant-result-success .ant-result-icon > .anticon {
+      color: var(--tt-color-success);
+    }
+
+    &.ant-result-error .ant-result-icon > .anticon {
+      color: var(--tt-color-error);
+    }
+
+    &.ant-result-info .ant-result-icon > .anticon {
+      color: var(--tt-color-primary);
+    }
+
+    &.ant-result-warning .ant-result-icon > .anticon {
+      color: var(--tt-color-warning);
+    }
+
+    // 404 / 403 / 500
+    &.ant-result-404 .ant-result-icon > .anticon,
+    &.ant-result-403 .ant-result-icon > .anticon,
+    &.ant-result-500 .ant-result-icon > .anticon {
+      color: var(--tt-color-primary);
+    }
+
+    // 操作区
+    .ant-result-content {
+      background-color: var(--tt-bg-light);
+      border-radius: 6px;
+    }
+
+    .ant-result-extra {
+      margin-top: 24px;
+    }
+  }
+}

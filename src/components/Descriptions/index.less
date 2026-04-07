@@ -1,0 +1,53 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-descriptions {
+  &.ant-descriptions {
+    // 标题
+    .ant-descriptions-title {
+      color: var(--tt-text-title);
+      font-weight: 500;
+      font-size: @font-size-h4;
+    }
+
+    // 标签
+    .ant-descriptions-item-label {
+      color: var(--tt-text-secondary);
+      font-size: @font-size-base;
+    }
+
+    // 内容
+    .ant-descriptions-item-content {
+      color: var(--tt-text-body);
+      font-size: @font-size-base;
+    }
+
+    // 带边框模式
+    &.ant-descriptions-bordered {
+      .ant-descriptions-item-label,
+      .ant-descriptions-item-content {
+        border-color: var(--tt-border-color);
+      }
+
+      .ant-descriptions-item-label {
+        background-color: var(--tt-bg-light);
+      }
+
+      .ant-descriptions-item-content {
+        background-color: var(--tt-bg-white);
+      }
+
+      .ant-descriptions-row {
+        border-color: var(--tt-border-color);
+      }
+
+      .ant-descriptions-item {
+        border-color: var(--tt-border-color);
+      }
+    }
+
+    // 分隔线
+    .ant-descriptions-view {
+      border-color: var(--tt-border-color);
+    }
+  }
+}

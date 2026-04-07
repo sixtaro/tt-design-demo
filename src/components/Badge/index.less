@@ -1,0 +1,14 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-badge {
+  // 状态点颜色覆盖
+  & .ant-badge-status-dot {
+    // 使用主题色变量保持一致性
+  }
+
+  & .ant-badge-count {
+    font-size: @font-size-sm;
+    line-height: @line-height-sm;
+    box-shadow: none;
+  }
+}

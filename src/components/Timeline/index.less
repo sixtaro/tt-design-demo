@@ -1,0 +1,51 @@
+@import (reference) '../../style/themes/default.less';
+
+.tt-timeline {
+  &.ant-timeline {
+    // 时间线
+    .ant-timeline-item-tail {
+      border-inline-start-color: var(--tt-border-color);
+    }
+
+    // 节点
+    .ant-timeline-item-head {
+      background-color: var(--tt-bg-white);
+      border-color: var(--tt-color-primary-6);
+      color: var(--tt-color-primary-6);
+    }
+
+    // 内容
+    .ant-timeline-item-content {
+      color: var(--tt-text-body);
+      font-size: @font-size-base;
+      line-height: @line-height-base;
+    }
+
+    // 标签
+    .ant-timeline-item-label {
+      color: var(--tt-text-secondary);
+      font-size: @font-size-sm;
+    }
+
+    // 自定义节点颜色
+    .ant-timeline-item-head-blue {
+      border-color: var(--tt-color-primary-6);
+      color: var(--tt-color-primary-6);
+    }
+
+    .ant-timeline-item-head-green {
+      border-color: var(--tt-color-success);
+      color: var(--tt-color-success);
+    }
+
+    .ant-timeline-item-head-red {
+      border-color: var(--tt-color-error);
+      color: var(--tt-color-error);
+    }
+
+    .ant-timeline-item-head-gray {
+      border-color: var(--tt-color-grey-4);
+      color: var(--tt-color-grey-4);
+    }
+  }
+}
