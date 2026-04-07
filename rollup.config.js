@@ -9,23 +9,21 @@ import postcss from 'rollup-plugin-postcss';
 const path = require('path');
 const packageJson = require('./package.json');
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const peerDependencies = Object.keys(packageJson.peerDependencies || {});
 // Prefer peerDependencies as the single source of truth for host-provided runtime deps.
 // Keep this list only for packages we intentionally externalize without asking consumers
 // to install them as peers.
-const alwaysExternalPackages = [
-  'mockjs',
-];
+const alwaysExternalPackages = ['mockjs'];
 const externalPackages = [...new Set([...alwaysExternalPackages, ...peerDependencies])];
 
-const isExternal = (id) => {
+const isExternal = id => {
   const normalizedId = id.replace(/\\/g, '/');
 
-  return externalPackages.some((pkg) => {
+  return externalPackages.some(pkg => {
     const normalizedPackagePath = `/node_modules/${pkg}/`;
-    return normalizedId === pkg
-      || normalizedId.startsWith(`${pkg}/`)
-      || normalizedId.includes(normalizedPackagePath);
+    return normalizedId === pkg || normalizedId.startsWith(`${pkg}/`) || normalizedId.includes(normalizedPackagePath);
   });
 };
 
@@ -36,7 +34,7 @@ export default {
       dir: 'dist/cjs',
       format: 'cjs',
       exports: 'named',
-      sourcemap: false,
+      sourcemap: isDev,
       entryFileNames: 'index.js',
       inlineDynamicImports: true,
     },
@@ -44,7 +42,7 @@ export default {
       dir: 'dist/esm',
       format: 'esm',
       exports: 'named',
-      sourcemap: false,
+      sourcemap: isDev,
       entryFileNames: 'index.js',
       inlineDynamicImports: true,
     },
@@ -52,6 +50,8 @@ export default {
   watch: {
     buildDelay: 300,
     clearScreen: false,
+    include: 'src/**',
+    exclude: 'node_modules/**',
   },
   plugins: [
     image(),
@@ -61,22 +61,22 @@ export default {
           find: '@',
           replacement: path.resolve(__dirname, 'src'),
         },
-      ]
+      ],
     }),
     json(),
     resolve({
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       mainFields: ['module', 'main'],
-      preferBuiltins: false
+      preferBuiltins: false,
     }),
     postcss({
       extensions: ['.less', '.css'],
       use: {
         less: {},
       },
-      minimize: true, // 压缩 CSS
-      sourceMap: false, // 不生成 sourcemap
-      extract: true, // 提取 CSS 到单独文件
+      minimize: !isDev,
+      sourceMap: isDev,
+      extract: true,
     }),
     babel({
       exclude: 'node_modules/**',
@@ -84,7 +84,7 @@ export default {
       babelHelpers: 'bundled',
     }),
     commonjs(),
-    terser(),
-  ],
+    !isDev && terser(),
+  ].filter(Boolean),
   external: isExternal,
 };

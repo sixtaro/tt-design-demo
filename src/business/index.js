@@ -43,6 +43,9 @@ import DragTable from './DragTable';
 import HourRangeSelect from './HourRangeSelect';
 import MaskedInput from './MaskedInput';
 import SecretInput from './SecretInput';
+import VerificationCode from './VerificationCode';
+import CountdownButton from './CountdownButton';
+import TabsPage from './tabsPage/tabs';
 
 // 动态更改主题色
 const updateTheme = (primaryColor, global) => {
@@ -64,7 +67,7 @@ const getIconFont = () => {
   if (IconFont) {
     return IconFont;
   }
-  const iconfontUrl = window.iconfontUrl;
+  const iconfontUrl = window.iconfontUrl || 'components/Icon/iconfont.js';
   if (!iconfontUrl) {
     return null;
   }
@@ -134,4 +137,23 @@ const getIcon = (icon, props) => {
 
 const BreadcrumbOrg = window.projectName === 'desktop' ? BreadcrumbOrgTag : BreadcrumbOrgOld;
 
-export { getIcon, updateTheme, Selector, PageLayout, PictureSwiper, Condition, ExcelImportBtn, BreadcrumbOrg, TelWithCode, CalendarSelect, CarouselArrow, DragTable, HourRangeSelect, MaskedInput, SecretInput };
+export {
+  getIcon,
+  updateTheme,
+  Selector,
+  PageLayout,
+  PictureSwiper,
+  Condition,
+  ExcelImportBtn,
+  BreadcrumbOrg,
+  TelWithCode,
+  CalendarSelect,
+  CarouselArrow,
+  DragTable,
+  HourRangeSelect,
+  MaskedInput,
+  SecretInput,
+  VerificationCode,
+  CountdownButton,
+  TabsPage,
+};

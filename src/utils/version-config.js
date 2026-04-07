@@ -64,6 +64,7 @@ export const componentVersions = {
   HourRangeSelect: '1.0.0',
   MaskedInput: '1.0.0',
   SecretInput: '1.0.0',
+  VerificationCode: '1.0.0',
   Anchor: '1.0.0',
   Alert: '1.0.0',
   Avatar: '1.0.0',
