@@ -302,14 +302,27 @@
       letter-spacing: -0.01em;
     }
 
+    .btn:link,
+    .btn:visited {
+      text-decoration: none;
+    }
+
     .btn-primary {
       background: var(--red-primary);
       color: white;
       box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
     }
 
-    .btn-primary:hover {
+    .btn-primary:visited,
+    .btn-primary:focus,
+    .btn-primary:active {
+      color: white;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
       background: var(--red-dark);
+      color: white;
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
     }
@@ -320,11 +333,24 @@
       border: 1.5px solid var(--border-dark);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--red-primary);
-      color: var(--red-primary);
-      background: var(--red-subtle);
+    .btn-secondary:visited,
+    .btn-secondary:focus,
+    .btn-secondary:active {
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      border-color: rgba(220, 38, 38, 0.24);
+      color: var(--gray-800);
+      background: linear-gradient(180deg, #fff 0%, #fff8f8 100%);
       transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(23, 23, 23, 0.06);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid rgba(220, 38, 38, 0.22);
+      outline-offset: 3px;
     }
 
     .hero-stats {
@@ -640,13 +666,13 @@
 <body>
   <div id="root">
     <nav class="navbar">
-      <a href="http://localhost:6006" class="navbar-logo">
+      <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="navbar-logo">
         <div class="navbar-logo-icon">TT</div>
         <span class="navbar-logo-text">tt-design</span>
         <span class="navbar-logo-sub">企业级 React 组件库</span>
       </a>
       <div class="navbar-links">
-        <a href="http://localhost:6006" class="navbar-link">组件</a>
+        <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="navbar-link">组件</a>
         <a href="#" class="navbar-link">设计资源</a>
         <a href="#" class="navbar-link">帮助</a>
         <a href="https://github.com/sixtaro/tt-design" class="navbar-github" target="_blank" rel="noopener">
@@ -668,7 +694,7 @@
           基于 React 和 Ant Design 构建的高质量企业级组件库，让开发更高效
         </p>
         <div class="hero-buttons">
-          <a href="http://localhost:6006" class="btn btn-primary">
+          <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="btn btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <rect x="3" y="3" width="7" height="7" rx="1"/>
               <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -713,62 +739,62 @@
           <p class="section-desc">40+ 企业级组件，满足各类业务场景需求</p>
         </div>
         <div class="component-grid">
-          <a href="http://localhost:6006/?path=/story/通用-button-按钮--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="component-card">
             <div class="component-card-icon"><span>🔘</span></div>
             <div class="component-card-name">Button</div>
             <div class="component-card-desc">按钮</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-input-输入框--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-input-输入框--基础用法" class="component-card">
             <div class="component-card-icon"><span>✏️</span></div>
             <div class="component-card-name">Input</div>
             <div class="component-card-desc">输入框</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-select-选择器--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-select-选择器--基础用法" class="component-card">
             <div class="component-card-icon"><span>📋</span></div>
             <div class="component-card-name">Select</div>
             <div class="component-card-desc">选择器</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-table-表格--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-table-表格--基础用法" class="component-card">
             <div class="component-card-icon"><span>📊</span></div>
             <div class="component-card-name">Table</div>
             <div class="component-card-desc">表格</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-form-表单--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-form-表单--基础用法" class="component-card">
             <div class="component-card-icon"><span>📝</span></div>
             <div class="component-card-name">Form</div>
             <div class="component-card-desc">表单</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用/datepicker--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用/datepicker--基础用法" class="component-card">
             <div class="component-card-icon"><span>📅</span></div>
             <div class="component-card-name">DatePicker</div>
             <div class="component-card-desc">日期选择</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-modal-对话框--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-modal-对话框--基础用法" class="component-card">
             <div class="component-card-icon"><span>🪟</span></div>
             <div class="component-card-name">Modal</div>
             <div class="component-card-desc">对话框</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-tabs-标签页--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-tabs-标签页--基础用法" class="component-card">
             <div class="component-card-icon"><span>📑</span></div>
             <div class="component-card-name">Tabs</div>
             <div class="component-card-desc">标签页</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-steps-步骤条--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-steps-步骤条--基础用法" class="component-card">
             <div class="component-card-icon"><span>➡️</span></div>
             <div class="component-card-name">Steps</div>
             <div class="component-card-desc">步骤条</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-pagination-分页--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-pagination-分页--基础用法" class="component-card">
             <div class="component-card-icon"><span>📄</span></div>
             <div class="component-card-name">Pagination</div>
             <div class="component-card-desc">分页</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-card-卡片--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-card-卡片--基础用法" class="component-card">
             <div class="component-card-icon"><span>🃏</span></div>
             <div class="component-card-name">Card</div>
             <div class="component-card-desc">卡片</div>
           </a>
-          <a href="http://localhost:6006/?path=/story/通用-upload-上传--基础用法" class="component-card">
+          <a href="http://localhost:6006/?path=/docs/通用-upload-上传--基础用法" class="component-card">
             <div class="component-card-icon"><span>⬆️</span></div>
             <div class="component-card-name">Upload</div>
             <div class="component-card-desc">上传</div>
@@ -790,7 +816,7 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <a href="http://localhost:6006" class="footer-logo">
+        <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="footer-logo">
           <div class="footer-logo-icon">TT</div>
           <span class="footer-logo-text">tt-design</span>
         </a>

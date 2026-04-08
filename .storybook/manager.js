@@ -1,6 +1,24 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming';
 
+const ensureDocsPath = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+  const storyPath = searchParams.get('path');
+
+  if (!storyPath) {
+    searchParams.set('path', '/docs/通用-button-按钮--基础用法');
+    window.location.replace(`${window.location.pathname}?${searchParams.toString()}${window.location.hash}`);
+    return;
+  }
+
+  if (storyPath.startsWith('/story/')) {
+    searchParams.set('path', storyPath.replace('/story/', '/docs/'));
+    window.location.replace(`${window.location.pathname}?${searchParams.toString()}${window.location.hash}`);
+  }
+};
+
+ensureDocsPath();
+
 // 获取首页地址
 const getHomeUrl = () => {
   // 如果有父级窗口（首页），获取父窗口配置

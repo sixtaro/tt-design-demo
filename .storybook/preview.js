@@ -4,6 +4,7 @@ import '../src/style/themes/default.less';
 import { ThemeDecorator, themeList } from './ThemeDecorator';
 
 export const parameters = {
+  viewMode: 'docs',
   actions: { argTypesRegex: '^on[A-Z].*' },
   globals: {
     locale: 'zh-CN',
@@ -36,4 +37,3 @@ export const globalTypes = {
 };
 
 export const decorators = [ThemeDecorator];
-
