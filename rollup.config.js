@@ -6,6 +6,7 @@ import json from '@rollup/plugin-json';
 import image from '@rollup/plugin-image';
 import { terser } from 'rollup-plugin-terser';
 import postcss from 'rollup-plugin-postcss';
+import url from 'postcss-url';
 const path = require('path');
 const packageJson = require('./package.json');
 
@@ -77,6 +78,12 @@ export default {
       minimize: !isDev,
       sourceMap: isDev,
       extract: true,
+      plugins: [
+        url({
+          url: 'inline',
+          maxSize: Infinity, // 内联所有图片，无论大小
+        }),
+      ],
     }),
     babel({
       exclude: 'node_modules/**',
