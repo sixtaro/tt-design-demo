@@ -1,4 +1,3 @@
-import React from 'react';
 import { message as AntMessage } from 'antd';
 import { componentVersions } from '../../utils/version-config';
 

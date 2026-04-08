@@ -1,11 +1,11 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code when working in this repository.
+This file provides guidance to Codex when working in this repository.
 
 ## 作用边界
 
-- `CLAUDE.md` 只放始终生效的仓库规则
-- 仓库参考信息与操作清单放在 `.claude/skills/`
+- `AGENTS.md` 只放始终生效的仓库规则
+- 仓库参考信息与操作清单放在 `.agents/skills/`
 - 对外使用说明放在 `README.md`
 
 如需了解目录、脚本、主题入口、版本入口等参考信息，优先查看 `tt-design-repo-reference` skill。
