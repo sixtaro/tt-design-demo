@@ -534,6 +534,25 @@
       color: var(--text-tertiary);
     }
 
+    .component-more {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .component-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--red-primary);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .component-more-link:hover {
+      color: var(--red-dark);
+    }
+
     /* ========== QUICK START ========== */
     .quickstart {
       padding: 120px 48px;
@@ -691,7 +710,7 @@
           <span class="hero-title-tt">tt-design</span> 组件库
         </h1>
         <p class="hero-subtitle">
-          基于 React 和 Ant Design 构建的高质量企业级组件库，让开发更高效
+          基于 React 17 和 Ant Design 4.24 构建，覆盖 90 个基础与业务组件能力，让企业级页面开发更高效
         </p>
         <div class="hero-buttons">
           <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="btn btn-primary">
@@ -712,16 +731,16 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="hero-stat-number">40<span>+</span></div>
-            <div class="hero-stat-label">精选组件</div>
+            <div class="hero-stat-number">90<span></span></div>
+            <div class="hero-stat-label">组件能力</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-number">15<span>+</span></div>
+            <div class="hero-stat-number">74<span></span></div>
+            <div class="hero-stat-label">基础组件</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">16<span></span></div>
             <div class="hero-stat-label">业务组件</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-number">7<span></span></div>
-            <div class="hero-stat-label">主题配色</div>
           </div>
         </div>
       </div>
@@ -735,8 +754,8 @@
       <div class="components-inner">
         <div class="section-header">
           <span class="section-label">Components</span>
-          <h2 class="section-title">丰富的组件库</h2>
-          <p class="section-desc">40+ 企业级组件，满足各类业务场景需求</p>
+          <h2 class="section-title">常用组件速览</h2>
+          <p class="section-desc">当前对外导出 74 个基础组件、16 个业务组件。这里展示部分高频组件，完整清单可在 Storybook 中查看。</p>
         </div>
         <div class="component-grid">
           <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="component-card">
@@ -798,6 +817,12 @@
             <div class="component-card-icon"><span>⬆️</span></div>
             <div class="component-card-name">Upload</div>
             <div class="component-card-desc">上传</div>
+          </a>
+        </div>
+        <div class="component-more">
+          <a href="http://localhost:6006/?path=/docs/通用-button-按钮--基础用法" class="component-more-link">
+            查看完整组件文档
+            <span>→</span>
           </a>
         </div>
       </div>
